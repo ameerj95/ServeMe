@@ -2,7 +2,7 @@ import { observable, makeObservable } from 'mobx'
 
 export class order {
 
-    constructor(name) {
+    constructor() {
         this.name = name
 
         makeObservable(this, {
