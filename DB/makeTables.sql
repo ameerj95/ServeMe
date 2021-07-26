@@ -15,10 +15,12 @@ use servemeDB;
 
 -- CREATE TABLE qr_table(
 --     table_num int PRIMARY KEY,
---     name VARCHAR(60)
+--     qr_code VARCHAR(120)
+--     
 -- );
 
--- DROP TABLE qr_table;
+-- alter table qr_table
+-- add column qr_code VARCHAR(120)
 
 -- CREATE TABLE info_resturant(
 --     id INT AUTO_INCREMENT PRIMARY KEY,
