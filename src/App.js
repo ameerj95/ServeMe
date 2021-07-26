@@ -1,11 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+
+import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import Manager from "./components/resturant/Entities/Manager/Manager";
 
 function App() {
   return (
-    <div className="App">
-      <h1>start</h1>
-    </div>
+    <Router>
+      <div className="App">
+        <Manager />
+     
+        
+      </div>
+    </Router>
   );
 }
 
