@@ -1,12 +1,16 @@
-import logo from './logo.svg';
+import Navbar from './components/customer/Navbar/Navbar'
 import './App.css';
+import { observer, inject } from 'mobx-react'
 
-function App() {
+
+function App(props) {
+
   return (
     <div className="App">
-      <h1>start</h1>
+     <Navbar />
+     
     </div>
   );
 }
 
-export default App;
+export default inject("menu")(observer(App))
