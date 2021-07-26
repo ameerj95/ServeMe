@@ -42,8 +42,9 @@ use servemeDB;
 
 -- CREATE TABLE order_item(
 --     id INT AUTO_INCREMENT PRIMARY KEY,
+--     order_id INT,
 --     menu_item_id INT,
-
+--     FOREIGN KEY(order_id) REFERENCES order_table(id),
 --     FOREIGN KEY(menu_item_id) REFERENCES menu_items(id)
 -- );
 

@@ -12,5 +12,8 @@ router.get('/generate/:tableNum', async function (req, res) {
         let qr_tables = await sequelize.query(`SELECT * FROM qr_table`)
         res.send(qr_tables[0])
     })
-    
+
+//TODO get qr_table
+
+
 module.exports = router

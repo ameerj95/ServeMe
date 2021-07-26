@@ -1,2 +1,2 @@
-delete from qr_table
-where table_num =3
+delete from order_item
+where id =1

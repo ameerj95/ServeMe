@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'mobx-react'
 import {Menu} from './stores/menu/Menu'
 import {MenuItem} from './stores/menu/MenuItem'
+import {Table} from './stores/table/Table'
 
 let menu = new Menu()
 let menuitem1 = new MenuItem('object1')
@@ -21,13 +22,16 @@ menu.addMenuItem(menuitem4)
 menu.addMenuItem(menuitem5)
 
 
+let table = new Table()
+
 
 
 
 
 
 const stores = {
-  menu : menu
+  menu : menu,
+  table:table
 }
 
 ReactDOM.render(<Provider {...stores}>
