@@ -1,4 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import './bootstrap/dist/css/bootstrap.min.css';
+import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Menu from '../container/Menu/Menu'
