@@ -11,6 +11,7 @@ const imgURL = 'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg
 const imgBurger = 'https://images.pexels.com/photos/2282528/pexels-photo-2282528.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
 const imgRestaurant = 'https://images.pexels.com/photos/5022475/pexels-photo-5022475.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
 let info = new Info("1", "Drby Bar", imgRestaurant, "koko koko koko", "04-2223434", "11:00 - 23:00" ,"logo" ,"Tel Aviv hrtzal 56" , "drbybar@gmail.com")
+import {Table} from './stores/table/Table'
 
 let menu = new Menu()
 let menuitem1 = new MenuItem("1","Pizza", imgURL ,50,"The best","food", true,true)
@@ -26,10 +27,13 @@ menu.addMenuItem(menuitem4)
 menu.addMenuItem(menuitem5)
 
 
+let table = new Table()
+
 
 const stores = {
   menu : menu,
-  info : info
+  info : info,
+  table:table
 }
 
 ReactDOM.render(<Provider {...stores}>
