@@ -1,0 +1,19 @@
+{
+    "CLIENT_URL":"https://localhost:3000",
+    "STATION_ENUM":{
+      "1": "KITCHEN",
+      "2": "BAR"
+    },
+    "CATEGORIES":{
+        "PIZZA": 1,
+        "PASTA": 2,
+        "COLD_DRINKS":10
+      },
+    "ACTIONS":{
+      "ADDTOCART":0,
+      "FIREORDER":1,
+      "REQUESTSERVICE":2,
+      "EMIT_SERVER":3
+    }
+
+}

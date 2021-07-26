@@ -1,6 +1,5 @@
 import { observable, action, makeObservable, runInAction } from 'mobx'
-// import axios from "axios"
-// import MenuItems from './MenuItems'
+
 
 export class Menu {
 
@@ -18,8 +17,7 @@ export class Menu {
     }
 
     addMenuItem = (menuItem) =>{
-        this.list.push(menuItem)
+        this.list.push(menuItem) 
     }
-
-
+    
 }
