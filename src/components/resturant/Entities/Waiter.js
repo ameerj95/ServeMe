@@ -5,20 +5,7 @@ const API_HOST = "http://localhost:3000";
 const INVENTORY_API_URL = `${API_HOST}/MOCKDATA`;
 function Waiter (props) {
    
-//   const [data, setData] = useState([]);
-// //   let data= props.orders.list;
-//   console.log(data);
-//   const fetchInventory = () => {
-//     fetch(`${INVENTORY_API_URL}`)
-//       .then((res) => res.json())
-//       .then((json) => setData(json));
-//       console.log(data);
-//   };
-//   useEffect(() => {
-//     fetchInventory();
-//   }, []);
-//   console.log(data+ " dfghjkl");
-  // console.log(data.data +"  dfghjklkjhgfdfghjk");
+
   const data = props.orders.list;
   return (
     <div className="container">
@@ -40,7 +27,7 @@ function Waiter (props) {
               <td>{item.order}</td>
               <td>{item.status}</td>
               <td>{item.data}</td>
-            
+              
            
            </tr>
           ))}

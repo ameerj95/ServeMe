@@ -30,6 +30,7 @@ function Order(props) {
             <th>Order</th>
             <th>status</th>
             <th>Data</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -40,6 +41,27 @@ function Order(props) {
               <td>{item.order}</td>
               <td>{item.status}</td>
               <td>{item.data}</td>
+              <td>
+                    <React.Fragment>
+                        <button
+                        className={"btn-success"}>
+                            Save
+                        </button>   
+                        <button
+                         className={"btn-secondary"}
+                         style={{marginLeft: 8}}>Cancel</button>
+                             </React.Fragment>
+                        
+                             <button
+                                 className={"btn-primary"}
+                               
+                             >
+                                 Editd
+                             </button>
+                         
+                                
+                            </td>
+            
             
            
            </tr>
