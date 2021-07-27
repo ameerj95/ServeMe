@@ -1,3 +1,5 @@
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Col, Row, Container } from 'react-bootstrap'
 // import './bootstrap/dist/css/bootstrap.min.css';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
@@ -11,13 +13,16 @@ function NavBarLinks() {
     <div id="main-links">
       <Router>
 
-        
-        <div className="m-4 d-grid gap-2 row mt-2">
-          <Button className=" col-sx-1" variant="light"><Link className="links-customer" to="/">Logo</Link></Button>
-          <Button className=" col-sx-1" variant="light"><Link className="links-customer" to="/menu">Menu</Link></Button>
-          <Button className=" col-sx-1" variant="light"><Link className="links-customer" to="/service">Service</Link></Button>
-          <Button className=" col-sx-1" variant="light"><Link className="links-customer" to="/cart">Cart</Link></Button>
-        </div>
+
+        <Container>
+          <Row>
+            <Col><Button variant="light"><Link className="links-customer" to="/">Logo</Link></Button></Col>
+            <Col><Button variant="light"><Link className="links-customer" to="/menu">Menu</Link></Button></Col>
+            <Col><Button variant="light"><Link className="links-customer" to="/service">Service</Link></Button></Col>
+            <Col><Button variant="light"><Link className="links-customer" to="/cart">Cart</Link></Button></Col>
+          </Row>
+        </Container>
+        <hr></hr>
         <Route exact path="/" render={() => <Home />} />
         <Route exact path="/menu" render={() => <Menu />} />
         {/* <Route path="/service" exact render={() => <Service />}/>
