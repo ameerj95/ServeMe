@@ -2,29 +2,31 @@ const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/servemedb')
 const actions = require('../actionsConstants');
 //===============================================================
-const ResturantManager =async(data,socket)=>{
+const ResturantManager =async(data,io)=>{
     console.log("in ResturantManager")
     const order_id = await getOrderId(data.tableNum)
     const tableOrder = await getTableOrder(order_id)
     console.log(tableOrder)
-    emitToManager(tableOrder,socket)
-    emitToKitchen(tableOrder,socket)
-    emitToBar(tableOrder,socket)
-    socket.broadcast.emit("customer","recivied order")
-}
-//===============================================================
-const emitToManager =(order,socket)=>{
-    socket.broadcast.emit("manager",order)
-}
-const emitToKitchen =(order,socket)=>{
-    const result = filterMenuItemsByStation(order,actions.STATIONS.KITCHEN)
-    console.log('in kitchen')
-    socket.broadcast.emit("kitchen",result)
+    emitToManager(tableOrder,io)
+    emitToKitchen(tableOrder,io)
+    emitToBar(tableOrder,io)
+    io.sockets.emit("customer",{msg:"recivied order",tableNum:data.tableNum})
 
 }
-const emitToBar =(order,socket)=>{
+//===============================================================
+const emitToManager =(order,io)=>{
+    io.sockets.emit("bar",result)
+}
+const emitToKitchen =(order,io)=>{
+    const result = filterMenuItemsByStation(order,actions.STATIONS.KITCHEN)
+    console.log('in kitchen')
+    io.sockets.emit("kitchen",result)
+
+}
+const emitToBar =(order,io)=>{
     const result = filterMenuItemsByStation(order,actions.STATIONS.BAR)
-    socket.broadcast.emit("bar",result)
+    io.sockets.emit("bar",result)
+
 }
 //===============================================================
 const filterMenuItemsByStation=(order,type)=>{
@@ -51,7 +53,7 @@ const getOrderId = async (tableNum) =>{
 exports = module.exports = function(socket,io){
     socket.on('resturant', data => {
         console.log("in resturant")
-        ResturantManager(data,socket)
+        ResturantManager(data,io)
 
     });
   } 

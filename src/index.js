@@ -21,17 +21,17 @@ const imgRestaurant = 'https://images.pexels.com/photos/5022475/pexels-photo-502
 let info = new Info("1", "Drby Bar", imgRestaurant, "koko koko koko", "04-2223434", "11:00 - 23:00" ,"logo" ,"Tel Aviv hrtzal 56" , "drbybar@gmail.com")
 
 let menu = new Menu()
-let menuitem1 = new MenuItem("1","Pizza", imgURL ,70,"The best",1, true,true)
-let menuitem2 = new MenuItem("2","Burger",imgBurger,50,"The best",1, true,false)
-let menuitem3 = new MenuItem("3","Sushi",imgURL,50,"The best",0, true,false)
-let menuitem4 = new MenuItem("4","Fuze tea",imgCoca,50,"The best",2, true,false)
-let menuitem5 = new MenuItem("5","Coca Cola",imgCoca,50,"The best",2, true,false)
-
-menu.addMenuItem(menuitem1);
-menu.addMenuItem(menuitem2);
-menu.addMenuItem(menuitem3);
-menu.addMenuItem(menuitem4);
-menu.addMenuItem(menuitem5);
+menu.getMenuItems()
+// let menuitem1 = new MenuItem("1","Pizza", imgURL ,70,"The best",1, true,true)
+// let menuitem2 = new MenuItem("2","Burger",imgBurger,50,"The best",1, true,false)
+// let menuitem3 = new MenuItem("3","Sushi",imgURL,50,"The best",0, true,false)
+// let menuitem4 = new MenuItem("4","Fuze tea",imgCoca,50,"The best",2, true,false)
+// let menuitem5 = new MenuItem("5","Coca Cola",imgCoca,50,"The best",2, true,false)
+// menu.addMenuItem(menuitem1);
+// menu.addMenuItem(menuitem2);
+// menu.addMenuItem(menuitem3);
+// menu.addMenuItem(menuitem4);
+// menu.addMenuItem(menuitem5);
 
 let orders = new Orders();
 let order1 = new Order("1","order1","today","pending" ,1 );
@@ -49,7 +49,7 @@ orders.addOrder(order5)
 
 let table = new Table()
 
-const clientSocket = new ClientSocket(table)
+const clientsocket = new ClientSocket()
 
 
 const stores = {
@@ -57,7 +57,7 @@ const stores = {
   info : info,
   table:table,
   orders: orders,
-  clientSocket:clientSocket
+  clientsocket:clientsocket,
 }
 
 

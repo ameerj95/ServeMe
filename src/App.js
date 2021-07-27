@@ -1,25 +1,30 @@
 import Navbar from './components/customer/Navbar/Navbar'
 import './App.css';
 import { observer, inject } from 'mobx-react'
-import MockupComp from './components/MockupComp/MockupComp';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import MockupResturant from './components/MockupComp/MockupResturant';
-import MockupTest01 from './components/MockupComp/MockupTest01';
-// import socketClient  from "socket.io-client";
-// const SERVER = "http://localhost:5000";
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import Middleware from './components/middleware/Middleware';
 
-function App() {
-  //var socket = socketClient(SERVER);
+//=========================================================================
+function App(props) {
+  //listener for the table
+  const socket = props.clientsocket.socket
+  socket.on("customer", data => {
+    if (data.tableNum == props.table.tableNum) {
+      alert("IN HERE")
+      console.log(data)
+      props.table.updateCart(data.tableOrder)
+    }
+  });
+//=========================================================================
   return (
     <Router>
       <div className="App">
         <Navbar />
-        <h1>start</h1>
-        <Route path="/testMock/:tableNum" exact render={({ match }) => <MockupTest01 match={match} />} />
+        <Route path="/table/:tableNum" exact render={({ match }) => <Middleware match={match} to="/menu" />} />
         {/* <Route path="/table/:tableNum" exact render={({ match }) => <MockupComp match={match} />} />
         <Route path="/resturantMock" exact render={() => <MockupResturant  />} /> */}
       </div>
     </Router>
   );
 }
-export default inject("menu")(observer(App))
+export default inject("menu", "clientsocket","table")(observer(App))

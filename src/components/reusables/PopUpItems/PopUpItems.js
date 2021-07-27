@@ -4,10 +4,11 @@ import Modal from 'react-bootstrap/Modal'
 import { Button, Badge } from 'react-bootstrap'
 import { useState } from 'react';
 import './PopUpItems.css'
+import { Redirect } from "react-router-dom";
 
 const PopUpItems = (props) => {
 
-
+    const socket = props.clientsocket.socket
     const [name, setName] = useState(props.item.name)
     const [price, setPrice] = useState(props.item.price)
     const [vegan, setVegan] = useState(props.item.vegan)
@@ -15,24 +16,16 @@ const PopUpItems = (props) => {
     const [description, setDescription] = useState(props.item.description)
     const [comment, setComment] = useState("")
 
-
-    function updateClient() {
+    const updateClient = ()=> {
         console.log("update");
-        // props.menu.updateClient(props.client._id, inputName,inputsurName,inputCountry)
-        // props.onHide()
+        const extracted_tableNum = props.table.tableNum
+        socket.emit('customer', { tableNum: extracted_tableNum,item_id:props.item.id ,action_type:0 });
+        props.table.addMenuItem(props.item)
+        
     }
-
-    // function handleChange(e) {
-    //     let name = e.target.name
-    //         name === "name" ? setInputName(e.target.value)
-    //         : name==="surname"?setInputsurName(e.target.value)
-    //         :setInputCountry(e.target.value)
-    // }
 
     return (
         <Modal  {...props} centered aria-labelledby="contained-modal-title-vcenter">
-
-
             <Modal.Header>
                 <Modal.Title>{name}</Modal.Title>
             </Modal.Header>
@@ -57,5 +50,5 @@ const PopUpItems = (props) => {
     );
 };
 
-export default inject("menu")(observer(PopUpItems))
+export default inject("clientsocket","table")(observer(PopUpItems))
 

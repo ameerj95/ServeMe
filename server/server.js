@@ -50,9 +50,9 @@ io.on('connection', (socket) => {
     io.sockets.close();
   });
   console.log('new client connected ', socket.id);
-  require('./socketHandlers/customerSocket')(socket)
-  require('./socketHandlers/resturantSocket')(socket)
-  require('./socketHandlers/waiterSocket')(socket)
+  require('./socketHandlers/customerSocket')(socket,io)
+  require('./socketHandlers/resturantSocket')(socket,io)
+  require('./socketHandlers/waiterSocket')(socket,io)
 });
 
 //=================================================================

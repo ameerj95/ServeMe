@@ -1,5 +1,6 @@
 import { observable, action, makeObservable, runInAction } from 'mobx'
-
+import axios from 'axios'
+import { MenuItem } from './MenuItem'
 
 export class Menu {
 
@@ -12,12 +13,21 @@ export class Menu {
             index : observable,
             list: observable,
             length: observable,
-            addMenuItem : action,
+            getMenuItems : action,
+            emptyTheList : action
           })
     }
 
-    addMenuItem = (menuItem) =>{
-        this.list.push(menuItem) 
+    getMenuItems = async () => {
+        let res = await axios.get(`http://localhost:5000/Menu/MenuItems`)
+        this.emptyTheList()
+        res.data.forEach(item => {
+            runInAction(()=>{
+                this.list.push(new MenuItem(item.id,item.name,item.img,item.price,item.description,item.category,item.is_vegan,item.is_gluten_free))
+            })
+        });
     }
-    
+    emptyTheList = () => {
+        this.list = []
+    }
 }

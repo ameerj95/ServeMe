@@ -2,7 +2,6 @@
 import { Button, Col, Row, Container } from 'react-bootstrap'
 // import './bootstrap/dist/css/bootstrap.min.css';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { Button } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Menu from '../container/Menu/Menu'
 import './Navbar.css'
@@ -12,8 +11,6 @@ function NavBarLinks() {
 
     <div id="main-links">
       <Router>
-
-
         <Container>
           <Row>
             <Col><Button variant="light"><Link className="links-customer" to="/">Logo</Link></Button></Col>
@@ -25,8 +22,6 @@ function NavBarLinks() {
         <hr></hr>
         <Route exact path="/" render={() => <Home />} />
         <Route exact path="/menu" render={() => <Menu />} />
-        {/* <Route path="/service" exact render={() => <Service />}/>
-          <Route path="/cart" exact render={() =>  <Cart />}/> */}
       </Router>
     </div>
   )

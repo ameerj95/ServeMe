@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/servemedb')
 const moment = require('moment')
 //===============================================================
-const addToCart= async(data,socket)=>{
+const addToCart= async(data,io)=>{
     //get status if order is active or not
     const status = await getOrderStatus(data.tableNum)
     //if its not active create new one
@@ -13,17 +13,18 @@ const addToCart= async(data,socket)=>{
     await addItemToOrder(order_id,data.item_id)
     const tableOrder = await getTableOrder(order_id)
     //emit to all clients connected to this table new order
-    socket.broadcast.emit('customer',{...data,tableOrder})
+    // socket.broadcast.emit('customer',{...data,tableOrder})
+    io.sockets.emit('customer',{...data,tableOrder})
 }
 //===============================================================
-const removeItemFromCart= async(data,socket)=>{
+const removeItemFromCart= async(data,io)=>{
     //get the order ID
     const order_id = await getOrderId(data.tableNum)
     //remove the order from cart based on ID.
     await removeFromCart(data.deletedItem_id)
     const tableOrder = await getTableOrder(order_id)
     //emit to all clients connected to this table new order
-    socket.broadcast.emit('customer',{...data,tableOrder})
+    io.sockets.emit('customer',{...data,tableOrder})
 }
 //===============================================================
 const getTableOrder = async (order_id)=>{
@@ -32,6 +33,7 @@ const getTableOrder = async (order_id)=>{
     LEFT JOIN menu_items ON order_item.menu_item_id = menu_items.id
     LEFT JOIN order_table ON order_item.order_id = order_table.id
     where order_id = ${order_id}`)
+    console.log(table_order)
     return table_order[0]
 }
 //===============================================================
@@ -90,11 +92,14 @@ const action_map = {
 }
 
 //=================================================================
-exports = module.exports = function(socket){
+exports = module.exports = function(socket,io){
     socket.on('customer', data => {
         console.log("in customer")
-        socket.broadcast.emit('resturant',data)
-        //action_map[data.action_type](data,socket)
+        console.log(data)
+        // socket.emit('customer',{...data})
+        io.sockets.emit('customer',{...data});
+        //socket.broadcast.emit('resturant',data)
+        action_map[data.action_type](data,io)
         //socket.broadcast.emit('customer',data)
     });
   } 
