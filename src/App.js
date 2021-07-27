@@ -16,8 +16,8 @@ function App() {
         <Navbar />
         <h1>start</h1>
         <Route path="/testMock/:tableNum" exact render={({ match }) => <MockupTest01 match={match} />} />
-        <Route path="/table/:tableNum" exact render={({ match }) => <MockupComp match={match} />} />
-        <Route path="/resturantMock" exact render={() => <MockupResturant  />} />
+        {/* <Route path="/table/:tableNum" exact render={({ match }) => <MockupComp match={match} />} />
+        <Route path="/resturantMock" exact render={() => <MockupResturant  />} /> */}
       </div>
     </Router>
   );

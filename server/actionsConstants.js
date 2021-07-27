@@ -11,6 +11,5 @@ module.exports = Object.freeze({
     STATIONS : {
         KITCHEN:1,
         BAR:2
-
     }
 });

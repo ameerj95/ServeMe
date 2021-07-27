@@ -10,6 +10,9 @@ import {Menu} from './stores/menu/Menu'
 import {MenuItem} from './stores/menu/MenuItem'
 import { Info } from './stores/info/Info';
 import {Table} from './stores/table/Table'
+import { ClientSocket } from "./stores/clientSocket/ClientSocket";
+
+
 const imgURL = 'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
 const imgBurger = 'https://images.pexels.com/photos/2282528/pexels-photo-2282528.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
 const imgRestaurant = 'https://images.pexels.com/photos/5022475/pexels-photo-5022475.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
@@ -42,17 +45,17 @@ orders.addOrder(order3)
 orders.addOrder(order4)
 orders.addOrder(order5)
 
-
-
-
 let table = new Table()
+
+const clientSocket = new ClientSocket(table)
 
 
 const stores = {
   menu : menu,
   info : info,
   table:table,
-  orders: orders
+  orders: orders,
+  clientSocket:clientSocket
 }
 
 

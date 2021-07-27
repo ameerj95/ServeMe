@@ -56,5 +56,13 @@ use servemeDB;
 --     FOREIGN KEY(table_id) REFERENCES qr_table(table_num)
 
 
+CREATE TABLE order_waiter(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    table_num INT,
+    order_type INT,
+    date varchar(60),
+    status INT);
+
+
 -- );
 

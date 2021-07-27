@@ -3,12 +3,8 @@ import socketIOClient from "socket.io-client";
 import { observer, inject } from 'mobx-react';
 // import configData from '../../../configData.json';
 
-const socket = socketIOClient.connect('http://127.0.0.1:5000',{'forceNew':true });
 const MockupComp = (props) => {
-
-
-
-
+    const socket = props.clientSocket.socket
     //change mockup to client front page.
     if (props.table.tableNum == 0) {
         props.table.setTable(parseInt(props.match.params.tableNum))
@@ -54,4 +50,4 @@ const MockupComp = (props) => {
     );
 };
 
-export default inject('table')(observer(MockupComp));
+export default inject('table','clientSocket')(observer(MockupComp));

@@ -52,6 +52,7 @@ io.on('connection', (socket) => {
   console.log('new client connected ', socket.id);
   require('./socketHandlers/customerSocket')(socket)
   require('./socketHandlers/resturantSocket')(socket)
+  require('./socketHandlers/waiterSocket')(socket)
 });
 
 //=================================================================

@@ -6,18 +6,18 @@ export class Table {
 
     constructor() {
         this.tableNum = 0
-        this.listOrder = []
+        this.cart = []
        
         makeObservable(this, {
             tableNum : observable,
-            listOrder: observable,
+            cart: observable,
             addMenuItem : action,
             setTable:action,
           })
     }
 
     addMenuItem = (menuItem) =>{
-        this.listOrder.push(menuItem)
+        this.cart.push(menuItem)
     }
 
     setTable = (tableNum)=>{
