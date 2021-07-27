@@ -1,4 +1,4 @@
-import { observable, action, makeObservable, runInAction } from 'mobx'
+import { observable, action, makeObservable } from 'mobx'
 // import axios from "axios"
 // import MenuItems from './MenuItems'
 
@@ -20,6 +20,13 @@ export class Orders {
     addOrder = (order) =>{
         this.list.push(order)
     }
+    // UpdateorderData = async (id) => {
+    //     const user = this.user.find(f => f.id == id);
+    //     this.list.order=
+        
+    //     const result = await axios.put(`${API_PATH}/updateorder/${id}`, {})
+    //     return result;
+    // }
 
 
 }
