@@ -10,8 +10,8 @@ const addToCart= async(data,socket)=>{
     //get the order ID
     const order_id = await getOrderId(data.tableNum)
     //add the order item and order id into table
-    await addItemToOrder(order_id,data.item.id)
-    const tableOrder = await getTableOrder(data.tableNum,order_id)
+    await addItemToOrder(order_id,data.item_id)
+    const tableOrder = await getTableOrder(order_id)
     //emit to all clients connected to this table new order
     socket.broadcast.emit('customer',{...data,tableOrder})
 }
@@ -21,7 +21,7 @@ const removeItemFromCart= async(data,socket)=>{
     const order_id = await getOrderId(data.tableNum)
     //remove the order from cart based on ID.
     await removeFromCart(data.deletedItem_id)
-    const tableOrder = await getTableOrder(data.tableNum,order_id)
+    const tableOrder = await getTableOrder(order_id)
     //emit to all clients connected to this table new order
     socket.broadcast.emit('customer',{...data,tableOrder})
 }
@@ -68,30 +68,33 @@ const removeFromCart = async (id) =>{
 }
 //==================================================================================================
 //this function will emit to the resturant entity that its 
-const fireOrder=async (data,socket)=>{
-    console.log("in fire order")
-    const order_id = await getOrderId(data.tableNum)
-    const tableOrder = await getTableOrder(data.tableNum,order_id)
-    //we want to emit to resturant theres a new order incoming
-    socket.emit("resturant",{...tableOrder,tableNum:data.tableNum})
+//DOES NOT BELONG HERE
+//SERVER SOCKETS CAN ONLY TALK TO CLIENT SOCKETS
+// const fireOrder=async (data,socket)=>{
+//     console.log("in fire order")
+//     const order_id = await getOrderId(data.tableNum)
+//     const tableOrder = await getTableOrder(data.tableNum,order_id)
+//     //we want to emit to resturant theres a new order incoming
+//     socket.broadcast.emit("resturant",{...tableOrder,tableNum:data.tableNum})
 
-}
+// }
 //==================================================================================================
 const requestService=(data,socket)=>{
-    console.log("hi3")
+    console.log("requestService")
+    socket.emit("waiter",{...data})
 }
-
+//==================================================================================================
 const action_map = {
     "0":addToCart,
-    "1":fireOrder,
-    "2":requestService,
-    "3":removeItemFromCart,
+    "1":removeItemFromCart,
 }
 
 //=================================================================
 exports = module.exports = function(socket){
     socket.on('customer', data => {
-        action_map[data.action_type](data,socket)
+        console.log("in customer")
+        socket.broadcast.emit('resturant',data)
+        //action_map[data.action_type](data,socket)
         //socket.broadcast.emit('customer',data)
     });
   } 
