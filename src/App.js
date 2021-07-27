@@ -1,12 +1,12 @@
 import Navbar from './components/customer/Navbar/Navbar'
 import './App.css';
 import { observer, inject } from 'mobx-react'
+import MockupComp from './components/MockupComp/MockupComp';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
-function App(props) {
 
-  import MockupComp from './components/MockupComp/MockupComp';
-  import { BrowserRouter as Router, Route } from 'react-router-dom';
+
   // import socketClient  from "socket.io-client";
   // const SERVER = "http://localhost:5000";
 
@@ -22,5 +22,5 @@ function App(props) {
       </Router>
     );
   }
-}
+
   export default inject("menu")(observer(App))

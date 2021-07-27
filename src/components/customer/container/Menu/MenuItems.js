@@ -13,7 +13,6 @@ function MenuItems(props) {
                 onHide={() => setModalShow(false)}
             />
 
-          
             <Card className="text-center mb-3 card-item" onClick={() => setModalShow(true)}>
                
                 <Card.Body>
