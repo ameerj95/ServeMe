@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../../../styles/table.css";
 import { observer, inject } from "mobx-react";
-const API_HOST = "http://localhost:3000";
-const INVENTORY_API_URL = `${API_HOST}/MOCKDATA`;
-function Waiter (props) {
-   
 
+function Waiter(props) {
   const data = props.orders.list;
   return (
     <div className="container">
@@ -27,9 +24,7 @@ function Waiter (props) {
               <td>{item.order}</td>
               <td>{item.status}</td>
               <td>{item.data}</td>
-              
-           
-           </tr>
+            </tr>
           ))}
         </tbody>
       </table>

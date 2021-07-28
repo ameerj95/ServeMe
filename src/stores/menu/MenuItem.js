@@ -1,7 +1,7 @@
 import { observable, makeObservable } from 'mobx'
-
+ 
 export class MenuItem {
-
+ 
     constructor(id, name, img, price, description, category, vegan, gluten) {
             this.id = id;
             this.img = img;
@@ -11,7 +11,7 @@ export class MenuItem {
             this.category = category;
             this.vegan = vegan;
             this.gluten = gluten;
-
+ 
          makeObservable(this, {
             id: observable,
             img: observable,

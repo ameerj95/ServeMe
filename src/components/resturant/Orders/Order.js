@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../../../styles/table.css";
 import { observer, inject } from "mobx-react";
-const API_HOST = "http://localhost:3000";
-const INVENTORY_API_URL = `${API_HOST}/MOCKDATA`;
+
 function Order(props) {
   // const [data, setData] = useState([]);
   // let data= props.orders.list;
@@ -19,7 +18,7 @@ function Order(props) {
 
   // console.log(data.data +"  dfghjklkjhgfdfghjk");
   const data = props.orders.list;
-  console.log(data+ " dfghjkl");
+  console.log(data + " dfghjkl");
   return (
     <div className="container">
       <table>
@@ -42,29 +41,16 @@ function Order(props) {
               <td>{item.status}</td>
               <td>{item.data}</td>
               <td>
-                    <React.Fragment>
-                        <button
-                        className={"btn-success"}>
-                            Save
-                        </button>   
-                        <button
-                         className={"btn-secondary"}
-                         style={{marginLeft: 8}}>Cancel</button>
-                             </React.Fragment>
-                        
-                             <button
-                                 className={"btn-primary"}
-                               
-                             >
-                                 Editd
-                             </button>
-                         
-                                
-                            </td>
-            
-            
-           
-           </tr>
+                <React.Fragment>
+                  <button className={"btn-success"}>Save</button>
+                  <button className={"btn-secondary"} style={{ marginLeft: 8 }}>
+                    Delete
+                  </button>
+                </React.Fragment>
+
+                <button className={"btn-primary"}>Editd</button>
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>

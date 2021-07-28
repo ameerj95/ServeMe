@@ -1,26 +1,31 @@
 
 .NavBar {
     background-color: rgb(32, 77, 95);
-    overflow: hidden;
+    
+  }
+  a {
+   width: 25px; 
+   height: 30px;
   }
   
   .NavBar a {
-    float: left;
+    float: center;
     color: #ff0000;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 20px;
+   
   }
   
+  
   .NavBar a:hover {
-    background-color: rgb(94, 84, 84);
+    background-color: rgb(145, 157, 224);
     color: black;
   }
   
   .logo {
     float: right;
-    width: 50px;
-    height: 50px;
+    height: 10px;
     object-fit: cover;
   }
