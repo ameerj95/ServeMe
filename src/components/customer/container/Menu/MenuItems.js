@@ -1,10 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
 import PopUpItems from '../../../reusables/PopUpItems/PopUpItems';
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button ,Badge} from 'react-bootstrap'
+import { BsInfoCircleFill } from "react-icons/bs";
+
 import './MenuItems.css'
 function MenuItems(props) {
 
+    function addToCart() {
+        // const extracted_tableNum = props.table.tableNum
+        // socket.emit('customerServer', { tableNum: extracted_tableNum,item_id:props.item.id ,action_type:0 });
+
+    }
     const [modalShow, setModalShow] = useState(false);
     return (
         <>
@@ -13,16 +20,17 @@ function MenuItems(props) {
                 onHide={() => setModalShow(false)}
             />
 
-          
-            <Card className="text-center mb-3 card-item" onClick={() => setModalShow(true)}>
-               
-                <Card.Body>
-                  <Card.Title>{props.item.name}</Card.Title>
-                    <img src={`${props.item.img}`} className="img-item inline-block"/>
-                    <Button className='mt-1' variant="primary">Detilas</Button>
-                </Card.Body>
-
-            </Card>
+            <div className="container-fluid  mt-5 card-item" onClick={() => setModalShow(true)}>
+                    <img src={`${props.item.img}`} className="img-item"/>
+                    <h4>{props.item.name}</h4>
+                    <div>Price : {props.item.price} $</div>
+                    <div><BsInfoCircleFill className="icon-info"/></div>
+                    <div className="in">
+                    {(props.item.vegan) ? <Badge className=" pill bg-warning"> Vegan</Badge> : ""} {" "}
+                    {(props.item.gluten) ? <Badge className=" pill bg-info" > gluten</Badge> : ""}
+                    </div>
+                    <Button variant="warning" onClick={addToCart}>Order</Button>
+            </div>
         </>
     )
 }

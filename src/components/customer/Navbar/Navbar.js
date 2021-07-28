@@ -1,30 +1,34 @@
-// import './bootstrap/dist/css/bootstrap.min.css';
-import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Col, Row, Container } from 'react-bootstrap'
+import { GiShoppingCart, GiHand } from "react-icons/gi";
+import { BiFoodMenu } from "react-icons/bi";
+import { ImHome } from "react-icons/im";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Service from '../container/Service/Service';
 import Menu from '../container/Menu/Menu'
-import './Navbar.css'
 import Home from '../container/Home/Home'
+import Cart from '../container/Cart/Cart'
+import './Navbar.css'
+
 function NavBarLinks() {
   return (
-
-    <div id="main-links">
-      <Router>
-
-        
-        <div className="m-4 d-grid gap-2 row mt-2">
-          <Button className=" col-sx-1" variant="light"><Link className="links-customer" to="/">Logo</Link></Button>
-          <Button className=" col-sx-1" variant="light"><Link className="links-customer" to="/menu">Menu</Link></Button>
-          <Button className=" col-sx-1" variant="light"><Link className="links-customer" to="/service">Service</Link></Button>
-          <Button className=" col-sx-1" variant="light"><Link className="links-customer" to="/cart">Cart</Link></Button>
-        </div>
-        <Route exact path="/" render={() => <Home />} />
-        <Route exact path="/menu" render={() => <Menu />} />
-        {/* <Route path="/service" exact render={() => <Service />}/>
-          <Route path="/cart" exact render={() =>  <Cart />}/> */}
-      </Router>
+    <div>
+      <Container fluid>
+        <Row>
+          <Col><Link to="/"><ImHome className="links-customer" /></Link></Col>
+          <Col><Link to="/menu"><BiFoodMenu className="links-customer" /></Link></Col>
+          <Col><Link to="/cart"><GiShoppingCart className="links-customer" /></Link></Col>
+          <Col><Link to="/service"><GiHand className="links-customer" /></Link></Col>
+        </Row>
+        <hr></hr>
+      </Container>
+      <hr></hr>
+      <Route exact path="/" render={() => <Home />} />
+      <Route exact path="/menu" render={() => <Menu />} />
+      <Route path="/service" exact render={() => <Service />} />
+      <Route path="/cart" exact render={() => <Cart />} />
     </div>
   )
 }
 
-export default NavBarLinks;
+export default NavBarLinks
