@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "../../../../../styles/table.css";
 import { observer, inject } from "mobx-react";
-import { Button } from "react-bootstrap";
+import { MDBDataTableV5, MDBDataTable } from "mdbreact";
 
 function UpdateItems(props) {
   const data = props.menu.list;
-  //   const [formValues, setFormValues] = useState({})
   const [img, setimg] = useState("");
   const [name, setname] = useState("");
   const [price, setprice] = useState(Number);
@@ -65,11 +64,7 @@ function UpdateItems(props) {
             <tr>
               <td>
                 <div>
-                  <img
-                    className="ItemImg"
-                    src={`${item.img}`}
-                    onChange={handleInputimg}
-                  />
+                  <img className="ItemImg" src={`${item.img}`} onChange={handleInputimg}/>
                 </div>
               </td>
               <td>
@@ -146,6 +141,10 @@ function UpdateItems(props) {
           ))}
         </tbody>
       </table>
+
+      <>
+        <MDBDataTableV5 />
+      </>
     </div>
   );
 }

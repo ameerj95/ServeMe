@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { observer, inject } from "mobx-react";
+import { data } from "jquery";
 const imgURL =
   "https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 
@@ -16,9 +17,8 @@ function Add(props) {
     //   vegan: true,
     //   gluten: true,
     // });
-
   }, []);
-  console.log(newItem);
+
   const handleChange = (e) => {
     setNewItem({
       ...newItem,
@@ -36,61 +36,92 @@ function Add(props) {
     // console.log(newItem);
     // props.menu.AddNewItem(newItem);
     props.menu.addMenuItem(newItem);
+    console.log(newItem);
   };
 
   return (
-    <div className="dividingLine">
+    <div className="addSection">
       <h3>Add Item</h3>
-      <span> Name :</span> <br></br>
+      <span className="addInputTextField"> Name :</span> <br></br>
       <input
         name="Name"
-        placeholder="Item Name" onChange={handleChange}
+        placeholder="Item Name"
+        onChange={handleChange}
       ></input>
       <br></br>
-      <span>Id :</span>
-      <br></br>
-      <input name="id" placeholder="id" onChange={handleChange}></input>
-      <br></br>
-      <span>Img :</span>
-      <br></br>
-      <input name="img" placeholder="img" onChange={handleChange}></input>
-      <br></br>
-      <span> Price :</span>
+      <span className="addInputTextField">Id :</span>
       <br></br>
       <input
-        name="price"
-        placeholder="price" onChange={handleChange}
+        type="number"
+        name="id"
+        placeholder="id"
+        onChange={handleChange}
       ></input>
       <br></br>
-      <span> Description : </span>
+      <span className="addInputTextField">Img :</span>
       <br></br>
       <input
-        name="description"
-        placeholder="description" onChange={handleChange}
+        type="url"
+        name="img"
+        placeholder="img"
+        onChange={handleChange}
       ></input>
       <br></br>
-      <span> Category :</span>
+      <span className="addInputTextField"> Price :</span>
+      <br></br>
+      <input name="price" placeholder="price" onChange={handleChange}></input>
+      <br></br>
+      <span className="addInputTextField"> Category :</span>
       <br></br>
       <input
         name="category"
-        placeholder="category" onChange={handleChange}
+        placeholder="category"
+        onChange={handleChange}
       ></input>
       <br></br>
-      <span> Vegan : </span>
+      <span className="addInputTextField"> Vegan : </span>
       <br></br>
       <input
         name="vegan"
-        placeholder="vegan" onChange={handleChange}
+        placeholder="vegan"
+        onChange={handleChange}
+        list="vegan"
+        autocomplete="off"
       ></input>
+      <datalist id="vegan">
+        <option>False</option>
+        <option>True</option>
+      </datalist>
       <br></br>
-      <span> Gluten :</span>
+      <span className="addInputTextField"> Gluten :</span>
       <br></br>
       <input
+        type="text"
         name="gluten"
-        placeholder="gluten" onChange={handleChange}
-      ></input>
+        placeholder="gluten"
+        onChange={handleChange}
+        list="gluten"
+        autocomplete="off"
+      />
+      <datalist id="gluten">
+        <option>False</option>
+        <option>True</option>
+      </datalist>
       <br></br>
-      <button className onClick={handleSubmit}> Add new Item</button>
+      <span className="addInputTextField"> Description : </span>
+      <br></br>
+      <textarea
+        rows="4"
+        cols="50"
+        name="description"
+        form="usrform"
+        placeholder="description"
+        onChange={handleChange}
+      ></textarea>
+      <br></br>
+      <button className onClick={handleSubmit}>
+        Add new Item
+      </button>
     </div>
   );
 }
