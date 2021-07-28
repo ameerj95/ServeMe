@@ -10,25 +10,8 @@ const PopUpItems = (props) => {
 
     const socket = props.clientsocket.socket
     const [name, setName] = useState(props.item.name)
-    const [price, setPrice] = useState(props.item.price)
-    const [vegan, setVegan] = useState(props.item.vegan)
-    const [gluten, setGluten] = useState(props.item.gluten)
     const [description, setDescription] = useState(props.item.description)
-    const [comment, setComment] = useState("")
-
-    const updateClient = ()=> {
-        console.log("update");
-        const extracted_tableNum = props.table.tableNum
-        socket.emit('customerServer', { tableNum: extracted_tableNum,item_id:props.item.id ,action_type:0 });
-    }
-    const fireOrder = ()=> {
-        console.log("orderAll");
-        const extracted_tableNum = props.table.tableNum
-        socket.emit('resturant', { tableNum: extracted_tableNum,action_type:0 });
-        props.table.addMenuItem(props.item)
-    }
-
-
+  
     return (
         <Modal  {...props} centered aria-labelledby="contained-modal-title-vcenter">
             <Modal.Header>
@@ -37,22 +20,12 @@ const PopUpItems = (props) => {
             <Modal.Body>
                 <img src={`${props.item.img}`} className="img-item inline-block" />
                 <div>Description : {description}</div>
-                <div>Price : {price} $</div>
-                {(vegan) ? <Badge className="pill bg-warning"> Vegan</Badge> : ""} {" "}
-                {(gluten) ? <Badge className="pill bg-info" > gluten</Badge> : ""}
-                <div>
-                    <input placeholder='if you want to change ...' className="mt-3"/>
-                </div>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.onHide}>
                     Close
                 </Button>
-                <Button variant="warning" onClick={updateClient}>Order</Button>
-                <Button variant="warning" onClick={fireOrder}>OrderAll</Button>
-
             </Modal.Footer>
-
         </Modal>
     );
 };

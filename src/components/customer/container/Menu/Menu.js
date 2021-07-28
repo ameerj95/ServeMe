@@ -9,7 +9,7 @@ function Menu() {
 
   return (
     <Router>
-      <Container fluid  >
+      <Container fluid >
         <Row>
           <Col className="menu-option"><Button variant="light"><Link className="links-customer" to="/appetizers">Appetizers</Link></Button></Col>
           <Col className="menu-option"><Button variant="light"><Link className="links-customer" to="/main">Main</Link></Button></Col>

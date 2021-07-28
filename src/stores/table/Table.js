@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { observable, action, makeObservable, runInAction } from 'mobx'
+import { observable, action, makeObservable, runInAction ,computed} from 'mobx'
 // import axios from "axios"
 // import MenuItems from './MenuItems'
 
@@ -16,6 +16,7 @@ export class Table {
             setTable:action,
             updateCart:action,
             fetchCart:action,
+            // total : computed,
           })
     }
 

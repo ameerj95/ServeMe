@@ -8,7 +8,7 @@ function Main(props) {
     
     // const [modalShow, setModalShow] = useState(false);
     return (
-      <div className="container-fluid bg-light vh-100"> 
+      <div className="container-fluid pl-0 pr-0"> 
          <h5>Choose a dish :</h5>     
            {props.menu.list.filter(item => item.category === 1).map((item, index) => 
            <MenuItems key={index} item={item} />)}
