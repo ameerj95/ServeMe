@@ -5,15 +5,16 @@ const moment = require('moment')
 const addToCart= async(data,io)=>{
     //get status if order is active or not
     const status = await getOrderStatus(data.tableNum)
+    console.log(status)
     //if its not active create new one
     if(!status){await createNewOrder(data.tableNum) }
-    //get the order ID
+    // //get the order ID
     const order_id = await getOrderId(data.tableNum)
-    //add the order item and order id into table
+    // //add the order item and order id into table
     await addItemToOrder(order_id,data.item_id)
     const tableOrder = await getTableOrder(order_id)
-    //emit to all clients connected to this table new order
-    // socket.broadcast.emit('customer',{...data,tableOrder})
+    // //emit to all clients connected to this table new order
+    // // socket.broadcast.emit('customer',{...data,tableOrder})
     io.sockets.emit('customer',{...data,tableOrder})
 }
 //===============================================================
@@ -33,24 +34,24 @@ const getTableOrder = async (order_id)=>{
     LEFT JOIN menu_items ON order_item.menu_item_id = menu_items.id
     LEFT JOIN order_table ON order_item.order_id = order_table.id
     where order_id = ${order_id}`)
-    console.log(table_order)
+    //console.log(table_order)
     return table_order[0]
 }
 //===============================================================
 const getOrderId = async (tableNum) =>{
     const status = await sequelize.query(`SELECT id from order_table 
-    where table_id=${tableNum}`)
+    where table_num=${tableNum}`)
     return status[0][0].id
 }
 //===============================================================
 const getOrderStatus = async (tableNum) =>{
     const status = await sequelize.query(`SELECT * from order_table 
-    where table_id=${tableNum}`)
+    where table_num=${tableNum}`)
     return status[0][0]
 }
 //===============================================================
 const createNewOrder = async (tableNum) =>{
-    await sequelize.query(`INSERT INTO order_table(date,table_id,is_active)
+    await sequelize.query(`INSERT INTO order_table(date,table_num,is_active)
     VALUES ('${moment().format()}','${tableNum}',${true})`).then(function ([result]) {
         console.log("done")
 })
@@ -58,8 +59,8 @@ const createNewOrder = async (tableNum) =>{
 //===============================================================
 
 const addItemToOrder = async (order_id,item_id) =>{
-    await sequelize.query(`INSERT INTO order_item(order_id,menu_item_id)
-    VALUES (${order_id},${item_id})`)
+    await sequelize.query(`INSERT INTO order_item(order_id,menu_item_id,status)
+    VALUES (${order_id},${item_id},0)`)
 }
 
 //===============================================================
@@ -95,7 +96,7 @@ const action_map = {
 exports = module.exports = function(socket,io){
     socket.on('customer', data => {
         console.log("in customer")
-        console.log(data)
+        //console.log(data)
         // socket.emit('customer',{...data})
         io.sockets.emit('customer',{...data});
         //socket.broadcast.emit('resturant',data)

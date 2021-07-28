@@ -21,8 +21,14 @@ const PopUpItems = (props) => {
         const extracted_tableNum = props.table.tableNum
         socket.emit('customer', { tableNum: extracted_tableNum,item_id:props.item.id ,action_type:0 });
         props.table.addMenuItem(props.item)
-        
     }
+    const fireOrder = ()=> {
+        console.log("orderAll");
+        const extracted_tableNum = props.table.tableNum
+        socket.emit('resturant', { tableNum: extracted_tableNum,action_type:0 });
+        props.table.addMenuItem(props.item)
+    }
+
 
     return (
         <Modal  {...props} centered aria-labelledby="contained-modal-title-vcenter">
@@ -44,6 +50,8 @@ const PopUpItems = (props) => {
                     Close
                 </Button>
                 <Button variant="warning" onClick={updateClient}>Order</Button>
+                <Button variant="warning" onClick={fireOrder}>OrderAll</Button>
+
             </Modal.Footer>
 
         </Modal>

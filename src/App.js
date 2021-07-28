@@ -10,9 +10,16 @@ function App(props) {
   const socket = props.clientsocket.socket
   socket.on("customer", data => {
     if (data.tableNum == props.table.tableNum) {
-      alert("IN HERE")
-      console.log(data)
+      //alert("IN HERE")
+      console.log("in app.js ",data)
       props.table.updateCart(data.tableOrder)
+    }
+  });
+  socket.on("resturant", data => {
+    //TOAST MSG THAT ITS BEEN ORDERED
+    if (data.tableNum == props.table.tableNum) {
+      console.log("RECIVIED ORDER")
+      console.log(data.msg)
     }
   });
 //=========================================================================

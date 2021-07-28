@@ -29,13 +29,13 @@ use servemeDB;
 --     qr_code VARCHAR(120)
     
 -- );
-
+-- DROP TABLE order_table
 -- CREATE TABLE order_table(
 --     id int AUTO_INCREMENT PRIMARY KEY,
---     date DATE,
---     table_id INT,
+--     date varchar(120),
+--     table_num INT,
 --     status INT,
---     FOREIGN KEY(table_id) REFERENCES qr_table(table_num)
+--     FOREIGN KEY(table_num) REFERENCES qr_table(table_num)
 -- );
 
 -- CREATE TABLE order_item(
@@ -47,15 +47,16 @@ use servemeDB;
 --     FOREIGN KEY(menu_item_id) REFERENCES menu_items(id)
 -- );
 
-CREATE TABLE order_waiter(
-    id int AUTO_INCREMENT PRIMARY KEY,
-    table_num INT,
-    order_id INT,
-    order_type INT,
-    date varchar(60),
-    status INT
-    FOREIGN KEY(order_id) REFERENCES order_table(id),
-    FOREIGN KEY(table_num) REFERENCES qr_code(table_num),
+-- CREATE TABLE order_waiter(
+--     id int AUTO_INCREMENT PRIMARY KEY,
+--     table_num int,
+--     order_id INT,
+--     order_type INT,
+--     date varchar(60),
+--     status INT,
+--     FOREIGN KEY(order_id) REFERENCES order_table(id)
+-- );
 
-);
 
+ALTER TABLE order_table
+modify column date varchar(30)
