@@ -58,5 +58,8 @@ use servemeDB;
 -- );
 
 
-ALTER TABLE order_table
-modify column date varchar(30)
+-- ALTER TABLE order_table
+-- modify column date varchar(30)
+
+SELECT * from order_waiter
+        WHERE status!=3
