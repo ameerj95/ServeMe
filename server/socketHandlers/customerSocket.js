@@ -90,7 +90,7 @@ const action_map = {
 
 //=================================================================
 exports = module.exports = function(socket){
-    socket.on('customer', data => {
+    socket.on('customerServer', data => {
         action_map[data.action_type](data,socket)
         //socket.broadcast.emit('customer',data)
     });

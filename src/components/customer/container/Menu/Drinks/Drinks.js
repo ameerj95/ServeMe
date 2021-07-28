@@ -1,15 +1,11 @@
 import React from 'react';
-import { useState } from 'react';
 import MenuItems from '../MenuItems'
 import { observer, inject } from 'mobx-react'
 
 function Drinks(props) {
-
-    
-    const [modalShow, setModalShow] = useState(false);
     return (
-      <div className="container-fluid bg-light vh-100"> 
-         <h5>Choose a dish :</h5>     
+     <div className="container-fluid pl-0 pr-0 "> 
+
            {props.menu.list.filter(item => item.category === 2).map((item, index) => 
            <MenuItems key={index} item={item} />)}
         </div>

@@ -2,5 +2,12 @@
 .links-customer{
     text-decoration :none;
     font-weight: bold;
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
 }
 
+#logod{
+    width: 60px;
+    height: 40px;
+}

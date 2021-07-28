@@ -1,4 +1,4 @@
-import { observable, action, makeObservable, runInAction } from 'mobx'
+import { observable, action, makeObservable, runInAction ,computed} from 'mobx'
 // import axios from "axios"
 // import MenuItems from './MenuItems'
 
@@ -13,6 +13,7 @@ export class Table {
             listOrder: observable,
             addMenuItem : action,
             setTable:action,
+            // total : computed,
           })
     }
 
