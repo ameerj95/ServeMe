@@ -13,6 +13,7 @@ const beginOrderItem = async(order,io)=>{
     var result = await getAllActiveOrders()
     const orders = await populateActiveOrders(result,1)
     io.sockets.emit("kitchen",orders)
+    emitToManager(result,io)
 
 }
 //===============================================================
@@ -42,6 +43,8 @@ const pickUpOrderItem = async(order,io)=>{
     await createWaiterOrder(order)
     const waiterOrders = await getAllActiveWaiterOrders()
     io.sockets.emit("waiter",waiterOrders)
+    emitToManager(result,io)
+
 }
 //===============================================================
 const createWaiterOrder = async(order)=>{
@@ -55,8 +58,45 @@ const getAllActiveWaiterOrders =async() =>{
     //console.log(activeOrders)
     return activeWaiterOrders[0]
 }
+
 //===============================================================
-const receiveOrder = async(data,io)
+const getOrderItems = async (order_id,station) =>{
+    const orderItems = await sequelize.query(`SELECT name,order_item.order_id,order_item.status FROM order_item
+    LEFT JOIN menu_items on menu_items.id = order_item.menu_item_id
+    LEFT JOIN order_table on order_table.id = order_item.order_id
+    WHERE order_id = ${order_id} AND station =${station}`)
+    return orderItems[0]
+}
+
+
+//===============================================================
+const emitToManager =async(order,io)=>{
+    const orders = await populateManagerActiveOrders(order,1)
+    // console.log('in manager')
+    // console.log (orders)
+    io.sockets.emit("manager",{orders:orders,action:0})
+}
+const populateManagerActiveOrders = async(orders)=>{
+    console.log("in populate " ,orders)
+    for(order of orders){
+        order_items = await getOrderItemsManager(order.id)
+        order["order_items"] = order_items
+    }
+    return orders
+}
+const getOrderItemsManager = async (order_id) =>{
+    const orderItems = await sequelize.query(`SELECT name,order_item.order_id,order_item.status FROM order_item
+    LEFT JOIN menu_items on menu_items.id = order_item.menu_item_id
+    LEFT JOIN order_table on order_table.id = order_item.order_id
+    WHERE order_id = ${order_id}`)
+    return orderItems[0]
+}
+//===============================================================
+
+
+
+
+// const receiveOrder = async(data,io)
 //===============================================================
 const action_map = {
     "0":beginOrderItem,

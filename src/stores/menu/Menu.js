@@ -30,4 +30,5 @@ export class Menu {
     emptyTheList = () => {
         this.list = []
     }
+    
 }

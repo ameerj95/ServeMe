@@ -5,8 +5,8 @@ import { observable, action, makeObservable, runInAction } from 'mobx'
 
 export class Table {
 
-    constructor() {
-        this.tableNum = 0
+    constructor(tableNum) {
+        this.tableNum = tableNum
         this.cart = []
        
         makeObservable(this, {

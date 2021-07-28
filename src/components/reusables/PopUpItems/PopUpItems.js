@@ -19,8 +19,7 @@ const PopUpItems = (props) => {
     const updateClient = ()=> {
         console.log("update");
         const extracted_tableNum = props.table.tableNum
-        socket.emit('customer', { tableNum: extracted_tableNum,item_id:props.item.id ,action_type:0 });
-        props.table.addMenuItem(props.item)
+        socket.emit('customerServer', { tableNum: extracted_tableNum,item_id:props.item.id ,action_type:0 });
     }
     const fireOrder = ()=> {
         console.log("orderAll");

@@ -15,7 +15,7 @@ const ResturantManager =async(data,io)=>{
 }
 //===============================================================
 const emitToManager =async(order,io)=>{
-    const orders = await populateManagerActiveOrders(order,1)
+    const orders = await populateManagerActiveOrders(order)
     // console.log('in manager')
     // console.log (orders)
     io.sockets.emit("manager",{orders:orders,action:0})
@@ -79,9 +79,9 @@ const getOrderItemsManager = async (order_id) =>{
     return orderItems[0]
 }
 //===============================================================
-const filterMenuItemsByStation=(order,type)=>{
-    return order.filter(item => item.station == type )
-}
+// const filterMenuItemsByStation=(order,type)=>{
+//     return order.filter(item => item.station == type )
+// }
 //===============================================================
 const getTableOrder = async (order_id)=>{
     const table_order = await sequelize.query(`SELECT *
