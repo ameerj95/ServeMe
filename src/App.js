@@ -3,6 +3,7 @@ import './App.css';
 import { observer, inject } from 'mobx-react'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Middleware from './components/middleware/Middleware';
+import Kitchen from './components/resturant/Entities/Kitchen';
 
 //=========================================================================
 function App(props) {
@@ -27,10 +28,8 @@ function App(props) {
   return (
     <Router>
       <div className="App">
-        <Navbar />
-        {/* <Route path="/table/:tableNum" exact render={({ match }) => <Middleware match={match} to="/menu" />} /> */}
-        {/* <Route path="/table/:tableNum" exact render={({ match }) => <MockupComp match={match} />} />
-        <Route path="/resturantMock" exact render={() => <MockupResturant  />} /> */}
+        {/* <Navbar /> */}
+        {props.clientsocket.usertype == "table" ? <Navbar/> : <Kitchen/>}
       </div>
     </Router>
   );
