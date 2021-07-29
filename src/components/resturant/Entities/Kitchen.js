@@ -19,11 +19,11 @@ function Kitchen(props) {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
-            <tr>
+          {data.map((item,index) => (
+            <tr key={index}>
               <td>{item.id}</td>
               <td>{item.table}</td>
-              <td>{item.order}</td>
+              <td>{"item.order"}</td>
               <td>{item.status}</td>
               <td>{item.data}</td>
             </tr>

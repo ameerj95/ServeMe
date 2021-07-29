@@ -43,12 +43,22 @@ const KitchenModule = function () {
 
     //===============================================================
     const populateActiveOrders = async (orders, station) => {
-        console.log("in populate ", orders)
-        for (order of orders) {
-            order_items = await getOrderItems(order.id, station)
-            order["order_items"] = order_items
-        }
-        return orders
+        
+        await Promise.all(orders.map(async (order) => {
+            const order_items = await getOrderItems(order.id, station)
+            order["order_items"] = (!order_items ? [] : order_items)
+          }));
+        const filtered_orders = orders.filter(order => order.order_items.length > 0);
+
+        return filtered_orders
+
+        // console.log("in populate ", orders)
+        // for (order of orders) {
+        //     order_items = await getOrderItems(order.id, station)
+        //     order["order_items"] = (!order_items ? [] : order_items)
+        // }
+        // const filtered_orders = orders.filter(order => order.order_items.length > 0);
+        // return filtered_orders
     }
 
     //===============================================================
