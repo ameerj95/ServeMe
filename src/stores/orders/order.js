@@ -1,7 +1,7 @@
 import { observable, makeObservable } from "mobx";
 
 export class  Order  {
-  constructor(id, order, date,status, table) {
+  constructor(id, order, date, table,status) {
     this.id = id;
     this.order = order;
     this.date = date;

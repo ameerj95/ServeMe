@@ -16,6 +16,7 @@ const port = process.env.PORT || 5000;
 const menuAPI = require('./routes/menuAPI')
 const ordersAPI = require('./routes/ordersAPI')
 const QR_API = require('./routes/QR_API')
+const foodOrderAPI = require('./routes/foodOrdersAPI')
 const Testing_API = require('./routes/TestingAPI')
 //=================================================================
 //deals with json parser / extracting from body
@@ -38,6 +39,7 @@ app.get('/orders', (req, res) => {
 app.use('/Menu', menuAPI)
 app.use('/Orders', ordersAPI)
 app.use('/QR', QR_API)
+app.use('/FoodOrder', foodOrderAPI)
 app.use('/test', Testing_API)
 
 //=================================================================
