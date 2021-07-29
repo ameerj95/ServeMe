@@ -8,7 +8,7 @@ function Kitchen(props) {
   const [modalShow, setModalShow] = useState(false);
   const [shownItem, setshownItem] = useState([]);
   let firstupdate = useRef(true);
-  const data = props.orders.list;
+  const data = props.foodorders.list;
   console.log(data);
   const changeStatus = () => {
     console.log(" changeStatus");
@@ -23,10 +23,13 @@ function Kitchen(props) {
   }, [shownItem]);
 
   const handlePopup = (e) => {
-    console.log("in popup");
-    console.log(e.target.value);
-    setshownItem(e.target.value);
+    setshownItem(getItemById(e.target.value).order);
   };
+
+  const getItemById = (id) => {
+    return data.find((element) => (element.id = id));
+  };
+
   return (
     <>
       <PopUpOrder
@@ -54,14 +57,13 @@ function Kitchen(props) {
                 <td>{index + 1}</td>
                 <td>{item.table}</td>
                 <td>
-                  <button value={item.order} onClick={handlePopup}>
+                  <button value={item.id} onClick={handlePopup}>
                     Show
                   </button>
                 </td>
                 <td>{item.status}</td>
                 <td>{item.date}</td>
                 <td>
-                  <button onClick={changeStatus}> change status</button>
                   <button onClick={changeStatus}> pickup</button>
                 </td>
               </tr>
@@ -73,4 +75,3 @@ function Kitchen(props) {
   );
 }
 export default inject("foodorders")(observer(Kitchen));
-
