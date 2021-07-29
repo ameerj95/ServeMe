@@ -1,22 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../../styles/table.css";
 import { observer, inject } from "mobx-react";
 
 function Order(props) {
-  // const [data, setData] = useState([]);
-  // let data= props.orders.list;
-  // console.log(data);
-  // const fetchInventory = () => {
-  //   fetch(`${INVENTORY_API_URL}`)
-  //     .then((res) => res.json())
-  //     .then((json) => setData(json));
-  //     // console.log(data);
-  // };
-  // useEffect(() => {
-  //   fetchInventory();
-  // }, []);
-
-  // console.log(data.data +"  dfghjklkjhgfdfghjk");
   const data = props.orders.list;
   console.log(data + " dfghjkl");
   return (
@@ -35,9 +21,15 @@ function Order(props) {
         <tbody>
           {data.map((item) => (
             <tr>
-              <td>{item.id}</td>
+              <td>{item.id} </td>
               <td>{item.table}</td>
-              <td>{item.order}</td>
+              <td
+                onClick={() => {
+                  console.log("AHMAD DREGAT");
+                }}
+              >
+                {item.order}
+              </td>
               <td>{item.status}</td>
               <td>{item.data}</td>
               <td>

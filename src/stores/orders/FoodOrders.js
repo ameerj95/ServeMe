@@ -9,7 +9,6 @@ export class FoodOrders {
     this.list = []
     this.length = 0
     this.index = 0
-
     makeObservable(this, {
       index: observable,
       list: observable,
@@ -29,7 +28,6 @@ export class FoodOrders {
   emptyTheList = () => {
     this.list = [];
   };
-
   updateFoodOrders = async (orders) =>{
     this.emptyTheList()
     this.insertOrderIntoList(orders)

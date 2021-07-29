@@ -1,5 +1,5 @@
 -- MenuItem
-use servemeDB;
+use servemedb;
 
 -- CREATE TABLE info_resturant(
 --     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -10,7 +10,7 @@ use servemeDB;
 --     work_hours VARCHAR(60),
 --     logo VARCHAR(60),
 --     img VARCHAR(60)
--- );
+-- -- );
 
 
 
@@ -58,8 +58,6 @@ use servemeDB;
 --     status INT,
 --     FOREIGN KEY(order_id) REFERENCES order_table(id)
 -- );
-
-
 
 
 
