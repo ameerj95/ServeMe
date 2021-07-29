@@ -2,7 +2,7 @@ table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  margin-left: -200px;
+  /* margin-left: -200px; */
 }
 
 table td,
@@ -31,5 +31,4 @@ tfoot td {
 .ItemImg {
   vertical-align: middle;
   border-style: none;
-  width: 50px;
 }

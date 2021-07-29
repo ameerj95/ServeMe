@@ -1,5 +1,5 @@
 -- MenuItem
-use servemeDB;
+use servemedb;
 
 -- CREATE TABLE info_resturant(
 --     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -10,7 +10,7 @@ use servemeDB;
 --     work_hours VARCHAR(60),
 --     logo VARCHAR(60),
 --     img VARCHAR(60)
--- );
+-- -- );
 
 -- CREATE TABLE menu_items(
 --     id int AUTO_INCREMENT PRIMARY KEY,
@@ -29,7 +29,7 @@ use servemeDB;
 --     qr_code VARCHAR(120)
     
 -- );
--- DROP TABLE order_table
+
 -- CREATE TABLE order_table(
 --     id int AUTO_INCREMENT PRIMARY KEY,
 --     date varchar(120),
@@ -58,8 +58,4 @@ use servemeDB;
 -- );
 
 
--- ALTER TABLE order_table
--- modify column date varchar(30)
 
-SELECT * from order_waiter
-        WHERE status!=3
