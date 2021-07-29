@@ -7,7 +7,7 @@ const configdata = require('../../configData.json')
 //=================================================================
 router.get('/MenuItems', async function (req, res) {
     let menuItems = await sequelize.query(`SELECT * FROM menu_items`)
-    res.send(menuItems[0])
+    res.send(menuItems[0]) 
 })
 //=================================================================
 router.post('/MenuItems', async function (req, res) {

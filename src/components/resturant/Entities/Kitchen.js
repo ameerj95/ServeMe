@@ -72,5 +72,5 @@ function Kitchen(props) {
     </>
   );
 }
-export default inject("orders")(observer(Kitchen));
-// key={item.id}
+export default inject("foodorders")(observer(Kitchen));
+

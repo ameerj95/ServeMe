@@ -19,7 +19,6 @@ const ManagerModule = function () {
     }
     //==============================================================================
     const populateManagerActiveOrders = async (orders) => {
-        console.log("in populate ", orders)
         for (order of orders) {
             order_items = await getOrderItemsManager(order.id)
             order["order_items"] = order_items
@@ -50,10 +49,17 @@ const ManagerModule = function () {
         io.sockets.emit("manager", { orders: ActiveOrders, type: 1 })
     }
 
+    const getAllActiveOrdersManager = async () =>{
+        var ActiveOrders = await getAllActiveFoodOrders()
+        const orders = await populateManagerActiveOrders(ActiveOrders)
+        return orders
+    }
+
     //==============================================================================
     return {
         emitToManagerActiveFoodOrders: emitToManagerActiveFoodOrders,
-        emitToManagerActiveWaiterOrders: emitToManagerActiveWaiterOrders
+        emitToManagerActiveWaiterOrders: emitToManagerActiveWaiterOrders,
+        getAllActiveOrdersManager:getAllActiveOrdersManager
     }
 }
 

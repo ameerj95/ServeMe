@@ -12,6 +12,8 @@ use servemedb;
 --     img VARCHAR(60)
 -- -- );
 
+
+
 -- CREATE TABLE menu_items(
 --     id int AUTO_INCREMENT PRIMARY KEY,
 --     name VARCHAR(20),

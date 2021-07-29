@@ -11,42 +11,32 @@ import { MenuItem } from "./stores/menu/MenuItem";
 import { Info } from "./stores/info/Info";
 import { Table } from "./stores/table/Table";
 import { ClientSocket } from "./stores/clientSocket/ClientSocket";
+import { FoodOrders } from "./stores/orders/FoodOrders";
+const socketListeners = require("../src/modules/socketListeners")();
 
 const stores = {};
 const clientsocket = new ClientSocket(window.location.pathname.split("/")[1]);
 stores.clientsocket = clientsocket;
 
-//for customers create only these stor
-let table = new Table(3);
-
-console.log(table);
-let menu = new Menu();
-menu.addMenuItem(new MenuItem(0, "item1", "png", 10, "", 0, 0, 0));
-menu.addMenuItem(new MenuItem(0, "item1", "png", 10, "", 0, 0, 0));
-menu.addMenuItem(new MenuItem(0, "item1", "png", 10, "", 0, 0, 0));
-menu.addMenuItem(new MenuItem(0, "item1", "png", 10, "", 0, 0, 0));
-menu.addMenuItem(new MenuItem(0, "item1", "png", 10, "", 0, 0, 0));
-menu.addMenuItem(new MenuItem(0, "item1", "png", 10, "", 0, 0, 0));
-menu.addMenuItem(new MenuItem(0, "item1", "png", 10, "", 0, 0, 0));
-
-stores.table = table;
-
-
-stores.menu = menu;
-let orders = new Orders();
-let order1 = new Order("1", "order1", "today", "pending", 1);
-let order2 = new Order("2", "order2", "today", "pending", 1);
-let order3 = new Order("3", "order3", "today", "pending", 1);
-let order4 = new Order("4", "order4", "today", "pending", 1);
-let order5 = new Order("5", "order5", "today", "pending", 1);
-orders.addOrder(order1);
-orders.addOrder(order2);
-orders.addOrder(order3);
-orders.addOrder(order4);
-orders.addOrder(order5);
-stores.orders = orders;
-
-const imgRestaurant = "h";
+//for customers create only these stores
+if (clientsocket.usertype == "table") {
+  let table = new Table(parseInt(window.location.pathname.split("/")[2]));
+  console.log(table);
+  table.fetchCart();
+  let menu = new Menu();
+  menu.getMenuItems();
+  stores.table = table;
+  stores.menu = menu;
+}
+//for resturant entity create these entities
+else {
+  let orders = new Orders();
+  let foodOrders = new FoodOrders();
+  stores.orders = orders;
+  stores.foodorders = foodOrders;
+}
+const imgRestaurant =
+  "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 let info = new Info(
   "1",
   "Drby Bar",
@@ -62,6 +52,9 @@ stores.info = info;
 
 //change url adress to main page.
 window.history.pushState("", "", "/");
+
+//initate sockets per user type
+socketListeners.createSocket(stores);
 
 ReactDOM.render(
   <Provider {...stores}>
