@@ -1,18 +1,89 @@
+/* https://images.pexels.com/photos/246747/pexels-photo-246747.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 */
 
+.first{
+    position: relative; 
+    background: #F1FAFF;
+    background: -moz-linear-gradient(45deg, #F1FAFF 0%, #3C76DA 50%, #3810FC 100%);
+    background: -webkit-linear-gradient(45deg, #F1FAFF 0%, #3C76DA 50%, #3810FC 100%);
+    background: linear-gradient(45deg, #F1FAFF 0%, #3C76DA 50%, #3810FC 100%);
+    width: 100%;
+    height: 350px;
+}
+
+.tow{
+     background: #007bff;
+     width: 100%;
+     height: 180px;
+}
+
+.thr{
+    height: 180px;
+    background-image: url('https://images.pexels.com/photos/8939558/pexels-photo-8939558.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
+}
+
+.namee-restaurant{
+    position: absolute;
+    top: 360px;
+    right: 140px;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 29px;
+    letter-spacing: 1.4px;
+    word-spacing: -1.6px;
+    color: white;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
+}
+
+.par-restaurant{
+    position: absolute;
+    top: 400px;
+    right: 5px;
+    color: white;
+}
+.name-restaurant{
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 29px;
+    letter-spacing: 1.4px;
+    word-spacing: -1.6px;
+    color: white;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
+}
 
 .img-home{
     width: 100%;
-    height: 300px;
+    height: 180px;
 }
-
-.Home{
+.home{
     position: relative; 
-    text-align: center;
-    color: greenyellow;
 }
-#name{
+.name{
     position: absolute;
-    top: 8px;
-    right: 16px;
-    color: white;
+    top: 400px;
+    right: 130px;
+    color: blue;
+    font-family: Georgia, serif;
+    font-size: 21px;
+    letter-spacing: 2.4px;
+    word-spacing: -1.6px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: italic;
+    font-variant: normal;
+    text-transform: capitalize;
+    -moz-transform: scale(1.1) rotate(317deg);
+    -webkit-transform: scale(1.1) rotate(317deg);
+    -o-transform: scale(1.1) rotate(317deg);
+    -ms-transform: scale(1.1) rotate(317deg);
+    transform: scale(1.1) rotate(317deg);
 }

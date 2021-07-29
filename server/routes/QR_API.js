@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/servemedb')
-
+ 
 router.get('/generate/:tableNum', async function (req, res) {
     const tables_qr = require('../classes/QRAPI')(parseInt(req.params.tableNum))
     console.log(tables_qr)

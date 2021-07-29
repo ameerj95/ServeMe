@@ -12,6 +12,8 @@ use servemeDB;
 --     img VARCHAR(60)
 -- );
 
+
+
 -- CREATE TABLE menu_items(
 --     id int AUTO_INCREMENT PRIMARY KEY,
 --     name VARCHAR(20),
@@ -29,7 +31,7 @@ use servemeDB;
 --     qr_code VARCHAR(120)
     
 -- );
--- DROP TABLE order_table
+
 -- CREATE TABLE order_table(
 --     id int AUTO_INCREMENT PRIMARY KEY,
 --     date varchar(120),
@@ -58,8 +60,6 @@ use servemeDB;
 -- );
 
 
--- ALTER TABLE order_table
--- modify column date varchar(30)
 
-SELECT * from order_waiter
-        WHERE status!=3
+
+

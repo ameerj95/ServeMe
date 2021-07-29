@@ -20,11 +20,11 @@ function MenuItems(props) {
                 onHide={() => setModalShow(false)}
             />
 
-            <div className="container-fluid  mt-5 card-item" onClick={() => setModalShow(true)}>
+            <div className="container-fluid  mt-5 card-item" >
                     <img src={`${props.item.img}`} className="img-item"/>
                     <h4>{props.item.name}</h4>
                     <div>Price : {props.item.price} $</div>
-                    <div><BsInfoCircleFill className="icon-info"/></div>
+                    <div onClick={() => setModalShow(true)}><BsInfoCircleFill className="icon-info"/></div>
                     <div className="in">
                     {(props.item.vegan) ? <Badge className=" pill bg-warning"> Vegan</Badge> : ""} {" "}
                     {(props.item.gluten) ? <Badge className=" pill bg-info" > gluten</Badge> : ""}

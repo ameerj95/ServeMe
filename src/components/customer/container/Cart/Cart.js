@@ -7,6 +7,10 @@ import { Button, Col, Row, Container } from 'react-bootstrap'
 function Cart(props) {
 
 
+    function deleteItem() {
+        
+    }
+    
     return (
         <>
             <Row>
@@ -24,16 +28,13 @@ function Cart(props) {
                         <Col xs={1}> <h5>{index+1}</h5></Col>
                             <Col xs={5}> <h5>{item.name}</h5></Col>
                             <Col xs={3}><h5>{item.price}</h5></Col>
-                            <Col xs={3}><MdDelete className='delete-cart' /></Col>
+                            <Col xs={3}><MdDelete className='delete-cart' onClick={deleteItem}/></Col>
                         </Row>
                         <hr />
                     </Container>
                 )
-
             })}
         </>
     )
-
-
 }
 export default inject("menu")(observer(Cart))

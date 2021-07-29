@@ -23,14 +23,14 @@ function App(props) {
   //     console.log(data.msg)
   //   }
   // });
-//=========================================================================
+  //=========================================================================
   return (
     <Router>
       <div className="App">
         <Navbar />
         {/* <Route path="/table/:tableNum" exact render={({ match }) => <Middleware match={match} to="/menu" />} /> */}
-        {/* <Route path="/table/:tableNum" exact render={({ match }) => <MockupComp match={match} />} />
-        <Route path="/resturantMock" exact render={() => <MockupResturant  />} /> */}
+        {/* <Route path="/table/:tableNum" exact render={({ match }) => <MockupComp match={match} />} /> */}
+        {/* <Route path="/resturantMock" exact render={() => <MockupResturant />} /> */}
       </div>
     </Router>
   );

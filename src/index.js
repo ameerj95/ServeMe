@@ -13,9 +13,6 @@ import { Table } from './stores/table/Table'
 import { ClientSocket } from "./stores/clientSocket/ClientSocket";
 
 
-
-
-
 const stores = {}
 const clientsocket = new ClientSocket(window.location.pathname.split('/')[1])
 stores.clientsocket = clientsocket
@@ -45,7 +42,7 @@ else {
   orders.addOrder(order5)
   stores.orders = orders
 }
-const imgRestaurant = 'h'
+const imgRestaurant = 'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
 let info = new Info("1", "Drby Bar", imgRestaurant, "koko koko koko", "04-2223434", "11:00 - 23:00", "logo", "Tel Aviv hrtzal 56", "drbybar@gmail.com")
 stores.info = info
 
