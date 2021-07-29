@@ -40,7 +40,8 @@ const WaiterModule = function () {
         createWaiterOrder : createWaiterOrder,
         emitToWaiter: emitToWaiter,
         completeWaiterOrder:completeWaiterOrder,
-        startWaiterOrder:startWaiterOrder
+        startWaiterOrder:startWaiterOrder,
+        getAllActiveWaiterOrders,getAllActiveWaiterOrders
     }
 }
 

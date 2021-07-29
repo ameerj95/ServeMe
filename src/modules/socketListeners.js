@@ -13,7 +13,6 @@ const SocketListeners = function () {
 
     const createkitchenSocket = (stores) => {
         console.log("listening in kitchen")
-        stores.foodorders.fetchFoodOrders()
         stores.clientsocket.socket.on("kitchen", data => {
             console.log("in kitchen client ", data)
             stores.foodorders.updateFoodOrders(data)
@@ -23,7 +22,6 @@ const SocketListeners = function () {
 
     const createBarSocket = (stores) => {
         console.log("listening in bar")
-        stores.foodorders.fetchBarOrders()
         stores.clientsocket.socket.on("bar", data => {
             console.log("in bar client ", data)
             stores.foodorders.updateFoodOrders(data)
