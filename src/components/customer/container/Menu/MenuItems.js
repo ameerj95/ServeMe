@@ -16,6 +16,10 @@ function MenuItems(props) {
     const [modalShow, setModalShow] = useState(false);
     return (
         <>
+           <PopUpItems show={modalShow}
+                item={props.item}
+                onHide={() => setModalShow(false)}
+            />
 
 
             <div className="container-fluid  mt-5 card-item" >

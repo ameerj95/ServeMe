@@ -3,7 +3,9 @@ import "../../../styles/table.css";
 import { observer, inject } from "mobx-react";
 
 function Kitchen(props) {
+  
   const data = props.foodorders.list;
+  console.log(data);
   return (
     <div className="container">
       <table>
