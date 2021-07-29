@@ -3,7 +3,7 @@ import "../../../styles/table.css";
 import { observer, inject } from "mobx-react";
 
 function Kitchen(props) {
-  const data = props.orders.list;
+  const data = props.foodorders.list;
   return (
     <div className="container">
       <table>
@@ -31,5 +31,5 @@ function Kitchen(props) {
     </div>
   );
 }
-export default inject("orders")(observer(Kitchen));
-// key={item.id}
+export default inject("foodorders")(observer(Kitchen));
+

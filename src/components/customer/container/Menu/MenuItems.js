@@ -3,22 +3,20 @@ import { useState } from 'react';
 import PopUpItems from '../../../reusables/PopUpItems/PopUpItems';
 import { Card, Button ,Badge} from 'react-bootstrap'
 import { BsInfoCircleFill } from "react-icons/bs";
+import { observer, inject } from 'mobx-react'
 
 import './MenuItems.css'
 function MenuItems(props) {
 
     function addToCart() {
-        // const extracted_tableNum = props.table.tableNum
-        // socket.emit('customerServer', { tableNum: extracted_tableNum,item_id:props.item.id ,action_type:0 });
+        const extracted_tableNum = props.table.tableNum
+        props.clientsocket.socket.emit('customerServer', { tableNum: extracted_tableNum,item_id:props.item.id ,action_type:0 });
 
     }
     const [modalShow, setModalShow] = useState(false);
     return (
         <>
-            <PopUpItems show={modalShow}
-                item={props.item}
-                onHide={() => setModalShow(false)}
-            />
+
 
             <div className="container-fluid  mt-5 card-item" >
                     <img src={`${props.item.img}`} className="img-item"/>
@@ -35,4 +33,4 @@ function MenuItems(props) {
     )
 }
 
-export default MenuItems;
+export default inject("clientsocket","table")(observer(MenuItems))

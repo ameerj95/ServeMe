@@ -28,7 +28,12 @@ const KitchenModule = function () {
         Manager.emitToManagerActiveFoodOrders(io)
 
     }
-
+    //===============================================================
+    const getAllActivePopulateFoodOrders = async () => {
+        var result = await getAllActiveOrders()
+        const orders = await populateActiveOrders(result, 1)
+        return orders
+    }
     //===============================================================
     const emitToKitchen = async (io) => {
         var result = await getAllActiveOrders()
@@ -65,7 +70,8 @@ const KitchenModule = function () {
     return {
         emitToKitchen: emitToKitchen,
         pickUpOrderItem,pickUpOrderItem,
-        beginOrderItem:beginOrderItem
+        beginOrderItem:beginOrderItem,
+        getAllActivePopulateFoodOrders:getAllActivePopulateFoodOrders
     }
 }
 
