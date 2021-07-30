@@ -1,17 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Order } from "./stores/orders/Order";
-import { Orders } from "./stores/orders/Orders";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "mobx-react";
-import { Menu } from "./stores/menu/Menu";
-import { MenuItem } from "./stores/menu/MenuItem";
 import { Info } from "./stores/info/Info";
-import { Table } from "./stores/table/Table";
 import { ClientSocket } from "./stores/clientSocket/ClientSocket";
-import { FoodOrders } from "./stores/orders/FoodOrders";
 const socketListeners = require("../src/modules/socketListeners")();
 let stores = {};
 const storeInitalizer = require("../src/modules/userStores")();
