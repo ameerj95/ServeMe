@@ -4,14 +4,26 @@ import Modal from "react-bootstrap/Modal";
 import { Col, Row, Container, Button } from "react-bootstrap";
 import "./PopUpOrder.css";
 import { MdDelete } from "react-icons/md";
+const status = {
+  0: "not started",
+  1: "in progress",
+  2: "completed"
+}
+
 
 const PopUpOrder = (props) => {
-  function deleteItem() {
-    console.log("good for you");
+  function beganPrep(event) {
+    console.log("in began prep")
+    console.log((event.target.id))
+    props.clientsocket.socket.emit('kitchen', { item_id: parseInt(event.target.id), action_type: 0 });
+    ;
   }
 
-  const handleFinish = () => {
-    console.log("finish order!!");
+  const finshedMeal = (event) => {
+    console.log("in began prep")
+    console.log((event.target.id))
+    props.clientsocket.socket.emit('kitchen', { item_id: parseInt(event.target.id), action_type: 1  });
+    ;
   };
   return (
     <>
@@ -24,7 +36,7 @@ const PopUpOrder = (props) => {
         <Modal.Header>
           <h4 className="Table-Show-Order">
             Table :
-            <Button onClick={handleFinish} className="d-flex align-self-center">
+            <Button onClick={console.log("hi")} className="d-flex align-self-center">
               {" "}
               Finish
             </Button>
@@ -48,22 +60,26 @@ const PopUpOrder = (props) => {
                   <h5>{ordered_item.name}</h5>
                 </Col>
                 <Col xs={4}>
-                  <h5>pending</h5>
+                  <h5>{status[ordered_item.status]}</h5>
                 </Col>
                 <Col xs={1}>
                   <input
+                    checked ={ordered_item.status}
                     type="checkbox"
-                    id="vehicle1"
+                    id={ordered_item.id}
+                    itemID={ordered_item.id}
                     className="checkbox"
-                    onChange={{ deleteItem }}
+                    onChange={beganPrep}
                   />
                 </Col>
                 <Col xs={1}>
                   <input
+                    checked ={ordered_item.status>1}
                     type="checkbox"
-                    id="vehicle1"
+                    id={ordered_item.id}
+                    itemID={ordered_item.id}
                     className="vehicle1"
-                    onChange={{ deleteItem }}
+                    onChange={finshedMeal}
                   />
                 </Col>
               </Row>
@@ -81,4 +97,4 @@ const PopUpOrder = (props) => {
   );
 };
 
-export default inject("orders")(observer(PopUpOrder));
+export default inject("clientsocket")(observer(PopUpOrder));

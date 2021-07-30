@@ -13,28 +13,33 @@ import { Table } from "./stores/table/Table";
 import { ClientSocket } from "./stores/clientSocket/ClientSocket";
 import { FoodOrders } from "./stores/orders/FoodOrders";
 const socketListeners = require("../src/modules/socketListeners")();
-
-const stores = {};
+let stores = {};
+const storeInitalizer = require("../src/modules/userStores")();
 const clientsocket = new ClientSocket(window.location.pathname.split("/")[1]);
 stores.clientsocket = clientsocket;
 
+
+stores = storeInitalizer.startStores(stores)
+
+
+stores.clientsocket.socket.emit('kitchenserver',"hi")
 //for customers create only these stores
-if (clientsocket.usertype == "table") {
-  let table = new Table(parseInt(window.location.pathname.split("/")[2]));
-  console.log(table);
-  table.fetchCart();
-  let menu = new Menu();
-  menu.getMenuItems();
-  stores.table = table;
-  stores.menu = menu;
-}
-//for resturant entity create these entities
-else {
-  let orders = new Orders();
-  let foodOrders = new FoodOrders();
-  stores.orders = orders;
-  stores.foodorders = foodOrders;
-}
+// if (clientsocket.usertype == "table") {
+//   let table = new Table(parseInt(window.location.pathname.split("/")[2]));
+//   console.log(table);
+//   table.fetchCart();
+//   let menu = new Menu();
+//   menu.getMenuItems();
+//   stores.table = table;
+//   stores.menu = menu;
+// }
+// //for resturant entity create these entities
+// else {
+//   let orders = new Orders();
+//   let foodOrders = new FoodOrders();
+//   stores.orders = orders;
+//   stores.foodorders = foodOrders;
+// }
 const imgRestaurant =
   "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 let info = new Info(

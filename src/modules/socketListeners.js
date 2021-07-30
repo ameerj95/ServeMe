@@ -29,8 +29,12 @@ const SocketListeners = function () {
         );
     }
 
-    const createWaiterSocket = () => {
-
+    const createWaiterSocket = (stores) => {
+        console.log("listening in waiter")
+        stores.clientsocket.socket.on("waiter", data => {
+            console.log("in waiter client ", data)
+        }
+        );
     }
 
     const createManagerSocket = (stores) => {

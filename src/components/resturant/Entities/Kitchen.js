@@ -53,7 +53,7 @@ function Kitchen(props) {
           </thead>
           <tbody>
             {data.map((item, index) => (
-              <tr>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{item.table}</td>
                 <td>

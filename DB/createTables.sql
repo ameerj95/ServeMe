@@ -53,6 +53,7 @@ use servemedb;
 --     id int AUTO_INCREMENT PRIMARY KEY,
 --     table_num int,
 --     order_id INT,
+--     item_id int,
 --     order_type INT,
 --     date varchar(60),
 --     status INT,

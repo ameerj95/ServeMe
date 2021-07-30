@@ -12,12 +12,7 @@ function App(props) {
   return (
     <Router>
       <div className="App">
-        {/* <Waiter /> */}
-        {/* <Manager /> */}
         {props.clientsocket.usertype === "table" ? <Navbar /> : <Kitchen />}
-        {/* <Route path="/table/:tableNum" exact render={({ match }) => <Middleware match={match} to="/menu" />} /> */}
-        {/* <Route path="/table/:tableNum" exact render={({ match }) => <MockupComp match={match} />} />
-        <Route path="/resturantMock" exact render={() => <MockupResturant  />} /> */}
       </div>
     </Router>
   );

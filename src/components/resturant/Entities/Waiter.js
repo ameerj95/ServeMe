@@ -7,7 +7,7 @@ function Waiter(props) {
   const [modalShow, setModalShow] = useState(false);
   const [shownItem, setshownItem] = useState([]);
   let firstupdate = useRef(true);
-  const data = props.orders.list;
+  const data = props.waiterorder.list;
   useEffect(() => {
     console.log(firstupdate);
     if (!firstupdate.current) {

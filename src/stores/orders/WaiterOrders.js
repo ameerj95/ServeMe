@@ -36,7 +36,8 @@ export class WaiterOrders {
   }
 
   fetchAllOrders = async () => {
-    let res = await axios.get(`http://localhost:5000/FoodOrder/Orders`);
+    //TOODO: fetch waiter from API
+    let res = await axios.get(`http://localhost:5000/WaiterOrder/Orders`);
     this.emptyTheList();
     res.data.forEach((item) => {
       runInAction(() => {

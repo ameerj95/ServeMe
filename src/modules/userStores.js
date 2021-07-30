@@ -1,32 +1,25 @@
 
-import { Menu } from './stores/menu/Menu'
-import { MenuItem } from './stores/menu/MenuItem'
-import { Info } from './stores/info/Info';
-import { Table } from './stores/table/Table'
-import { ClientSocket } from "./stores/clientSocket/ClientSocket";
-import { FoodOrders } from "./stores/orders/FoodOrders";
+const {Menu} = require("../stores/menu/Menu")
+const {Table} = require("../stores/table/Table")
+const { WaiterOrders }  = require  ( "../stores/orders/WaiterOrders")
+const { FoodOrders }  = require  ( "../stores/orders/FoodOrders")
+const {Orders} = require("../stores/orders/Orders")
+const { ClientSocket } = require ("../stores/clientSocket/ClientSocket")
+
 const userStores = function () {
-    const stores = {}
-    const clientsocket = new ClientSocket(window.location.pathname.split('/')[1])
-    this.stores.clientsocket = clientsocket
-    const userStoresInit = {
-        "table":customerStores,
-        "kitchen":kitchenStores,
-        "bar":barStores,
-        "waiter":waiterStores,
-        "manager":managerStores
-    }
-    // (this.stores.clientsocket.usertype)
-    const customerStores = () => {
+
+
+    // (stores.clientsocket.usertype)
+    const customerStores = (stores) => {
         let table = new Table(parseInt(window.location.pathname.split('/')[2]))
         console.log(table)
         table.fetchCart()
         let menu = new Menu()
         menu.getMenuItems()
-        this.stores.table = table
-        this.stores.menu = menu
+        stores.table = table
+        stores.menu = menu
     }
-    const kitchenStores = () =>{
+    const kitchenStores = (stores) =>{
         let orders = new Orders();
         let foodOrders = new FoodOrders()
         stores.orders = orders
@@ -34,7 +27,7 @@ const userStores = function () {
         stores.foodorders.fetchFoodOrders()
 
     }
-    const barStores = () =>{
+    const barStores = (stores) =>{
         let orders = new Orders();
         let foodOrders = new FoodOrders()
         stores.orders = orders
@@ -43,22 +36,38 @@ const userStores = function () {
 
     }
 
-    const waiterStores = () =>{
+    const waiterStores = (stores) =>{
         let orders = new Orders();
-        let foodOrders = new FoodOrders()
+        let waiterorder = new WaiterOrders()
         stores.orders = orders
-        stores.foodorders =foodOrders 
-        stores.foodorders.fetchBarOrders()
+        stores.waiterorder =waiterorder 
+        stores.waiterorder.fetchBarOrders()
     }
 
-    const managerStores = () =>{
+    const managerStores = (stores) =>{
 
+    }
+    const userStoresInit = {
+        "table":customerStores,
+        "kitchen":kitchenStores,
+        "bar":barStores,
+        "waiter":waiterStores,
+        "manager":managerStores
+    }
+
+    const startStores = (stores)=>{
+        let clientsocket = new ClientSocket(window.location.pathname.split('/')[1])
+        console.log(clientsocket)
+        stores.clientsocket = clientsocket
+        console.log(stores)
+        userStoresInit[stores.clientsocket.usertype](stores)
+        return stores
     }
 
 
     //==============================================================================
     return {
-        createSocket: createSocket,
+        startStores:startStores
     }
 }
 
