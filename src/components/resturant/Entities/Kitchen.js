@@ -67,7 +67,7 @@ function Kitchen(props) {
 
   return (
     <div >
-      <h3>Kitchen</h3>
+      <h3 className="center">Kitchen</h3>
       <Row>
         <Col className="item-table"  >#</Col>
         <Col className="item-table"  >#</Col>
@@ -114,7 +114,7 @@ function Kitchen(props) {
             </AccordionDetails>
           )}
           <Row>
-            <Col ><button id={item.id} type="button" className="btn btn-outline-primary btn-sm mb-2">Finsh Order</button></Col>
+            <Col ><button id={item.id} type="button" className=" btn btn-outline-primary btn-sm mb-2 center">Finsh Order</button></Col>
           </Row>
         </Accordion>
       )}
