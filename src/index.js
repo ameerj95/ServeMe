@@ -45,7 +45,7 @@ else {
   stores.orders = orders
   stores.foodorders =foodOrders 
 }
-const imgRestaurant = 'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
+const imgRestaurant = 'https://images.pexels.com/photos/278430/pexels-photo-278430.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
 let info = new Info("1", "Drby Bar", imgRestaurant, "koko koko koko", "04-2223434", "11:00 - 23:00", "logo", "Tel Aviv hrtzal 56", "drbybar@gmail.com")
 stores.info = info
 

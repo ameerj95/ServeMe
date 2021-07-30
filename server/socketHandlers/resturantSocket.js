@@ -11,7 +11,7 @@ const ResturantManager =async(data,io)=>{
     Kitchen.emitToKitchen(io)
     Bar.emitToBar(io)
     Manager.emitToManagerActiveFoodOrders(io)
-    io.sockets.emit("resturant",{msg:"recivied order",tableNum:data.tableNum})
+    io.sockets.emit("customer",{msg:"recivied order",tableNum:data.tableNum})
 }
 
 //===============================================================
