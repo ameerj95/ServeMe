@@ -8,7 +8,6 @@ const CustomerModule = function () {
     const addToCart = async (data, io) => {
         //get status if order is active or not
         const status = await getOrderStatus(data.tableNum)
-        console.log(status)
         //if its not active create new one
         if (!status) { await createNewOrder(data.tableNum) }
         // //get the order ID

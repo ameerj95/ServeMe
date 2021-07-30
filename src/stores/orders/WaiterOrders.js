@@ -3,12 +3,13 @@ import axios from "axios"
 
 import { Order } from './Order'
 
-export class FoodOrders {
+export class WaiterOrders {
 
   constructor() {
     this.list = []
     this.length = 0
     this.index = 0
+
     makeObservable(this, {
       index: observable,
       list: observable,
@@ -28,39 +29,19 @@ export class FoodOrders {
   emptyTheList = () => {
     this.list = [];
   };
+
   updateFoodOrders = async (orders) =>{
     this.emptyTheList()
     this.insertOrderIntoList(orders)
   }
 
-
-  fetchFoodOrders = async () => {
-    let res = await axios.get(`http://localhost:5000/FoodOrder/KitchenOrders`);
-    this.emptyTheList();
-    res.data.forEach((item) => {
-      runInAction(() => {
-        this.list.push(new Order(item.id, item.order_items, item.date, item.table_num, item.status));
-      });
-    });
-  };
-
   fetchAllOrders = async () => {
-    let res = await axios.get(`http://localhost:5000/FoodOrder/Orders`);
+    //TOODO: fetch waiter from API
+    let res = await axios.get(`http://localhost:5000/WaiterOrder/Orders`);
     this.emptyTheList();
     res.data.forEach((item) => {
       runInAction(() => {
         this.list.push(new Order(item.id, item.order_items, item.date, item.table_num, item.status));
-      });
-    });
-  };
-
-  fetchBarOrders = async () => {
-    let res = await axios.get(`http://localhost:5000/FoodOrder/BarOrders`);
-    console.log("in fetchbar ",res.data)
-    this.emptyTheList();
-    res.data.forEach((item) => {
-      runInAction(() => {
-        this.list.push(new Order(item.id,  item.order_items, item.date, item.table_num, item.status));
       });
     });
   };

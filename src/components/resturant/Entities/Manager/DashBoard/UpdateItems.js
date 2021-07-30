@@ -13,10 +13,37 @@ function UpdateItems(props) {
   const [category, setcategory] = useState([""]);
   const [vegan, setvegan] = useState(Boolean);
   const [gluten, setgluten] = useState(Boolean);
-
+  const [inEditMode, setInEditMode] = useState({
+    status: false,
+    rowKey: null,
+  });
+  console.log(data);
   // const handleSubmit = () => {
   //     console.log(formValues)
   // }
+  const onEdit = ({
+    img,
+    name,
+    price,
+    description,
+    id,
+    category,
+    vegan,
+    gluten,
+  }) => {
+    setInEditMode({
+      status: true,
+      rowKey: id,
+    });
+    setimg(img);
+    setname(name);
+    setprice(price);
+    setdescription(description);
+    setid(id);
+    setcategory(category);
+    setvegan(vegan);
+    setgluten(gluten);
+  };
   const handleInputName = (event) => {
     setname({ name: event.target.value });
   };
@@ -64,7 +91,11 @@ function UpdateItems(props) {
             <tr>
               <td>
                 <div>
-                  <img className="ItemImg" src={`${item.img}`} onChange={handleInputimg}/>
+                  <img
+                    className="ItemImg"
+                    src={`${item.img}`}
+                    onChange={handleInputimg}
+                  />
                 </div>
               </td>
               <td>
@@ -127,11 +158,10 @@ function UpdateItems(props) {
 
               <td>
                 <button className="mt-1" variant="primary">
-                  save
-                </button>
-
-                <button className="mt-1" variant="primary">
                   Edit
+                </button>
+                <button className="mt-1" variant="primary">
+                  save
                 </button>
                 <button className="mt-1" variant="primary">
                   Delete
@@ -142,9 +172,7 @@ function UpdateItems(props) {
         </tbody>
       </table>
 
-      <>
-        <MDBDataTableV5 />
-      </>
+      <>{/* <MDBDataTableV5 /> */}</>
     </div>
   );
 }

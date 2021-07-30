@@ -13,7 +13,7 @@ function Bar(props) {
             <th>Table</th>
             <th>Order</th>
             <th>status</th>
-            <th>Data</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
@@ -23,7 +23,7 @@ function Bar(props) {
               <td>{item.table}</td>
               <td>{item.order}</td>
               <td>{item.status}</td>
-              <td>{item.data}</td>
+              <td>{item.date}</td>
             </tr>
           ))}
         </tbody>

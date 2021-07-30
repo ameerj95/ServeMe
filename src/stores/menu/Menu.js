@@ -2,9 +2,6 @@ import { observable, action, makeObservable, runInAction } from "mobx";
 import axios from "axios";
 import { MenuItem } from "./MenuItem";
 
-
-
-
 export class Menu {
   constructor() {
     this.list = [];
@@ -17,6 +14,7 @@ export class Menu {
       length: observable,
       getMenuItems: action,
       emptyTheList: action,
+      addMenuItem: action,
     });
   }
 
@@ -40,9 +38,9 @@ export class Menu {
       });
     });
   };
-  addMenuItem = (menuItem) =>{
-    this.list.push(menuItem) 
-}
+  addMenuItem = (menuItem) => {
+    this.list.push(menuItem);
+  };
 
   addNewItem = async (client) => {
     axios

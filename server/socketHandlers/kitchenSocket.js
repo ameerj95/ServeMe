@@ -13,9 +13,10 @@ const action_map = {
 //in this socket we want to recive the following
 //input -> action
 exports = module.exports = function(socket,io){
-    socket.on('kitchenServer', data => {
+    socket.on('kitchen', data => {
         console.log("in kitchenServer")
-        action_map[data.action](data,io)
+        console.log(data)
+        action_map[data.action_type](data,io)
     });
   } 
 

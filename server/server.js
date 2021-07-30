@@ -17,6 +17,7 @@ const menuAPI = require('./routes/menuAPI')
 const ordersAPI = require('./routes/ordersAPI')
 const QR_API = require('./routes/QR_API')
 const foodOrderAPI = require('./routes/foodOrdersAPI')
+const WaiterOrderAPI = require('./routes/WaiterOrderAPI')
 const Testing_API = require('./routes/TestingAPI')
 //=================================================================
 //deals with json parser / extracting from body
@@ -40,6 +41,7 @@ app.use('/Menu', menuAPI)
 app.use('/Orders', ordersAPI)
 app.use('/QR', QR_API)
 app.use('/FoodOrder', foodOrderAPI)
+app.use('/WaiterOrder', WaiterOrderAPI)
 app.use('/test', Testing_API)
 
 //=================================================================
@@ -53,6 +55,8 @@ io.on('connection', (socket) => {
   });
   console.log('new client connected ', socket.id);
   require('./socketHandlers/customerSocket')(socket,io)
+  require('./socketHandlers/kitchenSocket')(socket,io)
+  require('./socketHandlers/BarSocket')(socket,io)
   require('./socketHandlers/resturantSocket')(socket,io)
   require('./socketHandlers/waiterSocket')(socket,io)
 });

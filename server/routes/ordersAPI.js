@@ -3,6 +3,9 @@ const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/servemedb')
 const router = express.Router()
 const moment = require('moment')
+const Waiter = require('../classes/Waiter')()
+
+
 
 router.get('/order/:tableNum', async function (req, res) {
     const status = await getOrderStatus(req.params.tableNum)
@@ -39,5 +42,10 @@ const createNewOrder = async (tableNum) =>{
         console.log("done")
 })
 }
+//===============================================================
+router.get('/waiterOrders', async function (req, res) {
+    const order = Waiter.getAllActiveWaiterOrders
+    res.send(order)
+})
 //===============================================================
 module.exports = router
