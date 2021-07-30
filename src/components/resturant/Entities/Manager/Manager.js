@@ -14,7 +14,7 @@ function Manager() {
     <Router>
       <div>
         <Navbar>
-          {" "}
+          
           <div> </div>
         </Navbar>
 

@@ -18,11 +18,9 @@ const storeInitalizer = require("../src/modules/userStores")();
 const clientsocket = new ClientSocket(window.location.pathname.split("/")[1]);
 stores.clientsocket = clientsocket;
 
+stores = storeInitalizer.startStores(stores);
 
-stores = storeInitalizer.startStores(stores)
-
-
-stores.clientsocket.socket.emit('kitchenserver',"hi")
+stores.clientsocket.socket.emit("kitchenserver", "hi");
 //for customers create only these stores
 // if (clientsocket.usertype == "table") {
 //   let table = new Table(parseInt(window.location.pathname.split("/")[2]));
