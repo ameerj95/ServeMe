@@ -33,6 +33,8 @@ const SocketListeners = function () {
         console.log("listening in waiter")
         stores.clientsocket.socket.on("waiter", data => {
             console.log("in waiter client ", data)
+            stores.waiterorder.updateWaiterOrders(data.orders)
+
         }
         );
     }
@@ -48,7 +50,9 @@ const SocketListeners = function () {
     }
 
     const createSocket = (stores) => {
-        socketListenerUsers[stores.clientsocket.usertype](stores)
+        const funct = socketListenerUsers[stores.clientsocket.usertype]
+        if(funct!=undefined)
+        {socketListenerUsers[stores.clientsocket.usertype](stores)}
     }
 
     const socketListenerUsers = {

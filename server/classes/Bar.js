@@ -24,7 +24,7 @@ const BarModule = function () {
     WHERE id=${order.id};`)
         var result = await getAllActiveOrders()
         const orders = await populateActiveOrders(result, 2)
-        io.sockets.emit("Bar", orders)
+        io.sockets.emit("bar", orders)
         emitToManager(result, io)
 
     }

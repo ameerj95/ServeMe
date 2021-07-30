@@ -1,59 +1,51 @@
 import { observable, action, makeObservable, runInAction } from 'mobx'
 import axios from "axios"
 
-import { Order } from './Order'
+import {TableServiceOrder} from './TableServiceOrder'
 
 export class WaiterOrders {
 
   constructor() {
-    this.list = []
+    this.tables = {}
     this.length = 0
-    this.index = 0
 
     makeObservable(this, {
-      index: observable,
-      list: observable,
+      tables: observable,
       length: observable,
-      addOrder: action,
-      updateFoodOrders: action,
-      emptyTheList: action,
+      updateWaiterOrders: action,
+      emptyThetables: action,
       fetchAllOrders:action,
-      fetchFoodOrders:action,
-      fetchBarOrders:action
     })
   }
 
-  addOrder = (order) => {
-    this.list.push(order)
-  }
-  emptyTheList = () => {
-    this.list = [];
+  emptyThetables = () => {
+    this.tables = {};
   };
 
-  updateFoodOrders = async (orders) =>{
-    this.emptyTheList()
-    this.insertOrderIntoList(orders)
+  updateWaiterOrders = async (orders) =>{
+    console.log("IN HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+    this.emptyThetables()
+    console.log("gello")
+    this.tables = orders
   }
 
   fetchAllOrders = async () => {
-    //TOODO: fetch waiter from API
     let res = await axios.get(`http://localhost:5000/WaiterOrder/Orders`);
-    this.emptyTheList();
-    res.data.forEach((item) => {
-      runInAction(() => {
-        this.list.push(new Order(item.id, item.order_items, item.date, item.table_num, item.status));
-      });
-    });
+    this.emptyThetables();
+    console.log(res.data)
+    this.tables = res.data
   };
 
 
-  insertOrderIntoList = (orders)=>{
+
+  insertOrderIntotables = (orders)=>{
     orders.forEach((item) => {
       runInAction(() => {
-        this.list.push(new Order(item.id, "item.order_items", item.date, item.table_num, item.status));
+        this.list.push(new TableServiceOrder(item.id, item.item_id, item.date, item.table_num, item.status));
       });
     });
   }
+
 
 
 

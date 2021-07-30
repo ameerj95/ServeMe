@@ -20,6 +20,12 @@ function Kitchen(props) {
     props.clientsocket.socket.emit('kitchen', { item_id: parseInt(event.target.id), action_type: 0 });
     ;
   }
+  const finshedMeal = (event) => {
+    console.log("in began prep")
+    console.log((event.target.id))
+    props.clientsocket.socket.emit('kitchen', { item_id: parseInt(event.target.id), action_type: 1  });
+    ;
+  };
 
   useEffect(() => {
     console.log(firstupdate);
@@ -69,7 +75,8 @@ function Kitchen(props) {
                     <div>
                     <span>{element.name} </span>
                     <span>{element.status} </span>
-                    <button id={element.id} onClick={beganPrep}>X</button>
+                    <button id={element.id} onClick={beganPrep}>prep</button>
+                    <button id={element.id} onClick={finshedMeal}>finish</button>
                   </div>
                   )}
                 </td>

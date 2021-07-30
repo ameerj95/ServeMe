@@ -7,8 +7,15 @@ const Manager = require('../classes/Manager')()
 
 //get all wait orders
 router.get('/Orders', async function (req, res) {
-    const orders = await Waiter.getAllActiveWaiterOrders()
+    const orders = await Waiter.GroupedWaiterOrders()
     res.send(orders)
 })
+
+// router.get('/test', async function (req, res) {
+//     const orders = await Waiter.GroupedWaiterOrders()
+//     res.send(orders)
+// })
+
+
 
 module.exports = router
