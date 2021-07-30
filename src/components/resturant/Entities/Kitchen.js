@@ -1,10 +1,40 @@
-import React, { useEffect, useState, useRef } from "react";
-import "../../../styles/table.css";
+
+
+
+
+import { makeStyles } from '@material-ui/core/styles';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { observer, inject } from "mobx-react";
-import PopUpOrder from "../../../components/reusables/PopUpOrder/PopUpOrder";
+import { Button, Container, Row, Col } from 'react-bootstrap';
+import React, { useEffect, useState, useRef } from "react";
+import './Kitchen.css'
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '90%',
+    margin: '10px'
+
+
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+}));
+
+// console.log("=========================================")
+// console.log(JSON.parse(JSON.stringify(data)));
 
 function Kitchen(props) {
-  // console.log("ftvbshanjasnjnasjncsajncasnc" + [...props.orders.list);
+
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [shownItem, setshownItem] = useState([]);
   let firstupdate = useRef(true);
@@ -36,60 +66,64 @@ function Kitchen(props) {
   };
 
   const handlePopup = (e) => {
-    setshownItem(getItemById(e.target.value).order_items);
+    // setshownItem(getItemById(e.target.value).order_items);
   };
 
-  const getItemById = (id) => {
-    return data.find((element) => (element.id = id));
-  };
-  console.log("=========================================")
-  console.log(JSON.parse(JSON.stringify(data)));
   return (
-    <>
-      <PopUpOrder
-        show={modalShow}
-        item={shownItem}
-        onHide={() => setModalShow(false)}
-      />
-      <div> Kitchen</div>
-      <div className="container">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Table</th>
-              <th>Order</th>
-              <th>status</th>
-              <th>Data</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{item.table}</td>
-                <td>
-                  {item.order_items.map(element => 
-                    <div>
-                    <span>{element.name} </span>
-                    <span>{element.status} </span>
-                    <button id={element.id} onClick={beganPrep}>prep</button>
-                    <button id={element.id} onClick={finshedMeal}>finish</button>
-                  </div>
-                  )}
-                </td>
-                <td>{item.status}</td>
-                <td>{item.date}</td>
-                <td>
-                  <button onClick={changeStatus}> pickup</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </>
+    <div >
+      <h3 className="center">Kitchen</h3>
+      <Row>
+        <Col className="item-table"  >#</Col>
+        <Col className="item-table"  >#</Col>
+        <Col className="item-table"  >Table</Col>
+        <Col className="item-table"  >Status</Col>
+        <Col className="item-table"  >Data</Col>
+      </Row>
+      {data.map((item, index) =>
+        <Accordion >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography id="tt">
+              <Container >
+                <Row >
+                  <Col className="col-lg-2">{index + 1}</Col>
+                  <Col className="col-lg-2">{item.table}</Col>
+                  <Col className=" col-lg-3">{item.status}</Col>
+                  <Col className="date">{item.date}</Col>
+
+                </Row>
+              </Container>
+            </Typography>
+
+          </AccordionSummary>
+          <Row >
+            <Col className="item-table">Name main</Col>
+            <Col className="item-table"> Order status</Col>
+            <Col className="item-table"> In Process </Col>
+            <Col className="date1 item-table">Completed</Col>
+          </Row>
+          {item.order_items.map(element =>
+            <AccordionDetails >
+              <Typography id="ty">
+                <Row>
+                  <Col >{element.name}</Col>
+                  <Col >{element.status}</Col>
+                  <Col  ><button type="button" className="btn btn-outline-warning btn-sm" id={element.id} onClick={beganPrep}>In Process</button></Col>
+                  <Col className="date1"> <button type="button" className="btn btn-outline-success btn-sm" id={element.id} onClick={beganPrep}>Completed</button></Col>
+                </Row>
+              </Typography>
+            </AccordionDetails>
+          )}
+          <Row>
+            <Col ><button id={item.id} type="button" className=" btn btn-outline-primary btn-sm mb-2 center">Finsh Order</button></Col>
+          </Row>
+        </Accordion>
+      )}
+    </div>
   );
 }
 export default inject("foodorders", "clientsocket")(observer(Kitchen));
+

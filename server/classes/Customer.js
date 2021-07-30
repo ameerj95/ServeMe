@@ -2,6 +2,7 @@ const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/servemedb')
 const actions = require('../actionsConstants');
 const moment = require('moment')
+const Waiter = require('../classes/Waiter.js')()
 
 const CustomerModule = function () {
     //===============================================================
@@ -66,7 +67,12 @@ const CustomerModule = function () {
     }
 
     //===============================================================
+    const requestService = async(order)=>{
+        console.log("requestService")
+        // Waiter.createWaiterOrder({...item,action_type:0})
+    }
 
+    //===============================================================
     const removeFromCart = async (id) => {
         await sequelize.query(`DELETE from order_item
         WHERE id=${id})`)
@@ -75,12 +81,13 @@ const CustomerModule = function () {
     const test = () =>{
         console.log("in here made it")
     }
-
+    //===============================================================
     return {
         addToCart: addToCart,
         test:test,
         removeItemFromCart:removeItemFromCart,
-        getTableOrder:getTableOrder
+        getTableOrder:getTableOrder,
+        requestService:requestService
     }
 }
 

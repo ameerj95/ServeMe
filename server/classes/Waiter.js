@@ -5,19 +5,20 @@ const Manager = require('../classes/Manager.js')()
 const moment = require('moment')
 
 const WaiterModule = function () {
-    const completeWaiterOrder = async (order,io) => {
+    const completeWaiterOrder = async (order, io) => {
         await sequelize.query(`UPDATE order_waiter
         SET status = 2
         WHERE id=${order.id};`)
+        console.log("in completed")
         emitToWaiter(io)
-        Manager.emitToManagerActiveWaiterOrders()
+        // Manager.emitToManagerActiveWaiterOrders()
     }
-    const startWaiterOrder = async (order,io) => {
+    const startWaiterOrder = async (order, io) => {
         await sequelize.query(`UPDATE order_waiter
         SET status = 1
         WHERE id=${order.id};`)
         emitToWaiter(io)
-        Manager.emitToManagerActiveWaiterOrders()
+        // Manager.emitToManagerActiveWaiterOrders()
     }
     //===============================================================
     const getAllActiveWaiterOrders = async () => {
@@ -38,6 +39,12 @@ const WaiterModule = function () {
         VALUES (${waiterOrder.table_num},${waiterOrder.order_id},${order.action_type},'${moment().format()}',0,${waiterOrder.menu_item_id})`)
     }
     //==============================================================================
+    const createWaiterServOrder = async (order) => {
+        const waiterOrder = await getOrderDetails(order.item_id)
+        await sequelize.query(`INSERT INTO order_waiter(table_num,order_id,order_type,date,status,item_id)
+            VALUES (${waiterOrder.table_num},${waiterOrder.order_id},${order.action_type},'${moment().format()}',0,${waiterOrder.menu_item_id})`)
+    }
+    //==============================================================================
     const getOrderDetails = async (item_id) => {
         const order = await sequelize.query(`SELECT name,order_item.id,order_item.menu_item_id as menu_item_id,order_item.order_id as order_id,order_item.status,order_table.table_num,order_table.id as order_id FROM order_item
         LEFT JOIN menu_items on menu_items.id = order_item.menu_item_id
@@ -54,7 +61,7 @@ const WaiterModule = function () {
             tables_orders[i] = await getTableOrder(i)
         }
         console.log(tables_orders)
-        return(tables_orders)
+        return (tables_orders)
     }
     //==============================================================================
     const getTableOrder = async (table_num) => {
@@ -73,7 +80,8 @@ const WaiterModule = function () {
         completeWaiterOrder: completeWaiterOrder,
         startWaiterOrder: startWaiterOrder,
         getAllActiveWaiterOrders, getAllActiveWaiterOrders,
-        GroupedWaiterOrders: GroupedWaiterOrders
+        GroupedWaiterOrders: GroupedWaiterOrders,
+        createWaiterServOrder:createWaiterServOrder
     }
 }
 

@@ -14,8 +14,11 @@ function WaiterTemp(props) {
     ;
   }
 
-  const finshTask = () =>{
-
+  const finshTask = (event) =>{
+    console.log("in began finshTask")
+    console.log((event.target.id))
+    props.clientsocket.socket.emit('waiterServer', { id: parseInt(event.target.id), action_type: 1 });
+    ;
   }
 
   return (
