@@ -1,45 +1,47 @@
-import Navbar from "./components/customer/Navbar/Navbar";
+import Navbar from './components/customer/Navbar/Navbar'
+import Kitchen from './components/resturant/Entities/Kitchen';
 import Manager from "./components/resturant/Entities/Manager/Manager";
 import "./App.css";
 import { observer, inject } from "mobx-react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import Middleware from "./components/middleware/Middleware";
-import Kitchen from "./components/resturant/Entities/Kitchen";
-import Waiter from "./components/resturant/Entities/Waiter";
-import CRUDMenu from "./components/resturant/Entities/Manager/DashBoard/CRUDMenu";
-
+import WaiterTemp from "./components/resturant/Entities/WaiterTemp";
+import CRUDMenu from './components/resturant/Entities/Manager/DashBoard/CRUDMenu';
 //=========================================================================
 function App(props) {
-  //TODO LISTENER for each entity type (make dict)
-  //listener for the table
-  // const socket = props.clientsocket.socket
-  // socket.on("customer", data => {
-  //   if (data.tableNum == props.table.tableNum) {
-  //     //alert("IN HERE")
-  //     console.log("in app.js ",data)
-  //     props.table.updateCart(data.tableOrder)
-  //   }
-  // });
-  // socket.on("resturant", data => {
-  //   //TOAST MSG THAT ITS BEEN ORDERED
-  //   if (data.tableNum == props.table.tableNum) {
-  //     console.log("RECIVIED ORDER")
-  //     console.log(data.msg)
-  //   }
-  // });
-  //=========================================================================
+
+  const userType = (props.clientsocket).usertype
   return (
-    <Router>
-      <div className="App">
-        {/* <Waiter /> */}
-        {/* <CRUDMenu /> */}
-        <Navbar />
-        <Manager />
-        {/* {props.clientsocket.usertype === "table" ? <Navbar /> : <Kitchen />} */}
-        {/* <Route path="/table/:tableNum" exact render={({ match }) => <Middleware match={match} to="/menu" />} /> */}
-        {/* <Route path="/table/:tableNum" exact render={({ match }) => <MockupComp match={match} />} />
-        <Route path="/resturantMock" exact render={() => <MockupResturant  />} /> */}
-      </div>
+    <Router> 
+        {(() => {
+  
+           switch (userType) {
+              case 'table':
+                  return (
+                    <Navbar/>
+                  )
+              case 'kitchen':
+                  return (
+                    <Kitchen/>
+                  )
+              case 'bar':
+                  return (
+                    <Kitchen/>
+                  )
+              case 'waiter':
+                  return (
+                    <WaiterTemp/>
+                  )
+              case 'manager':
+                  return (
+                   <CRUDMenu/>
+                  )
+              default:
+                  return (
+                    <div>Redirect to a proper page please.</div>
+                  )
+           }
+  
+        })()}
     </Router>
   );
 }

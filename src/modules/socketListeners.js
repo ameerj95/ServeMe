@@ -13,7 +13,6 @@ const SocketListeners = function () {
 
     const createkitchenSocket = (stores) => {
         console.log("listening in kitchen")
-        stores.foodorders.fetchFoodOrders()
         stores.clientsocket.socket.on("kitchen", data => {
             console.log("in kitchen client ", data)
             stores.foodorders.updateFoodOrders(data)
@@ -23,7 +22,6 @@ const SocketListeners = function () {
 
     const createBarSocket = (stores) => {
         console.log("listening in bar")
-        stores.foodorders.fetchBarOrders()
         stores.clientsocket.socket.on("bar", data => {
             console.log("in bar client ", data)
             stores.foodorders.updateFoodOrders(data)
@@ -31,8 +29,14 @@ const SocketListeners = function () {
         );
     }
 
-    const createWaiterSocket = () => {
+    const createWaiterSocket = (stores) => {
+        console.log("listening in waiter")
+        stores.clientsocket.socket.on("waiter", data => {
+            console.log("in waiter client ", data)
+            stores.waiterorder.updateWaiterOrders(data.orders)
 
+        }
+        );
     }
 
     const createManagerSocket = (stores) => {
@@ -46,7 +50,9 @@ const SocketListeners = function () {
     }
 
     const createSocket = (stores) => {
-        socketListenerUsers[stores.clientsocket.usertype](stores)
+        const funct = socketListenerUsers[stores.clientsocket.usertype]
+        if(funct!=undefined)
+        {socketListenerUsers[stores.clientsocket.usertype](stores)}
     }
 
     const socketListenerUsers = {

@@ -24,7 +24,7 @@ const BarModule = function () {
     WHERE id=${order.id};`)
         var result = await getAllActiveOrders()
         const orders = await populateActiveOrders(result, 2)
-        io.sockets.emit("Bar", orders)
+        io.sockets.emit("bar", orders)
         emitToManager(result, io)
 
     }
@@ -59,7 +59,7 @@ const BarModule = function () {
     }
     //===============================================================
     const getOrderItems = async (order_id, station) => {
-        const orderItems = await sequelize.query(`SELECT name,order_item.order_id,order_item.status FROM order_item
+        const orderItems = await sequelize.query(`SELECT name,order_item.order_id,order_item.id,order_item.status FROM order_item
     LEFT JOIN menu_items on menu_items.id = order_item.menu_item_id
     LEFT JOIN order_table on order_table.id = order_item.order_id
     WHERE order_id = ${order_id} AND station =${station}`)

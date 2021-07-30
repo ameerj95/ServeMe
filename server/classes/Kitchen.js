@@ -7,25 +7,28 @@ const Manager = require('../classes/Manager.js')()
 
 const KitchenModule = function () {
     //===============================================================
-    const pickUpOrderItem = async (order, io) => {
+    const pickUpOrderItem = async (item, io) => {
+        console.log(77777777777777777777777777777777777777777777777777777777777)
+        console.log('\x1b[36m%s\x1b[0m',item)
         await sequelize.query(`UPDATE order_item
-        SET status = 1
-        WHERE id=${order.id};`)
+        SET status = 2
+        WHERE id=${item.item_id};`)
+
         emitToKitchen(io)
-        Waiter.createWaiterOrder(order)
+        console.log("creating for waiter")
+        console.log({...item,action_type:0})
+        Waiter.createWaiterOrder({...item,action_type:0})
         Waiter.emitToWaiter(io)
         Manager.emitToManagerActiveFoodOrders(io)
 
     }
     //===============================================================
-    const beginOrderItem = async (order, io) => {
+    const beginOrderItem = async (item, io) => {
         await sequelize.query(`UPDATE order_item
-    SET status = 1
-    WHERE id=${order.id};`)
-        var result = await getAllActiveOrders()
-        const orders = await populateActiveOrders(result, 1)
-        io.sockets.emit("kitchen", orders)
-        Manager.emitToManagerActiveFoodOrders(io)
+        SET status = 1
+        WHERE id=${item.item_id};`)
+        emitToKitchen(io)
+        // Manager.emitToManagerActiveFoodOrders(io)
 
     }
     //===============================================================
@@ -38,16 +41,17 @@ const KitchenModule = function () {
     const emitToKitchen = async (io) => {
         var result = await getAllActiveOrders()
         const orders = await populateActiveOrders(result, 1)
+        console.log("in emit to kitchen")
         io.sockets.emit("kitchen", orders)
     }
 
     //===============================================================
     const populateActiveOrders = async (orders, station) => {
-        
+
         await Promise.all(orders.map(async (order) => {
             const order_items = await getOrderItems(order.id, station)
             order["order_items"] = (!order_items ? [] : order_items)
-          }));
+        }));
         const filtered_orders = orders.filter(order => order.order_items.length > 0);
 
         return filtered_orders
@@ -68,9 +72,11 @@ const KitchenModule = function () {
         //console.log(activeOrders)
         return activeOrders[0]
     }
+    
+
     //===============================================================
     const getOrderItems = async (order_id, station) => {
-        const orderItems = await sequelize.query(`SELECT name,order_item.order_id,order_item.status FROM order_item
+        const orderItems = await sequelize.query(`SELECT name,order_item.order_id,order_item.id,order_item.status FROM order_item
     LEFT JOIN menu_items on menu_items.id = order_item.menu_item_id
     LEFT JOIN order_table on order_table.id = order_item.order_id
     WHERE order_id = ${order_id} AND station =${station}`)
@@ -79,9 +85,9 @@ const KitchenModule = function () {
 
     return {
         emitToKitchen: emitToKitchen,
-        pickUpOrderItem,pickUpOrderItem,
-        beginOrderItem:beginOrderItem,
-        getAllActivePopulateFoodOrders:getAllActivePopulateFoodOrders
+        pickUpOrderItem, pickUpOrderItem,
+        beginOrderItem: beginOrderItem,
+        getAllActivePopulateFoodOrders: getAllActivePopulateFoodOrders
     }
 }
 
