@@ -8,6 +8,15 @@ import {  Col, Row, Container } from 'react-bootstrap'
 import './Service.css'
 function Service(props) {
     const [modalShow, setModalShow] = useState(false);
+
+    const serviceRquest = (event)=>{
+        console.log("hello")
+        console.log(event.target.id)
+        // const extracted_tableNum = props.table.tableNum
+        // props.clientsocket.socket.emit('customerServer', { tableNum: extracted_tableNum,item_id:event.target.id ,action_type:2  });
+    }
+
+    
     return (
         <>
             <PopUpOption show={modalShow}
@@ -15,23 +24,23 @@ function Service(props) {
             />
             <Container fluid>
                 <Row className="mt-4 m-1 mb-2">
-                    <Col ><GiCash className="btn-serv" /><div>Give Check</div></Col>
+                    <Col ><GiCash className="btn-serv" id={2} onClick={serviceRquest}/><div >Give Check</div></Col>
                     <Col onClick={() => setModalShow(true)}><FaUtensils className="btn-serv" /><div>Utensils</div></Col>
-                    <Col ><GiPapers className="btn-serv" /><div>Napkins</div></Col>
+                    <Col ><GiPapers className="btn-serv" id={4} onClick={serviceRquest}/><div>Napkins</div></Col>
                 </Row>
                 <Row className="mt-4 m-1 mb-2 ce">
-                    <Col><GiWoodenChair className="btn-serv" /><div>Baby Chair</div></Col>
-                    <Col><GiSoap className="btn-serv" /><div>Clear Table</div></Col>
-                    <Col><GiBrandyBottle className="btn-serv" /><div>Sauces</div></Col>
+                    <Col><GiWoodenChair className="btn-serv" id={5} onClick={serviceRquest}/><div >Baby Chair</div></Col>
+                    <Col><GiSoap className="btn-serv" id={6} onClick={serviceRquest}/><div  >Clear Table</div></Col>
+                    <Col><GiBrandyBottle className="btn-serv" id={7} onClick={serviceRquest}/><div>Sauces</div></Col>
                 </Row>
                 <Row className="mt-4 mb-2">
-                    <Col><GiTakeMyMoney className="btn-serv" /><div>Take Check</div></Col>
-                    <Col> <MdSyncProblem className="btn-serv" /><div>Problem</div></Col>
-                    <Col><FaQuestion className="btn-serv" /><div>Ask waiter</div></Col>
+                    <Col><GiTakeMyMoney className="btn-serv" id={8} onClick={serviceRquest}/><div>Take Check</div></Col>
+                    <Col> <MdSyncProblem className="btn-serv" id={9} onClick={serviceRquest}/><div >Problem</div></Col>
+                    <Col><FaQuestion className="btn-serv" id={10} onClick={serviceRquest}/><div >Ask waiter</div></Col>
                 </Row>
             </Container>
         </>
     )
 }
 
-export default inject("menu")(observer(Service))
+export default inject("clientsocket","table")(observer(Service))
