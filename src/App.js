@@ -12,8 +12,8 @@ function App(props) {
   return (
     <Router>
       <div className="App">
-        <Navbar />
-        {/* {props.clientsocket.usertype == "table" ? <Navbar/> : <Kitchen/>} */}
+        {/* <Navbar /> */}
+        {props.clientsocket.usertype == "table" ? <Navbar/> : <Kitchen/>}
       </div>
     </Router>
   );

@@ -23,23 +23,22 @@ function Kitchen(props) {
   }, [shownItem]);
 
   const handlePopup = (e) => {
-    // setshownItem(getItemById(e.target.value).order);
-
-    return(
-        <div>
-            loho
-        </div>
-    )
-
+    setshownItem(getItemById(e.target.value).order);
   };
 
-//   const getItemById = (id) => {
-//     return data.find((element) => (element.id = id));
-//   };
+  const getItemById = (id) => {
+    return data.find((element) => (element.id = id));
+  };
 
   return (
     <>
+      <PopUpOrder
+        show={modalShow}
+        item={shownItem}
+        onHide={() => setModalShow(false)}
+      />
       <div> Kitchen</div>
+
       <div className="container">
         <table>
           <thead>
