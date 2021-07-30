@@ -41,11 +41,26 @@ const userStores = function () {
         let waiterorder = new WaiterOrders()
         stores.orders = orders
         stores.waiterorder =waiterorder 
-        stores.waiterorder.fetchBarOrders()
+        stores.waiterorder.fetchAllOrders()
     }
 
     const managerStores = (stores) =>{
-
+        let table = new Table(parseInt(window.location.pathname.split('/')[2]))
+        console.log(table)
+        table.fetchCart()
+        let menu = new Menu()
+        menu.getMenuItems()
+        stores.table = table
+        stores.menu = menu
+        let orders = new Orders();
+        let foodOrders = new FoodOrders()
+        stores.orders = orders
+        stores.foodorders =foodOrders 
+        stores.foodorders.fetchBarOrders()
+        let waiterorder = new WaiterOrders()
+        stores.orders = orders
+        stores.waiterorder =waiterorder 
+        stores.waiterorder.fetchAllOrders()
     }
     const userStoresInit = {
         "table":customerStores,
@@ -60,7 +75,12 @@ const userStores = function () {
         console.log(clientsocket)
         stores.clientsocket = clientsocket
         console.log(stores)
-        userStoresInit[stores.clientsocket.usertype](stores)
+        const init = userStoresInit[stores.clientsocket.usertype]
+        console.log(init)
+        if(init!=undefined)
+        {
+            userStoresInit[stores.clientsocket.usertype](stores)
+        }
         return stores
     }
 

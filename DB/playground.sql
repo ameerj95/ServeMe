@@ -37,5 +37,15 @@
 --     LEFT JOIN order_table on order_table.id = order_item.order_id
 --     WHERE order_item.id = 2 
 
-ALTER TABLE order_waiter
-ADD item_id int;
+-- ALTER TABLE order_waiter
+-- ADD item_id int;
+
+-- SELECT * from order_waiter
+--         WHERE status!=3 AND table_num=4
+       
+
+-- SELECT count(table_num) from qr_table
+
+UPDATE order_item
+        SET status = 2
+        WHERE id=55;

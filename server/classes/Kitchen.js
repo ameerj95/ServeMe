@@ -8,15 +8,18 @@ const Manager = require('../classes/Manager.js')()
 const KitchenModule = function () {
     //===============================================================
     const pickUpOrderItem = async (item, io) => {
-
+        console.log(77777777777777777777777777777777777777777777777777777777777)
+        console.log('\x1b[36m%s\x1b[0m',item)
         await sequelize.query(`UPDATE order_item
         SET status = 2
         WHERE id=${item.item_id};`)
+
         emitToKitchen(io)
         console.log("creating for waiter")
+        console.log({...item,action_type:0})
         Waiter.createWaiterOrder({...item,action_type:0})
         Waiter.emitToWaiter(io)
-        // Manager.emitToManagerActiveFoodOrders(io)
+        Manager.emitToManagerActiveFoodOrders(io)
 
     }
     //===============================================================

@@ -9,7 +9,6 @@ const CRUDMenu = inject("menu")(
   observer((props) => {
     return (
       <div>
-        
         <UpdateItems />
       </div>
     );

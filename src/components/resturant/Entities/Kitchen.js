@@ -46,6 +46,12 @@ function Kitchen(props) {
     props.clientsocket.socket.emit('kitchen', { item_id: parseInt(event.target.id), action_type: 0 });
     ;
   }
+  const finshedMeal = (event) => {
+    console.log("in began prep")
+    console.log((event.target.id))
+    props.clientsocket.socket.emit('kitchen', { item_id: parseInt(event.target.id), action_type: 1  });
+    ;
+  };
 
   useEffect(() => {
     console.log(firstupdate);
