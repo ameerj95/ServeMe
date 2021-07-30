@@ -9,11 +9,8 @@ function Kitchen(props) {
   const [shownItem, setshownItem] = useState([]);
   let firstupdate = useRef(true);
   const data = props.foodorders.list;
-  console.log(data);
-  const changeStatus = () => {
-    console.log(" changeStatus");
-  };
 
+  //============================================================
   useEffect(() => {
     console.log(firstupdate);
     if (!firstupdate.current) {
@@ -22,6 +19,10 @@ function Kitchen(props) {
     firstupdate.current = false;
   }, [shownItem]);
 
+  const changeStatus = () => {
+    console.log(" changeStatus");
+  };
+
   const handlePopup = (e) => {
     setshownItem(getItemById(e.target.value).order);
   };
@@ -29,7 +30,7 @@ function Kitchen(props) {
   const getItemById = (id) => {
     return data.find((element) => (element.id = id));
   };
-
+  //==============================================================
   return (
     <>
       <PopUpOrder
@@ -38,7 +39,6 @@ function Kitchen(props) {
         onHide={() => setModalShow(false)}
       />
       <div> Kitchen</div>
-
       <div className="container">
         <table>
           <thead>

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Middleware from "./components/middleware/Middleware";
 import Kitchen from "./components/resturant/Entities/Kitchen";
 import Waiter from "./components/resturant/Entities/Waiter";
+import CRUDMenu from "./components/resturant/Entities/Manager/DashBoard/CRUDMenu";
 
 //=========================================================================
 function App(props) {
@@ -31,8 +32,10 @@ function App(props) {
     <Router>
       <div className="App">
         {/* <Waiter /> */}
-        {/* <Manager /> */}
-        {props.clientsocket.usertype === "table" ? <Navbar /> : <Kitchen />}
+        {/* <CRUDMenu /> */}
+        <Navbar />
+        <Manager />
+        {/* {props.clientsocket.usertype === "table" ? <Navbar /> : <Kitchen />} */}
         {/* <Route path="/table/:tableNum" exact render={({ match }) => <Middleware match={match} to="/menu" />} /> */}
         {/* <Route path="/table/:tableNum" exact render={({ match }) => <MockupComp match={match} />} />
         <Route path="/resturantMock" exact render={() => <MockupResturant  />} /> */}

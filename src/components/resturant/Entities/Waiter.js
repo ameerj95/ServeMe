@@ -4,10 +4,13 @@ import { observer, inject } from "mobx-react";
 import PopUpWaiter from "../../../components/reusables/PopUpWaiter/PopUpWaiter";
 
 function Waiter(props) {
+  // console.log("ftvbshanjasnjnasjncsajncasnc" + [...props.orders.list);
   const [modalShow, setModalShow] = useState(false);
   const [shownItem, setshownItem] = useState([]);
   let firstupdate = useRef(true);
-  const data = props.orders.list;
+  const data = props.foodorders.list;
+
+  //============================================================
   useEffect(() => {
     console.log(firstupdate);
     if (!firstupdate.current) {
@@ -15,13 +18,19 @@ function Waiter(props) {
     }
     firstupdate.current = false;
   }, [shownItem]);
+
   const deleteItem = () => {
-    console.log(" finish task  ");
+    console.log(" changeStatus");
   };
+
   const handlePopup = (e) => {
-    // setshownItem(getItemById(e.target.value).order);
-    console.log("handlePopup");
+    setshownItem(getItemById(e.target.value).order);
   };
+
+  const getItemById = (id) => {
+    return data.find((element) => (element.id = id));
+  };
+  //==============================================================
   return (
     <>
       <PopUpWaiter
@@ -29,8 +38,8 @@ function Waiter(props) {
         item={shownItem}
         onHide={() => setModalShow(false)}
       />
+      <div> Waiter</div>
       <div className="container">
-        <h2>Waiter</h2>
         <table>
           <thead>
             <tr>
@@ -43,7 +52,7 @@ function Waiter(props) {
             </tr>
           </thead>
           <tbody>
-            {/* {data.map((item) => ( )} */}
+            {/* {data.map((item, index) => ( ))} */}
             <tr>
               <td>1</td>
               <td>bar</td>
@@ -69,4 +78,4 @@ function Waiter(props) {
     </>
   );
 }
-export default inject("orders")(observer(Waiter));
+export default inject("foodorders")(observer(Waiter));
