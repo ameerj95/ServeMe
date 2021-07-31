@@ -64,12 +64,12 @@ function Bar(props) {
   return (
     <div >
       <h3 className="aa">Bar</h3>
-      {/* <Row>
+      <Row>
         <Col className="item-table"  >#</Col>
         <Col className="item-table"  >Table</Col>
         <Col className="item-table"  >Status</Col>
         <Col className="item-table"  >Data</Col>
-      </Row> */}
+      </Row>
       {data.map((item, index) =>
         <Accordion >
           <AccordionSummary
@@ -79,8 +79,12 @@ function Bar(props) {
           >
             <Typography id="summary">
               <Container >
-                <Row >               
-                  <Col className="col-lg-2">{item.table}</Col>            
+                <Row >
+                  <Col className="col-lg-2">{index + 1}</Col>
+                  <Col className="col-lg-2">{item.table}</Col>
+                  <Col className=" col-lg-3">{item.status}</Col>
+                  <Col className="date">{item.date}</Col>
+
                 </Row>
               </Container>
             </Typography>
@@ -95,12 +99,12 @@ function Bar(props) {
           {item.order_items.map(element =>
             <AccordionDetails >
               <Typography id="summary">
-                {/* <Row>
+                <Row>
                   <Col >{element.name}</Col>
                   <Col >{element.status}</Col>
                   <Col  ><button type="button" className="btn btn-outline-warning btn-sm" id={element.id} onClick={beganPrep}>In Process</button></Col>
                   <Col className="date1"> <button type="button" className="btn btn-outline-success btn-sm" id={element.id} onClick={finshedMeal}>Completed</button></Col>
-                </Row> */}
+                </Row>
               </Typography>
             </AccordionDetails>
           )}

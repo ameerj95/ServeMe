@@ -46,6 +46,8 @@
 
 -- SELECT count(table_num) from qr_table
 
-UPDATE order_item
-        SET status = 2
-        WHERE id=55;
+-- UPDATE order_item
+--         SET status = 2
+--         WHERE id=55;
+
+select id,name from menu_items

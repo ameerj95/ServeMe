@@ -10,8 +10,9 @@ const ResturantManager =async(data,io)=>{
     console.log("in ResturantManager")
     Kitchen.emitToKitchen(io)
     Bar.emitToBar(io)
-    // Manager.emitToManagerActiveFoodOrders(io)
-    io.sockets.emit("Cart",{msg:"recivied order",tableNum:data.tableNum})
+    Manager.emitToManagerActiveFoodOrders(io)
+    console.log(data)
+    io.sockets.emit("cart",{msg:"recivied order",tableNum:data.tableNum,})
 }
 
 //===============================================================

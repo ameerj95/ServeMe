@@ -11,9 +11,9 @@ function Service(props) {
 
     const serviceRquest = (event)=>{
         console.log("hello")
-        console.log(event.target.id)
-        // const extracted_tableNum = props.table.tableNum
-        // props.clientsocket.socket.emit('customerServer', { tableNum: extracted_tableNum,item_id:event.target.id ,action_type:2  });
+        console.log(event.currentTarget.id)
+        const extracted_tableNum = props.table.tableNum
+        props.clientsocket.socket.emit('customerServer', { tableNum: extracted_tableNum,order_type:event.target.id ,action_type:2 ,notes:"" });
     }
 
     
@@ -24,7 +24,7 @@ function Service(props) {
             />
             <Container fluid>
                 <Row className="mt-4 m-1 mb-2">
-                    <Col ><GiCash className="btn-serv" id={2} onClick={serviceRquest}/><div >Give Check</div></Col>
+                    <Col ><GiCash className="btn-serv" id={2} onClick={serviceRquest}/><div  >Give Check</div></Col>
                     <Col onClick={() => setModalShow(true)}><FaUtensils className="btn-serv" /><div>Utensils</div></Col>
                     <Col ><GiPapers className="btn-serv" id={4} onClick={serviceRquest}/><div>Napkins</div></Col>
                 </Row>

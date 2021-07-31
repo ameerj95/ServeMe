@@ -8,8 +8,6 @@ const action_map = {
 //==================================================================================================
 exports = module.exports = function(socket,io){
     socket.on('customerServer', data => {
-        console.log("in customerServer")
-        console.log(data)
         action_map[data.action_type](data,io)
     });
   } 

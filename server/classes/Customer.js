@@ -67,9 +67,10 @@ const CustomerModule = function () {
     }
 
     //===============================================================
-    const requestService = async(order)=>{
+    const requestService = async(order,io)=>{
         console.log("requestService")
-        // Waiter.createWaiterOrder({...item,action_type:0})
+        Waiter.createWaiterServOrder({...order})
+        Waiter.emitToWaiter(io)
     }
 
     //===============================================================
