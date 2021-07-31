@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('mysql://root:@localhost/servemedb')
+const sequelize = new Sequelize('mysql://root:@localhost/servemedb',{
+    logging: false
+})
 const actions = require('../actionsConstants');
 const Manager = require('../classes/Manager.js')()
 const moment = require('moment')
@@ -40,9 +42,14 @@ const WaiterModule = function () {
     }
     //==============================================================================
     const createWaiterServOrder = async (order) => {
-        const waiterOrder = await getOrderDetails(order.item_id)
+
+        const order_id = await getOrderId(order.tableNum)
+        console.log('===================================================================')
+        console.log(order.order_type)
+        // console.log(`INSERT INTO order_waiter(table_num,order_id,order_type,date,status,item_id)
+        // //     VALUES (${order.tableNum},${order_id},${order.action_type},'${moment().format()}',0,${0})`)
         await sequelize.query(`INSERT INTO order_waiter(table_num,order_id,order_type,date,status,item_id)
-            VALUES (${waiterOrder.table_num},${waiterOrder.order_id},${order.action_type},'${moment().format()}',0,${waiterOrder.menu_item_id})`)
+            VALUES (${order.tableNum},${order_id},${order.order_type},'${moment().format()}',0,0)`)
     }
     //==============================================================================
     const getOrderDetails = async (item_id) => {
@@ -60,8 +67,12 @@ const WaiterModule = function () {
         for (let i = 1; i < tables_total; i++) {
             tables_orders[i] = await getTableOrder(i)
         }
-        console.log(tables_orders)
         return (tables_orders)
+    }
+    const getOrderId = async (tableNum) => {
+        const status = await sequelize.query(`SELECT id from order_table 
+        where table_num=${tableNum}`)
+        return status[0][0].id
     }
     //==============================================================================
     const getTableOrder = async (table_num) => {

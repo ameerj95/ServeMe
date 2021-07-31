@@ -6,7 +6,6 @@ const configdata = require('../../configData.json')
 
 router.get ('/generate/:tableNum', async function (req, res) {
     const tables_qr = require('../classes/QRAPI')(parseInt(req.params.tableNum))
-    console.log(tables_qr)
     Object.keys(tables_qr).forEach(async (table) => {
         await sequelize.query(`INSERT INTO qr_table(table_num,qr_code)
         VALUES (${table},'${tables_qr[table]}')`)

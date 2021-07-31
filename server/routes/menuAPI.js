@@ -10,6 +10,16 @@ router.get('/MenuItems', async function (req, res) {
     res.send(menuItems[0]) 
 })
 //=================================================================
+router.get('/MenuItemsIDS', async function (req, res) {
+    let menuItems = await sequelize.query(`select id,name from menu_items`)
+    const menuObject = {}
+    for(element of menuItems[0]){
+        menuObject[element.id] = element.name
+    };
+    res.send(menuObject) 
+})
+
+//=================================================================
 router.post('/MenuItems', async function (req, res) {
     let newMenuItem = req.body
     await sequelize.query(`INSERT INTO menu_items(name,price,description,img,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../../../styles/table.css";
 import { observer, inject } from "mobx-react";
+import {translator} from '../../../modules/translator'
 
 function WaiterTemp(props) {
 
@@ -31,7 +32,7 @@ function WaiterTemp(props) {
             {
               data[table].map(order => 
                 <li id={order.id}>
-                  <div>{`order: ${order.table_num} ${order.item_id} , STATUS:${order.status}`}</div>
+                  <div>{props.waiterorder.translator_values(order)}</div>
                   <button id={order.id} onClick={takeTask}>take task</button>
                   <button id={order.id} onClick={finshTask}>finsh task</button>
                   </li>

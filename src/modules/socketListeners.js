@@ -6,7 +6,12 @@ const SocketListeners = function () {
         stores.clientsocket.socket.on("customer", data => {
             if (data.tableNum == stores.table.tableNum) {
                 console.log("customer recivied data (updated cart)", data)
-                stores.table.updateCart(data.tableOrder)
+                // stores.table.updateCart(data.tableOrder)
+            }
+        });
+        stores.clientsocket.socket.on("cart", data => {
+            if (data.tableNum == stores.table.tableNum) {
+                console.log("IN CART UPDATED")
             }
         });
     }
