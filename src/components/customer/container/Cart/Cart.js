@@ -5,7 +5,7 @@ import { MdDelete } from 'react-icons/md';
 import { Button, Col, Row, Container } from 'react-bootstrap'
 
 function Cart(props) {
-    console.log(props.table.total)
+    console.log(props.table.cart)
     const fireOrder = () =>{
         const extracted_tableNum = props.table.tableNum
         props.clientsocket.socket.emit('resturant', { tableNum: extracted_tableNum ,action_type:0 });

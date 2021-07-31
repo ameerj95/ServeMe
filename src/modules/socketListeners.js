@@ -9,6 +9,11 @@ const SocketListeners = function () {
                 stores.table.updateCart(data.tableOrder)
             }
         });
+        stores.clientsocket.socket.on("Cart", data => {
+            if (data.tableNum == stores.table.tableNum) {
+                console.log("IN CUSTOMER CART", data)
+            }
+        });
     }
     
 

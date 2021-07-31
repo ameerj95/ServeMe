@@ -17,7 +17,7 @@ export class Table {
             setTable:action,
             updateCart:action,
             fetchCart:action,
-            total : computed,
+            // total : computed,
           })
     }
 
@@ -38,10 +38,10 @@ export class Table {
         this.cart = cart.data
     }
 
-    get total () {
-        let total = 0
-         this.cart.forEach(item => total += item.price)
-         return total
-    } 
+    // get total () {
+    //     let total = 0
+    //      this.cart.forEach(item => total += item.price)
+    //      return total
+    // } 
 
 }

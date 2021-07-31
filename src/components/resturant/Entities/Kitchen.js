@@ -1,7 +1,3 @@
-
-
-
-
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -17,8 +13,8 @@ import './Kitchen.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '90%',
-    margin: '10px'
+    width: '100%',
+  
 
 
   },
@@ -67,9 +63,8 @@ function Kitchen(props) {
 
   return (
     <div >
-      <h3 className="center">Kitchen</h3>
+      <h3 className="aa">Kitchen</h3>
       <Row>
-        <Col className="item-table"  >#</Col>
         <Col className="item-table"  >#</Col>
         <Col className="item-table"  >Table</Col>
         <Col className="item-table"  >Status</Col>
@@ -82,7 +77,7 @@ function Kitchen(props) {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography id="tt">
+            <Typography id="summary">
               <Container >
                 <Row >
                   <Col className="col-lg-2">{index + 1}</Col>
@@ -103,18 +98,18 @@ function Kitchen(props) {
           </Row>
           {item.order_items.map(element =>
             <AccordionDetails >
-              <Typography id="ty">
+              <Typography id="summary">
                 <Row>
                   <Col >{element.name}</Col>
                   <Col >{element.status}</Col>
                   <Col  ><button type="button" className="btn btn-outline-warning btn-sm" id={element.id} onClick={beganPrep}>In Process</button></Col>
-                  <Col className="date1"> <button type="button" className="btn btn-outline-success btn-sm" id={element.id} onClick={beganPrep}>Completed</button></Col>
+                  <Col className="date1"> <button type="button" className="btn btn-outline-success btn-sm" id={element.id} onClick={finshedMeal}>Completed</button></Col>
                 </Row>
               </Typography>
             </AccordionDetails>
           )}
           <Row>
-            <Col ><button id={item.id} type="button" className=" btn btn-outline-primary btn-sm mb-2 center">Finsh Order</button></Col>
+            <Col className="aa" ><button id={item.id} type="button" className="btn btn-outline-primary btn-sm">Finsh Order</button></Col>
           </Row>
         </Accordion>
       )}
