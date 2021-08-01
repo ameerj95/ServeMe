@@ -2,31 +2,50 @@
 .col-icon{
     border-bottom: 1px solid blue;
 }
-.btn-serv{
-    position: relative;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    color:red;
-    background-color: #F0F8FF;
-   
-}
+
 
 .btn-serve{
     position: relative;
-    border-radius: 50%;
+    border-radius: 23%;
     width: 50px;
     height: 50px;
-    color:black
+    color:red;
+    background-color: #fffc6fe0;
   
 }
 #www{
- 
     position: absolute;
     border: 3px groove red;
     border-radius: 40px 40px 40px 40px;
     padding: 5px;
+    background-color: #fffc6fe0;
 }
+
+#www1{
+    position: absolute;
+    border: 3px groove red;
+    border-radius: 40px 40px 40px 40px;
+    padding: 5px;
+    top: 75px;
+    background-color: #fffc6fe0;
+}
+
+#www2{
+    position: absolute;
+    border: 3px groove red;
+    border-radius: 40px 40px 40px 40px;
+    padding: 5px;
+    top: 150px;
+    background-color: #fffc6fe0;
+}
+
+.iconGroup3{
+    position: absolute;
+    padding: 5px;
+    top: 200px;
+}
+
+
 .mm{
     padding-right: 0px;
 }

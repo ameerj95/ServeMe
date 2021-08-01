@@ -1,4 +1,192 @@
 
+/* .bg-first{
+    position: relative; 
+    background: #F1FAFF;
+    background: #F6FEFF;
+    background: -moz-linear-gradient(45deg, #F6FEFF 0%, #FF2A25 50%, #FF0000 100%);
+    background: -webkit-linear-gradient(45deg, #F6FEFF 0%, #FF2A25 50%, #FF0000 100%);
+    background: linear-gradient(45deg, #F6FEFF 0%, #FF2A25 50%, #FF0000 100%);
+    width: 100%;
+    height: 500px;
+}
+.welcome{
+    position: absolute; 
+    color: rgb(255, 255, 255);
+    padding: 0px;
+    margin-bottom: 32px;
+    font-size: 49px;
+    font-weight: bold;
+    line-height: 1.06;
+    text-align: center;
+    max-width: 375px;
+    margin-right: auto;
+    margin-left: auto;
+    top:45px;
+}
+
+#btn-menu{
+    position: absolute; 
+    top: 300px;
+    left: 150px;
+    border: none;
+   
+} */
+/* -------------------------------------------------------- */
+/* .tow{
+     position: relative; 
+     background: #ff2a25;
+     width: 100%;
+     height: 180px;
+}
+
+.our{
+    position: absolute;
+    top: 4px;
+    right: 140px;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 29px;
+    letter-spacing: 1.4px;
+    word-spacing: -1.6px;
+    color: white;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
+}
+.par-our{
+    position: absolute;
+    line-height: 1.25;
+    color: white;
+    font-size: 19px;
+    top: 55px;
+    left: 22px;
+} */
+
+/* -------------------------------------------- */
+/* .first{
+    position: relative;
+    height: 180px;
+}
+#first-time{
+    position: absolute;
+    top: -20px;
+    right: 65px;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 21px;
+    letter-spacing: 0.8px;
+    word-spacing: 2px;
+    color: #FF0000;
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+}
+
+#p-first-time{
+    position: absolute;
+    top: 30px;
+    line-height: 1.25;
+    color: #FF0000;
+    font-size: 19px;
+    text-align: center;
+} */
+
+/* ---------------------------------------------------------- */
+
+/* .img-qr{
+    position: relative;
+    height: 205px;
+    width: 375px;
+    background-image: url('./img-rq.jpg');
+    background-repeat: no-repeat;
+}
+#line1{
+    top: 160px;
+    left: 280px;
+}
+#line2{
+    top: 137px;
+    left: 295px;
+}
+
+#line3{
+    top: 114px;
+    left: 310px;
+}
+#line4{
+    top: 91px;
+    left: 325px;
+}
+
+#line5{
+    top: 68px;
+    left: 340px;
+}
+
+#line6{
+    top: 45px;
+    left: 355px;
+}
+
+#line7{
+    top: 22px;
+    left: 370px;
+}
+
+.allLines{
+    position: absolute;
+    background-color: #ff2a25;
+    width: 100px;
+    height: 13px;
+}
+
+
+.img-home{
+    width: 100%;
+    height: 180px;
+}
+
+.name{
+    position: absolute;
+    top: 400px;
+    right: 130px;
+    color: blue;
+    font-family: Georgia, serif;
+    font-size: 21px;
+    letter-spacing: 2.4px;
+    word-spacing: -1.6px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: italic;
+    font-variant: normal;
+    text-transform: capitalize;
+    -moz-transform: scale(1.1) rotate(317deg);
+    -webkit-transform: scale(1.1) rotate(317deg);
+    -o-transform: scale(1.1) rotate(317deg);
+    -ms-transform: scale(1.1) rotate(317deg);
+    transform: scale(1.1) rotate(317deg);
+}
+
+.icons{
+    color: #200c0c;
+    width: 27px;
+    height: 27px;
+}
+
+.footer{
+    background-color: #dbedf1
+} */
+
+
+
+
+/* ================================ */
+
+
+
 .bg-first{
     position: relative; 
     background: #F1FAFF;
@@ -26,8 +214,8 @@
 
 #btn-menu{
     position: absolute; 
-    top: 270px;
-    left: 165px;
+    top: 300px;
+    left: 150px;
     border: none;
    
 }

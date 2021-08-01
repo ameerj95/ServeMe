@@ -16,6 +16,7 @@ function Service(props) {
         props.clientsocket.socket.emit('customerServer', { tableNum: extracted_tableNum,order_type:event.target.id ,action_type:2 ,notes:"" });
     }
 
+    //  Napkins Baby-Chair Clear-Table Sauces <div>Utensils</div> Ask waiter Problem Take Check
     
     return (
         <>
@@ -25,20 +26,20 @@ function Service(props) {
                 onHide={() => setModalShow(false)}
             />
             <Container fluid className="mm">
-                <Row className=" mt-4 m-1 mb-2">
-                    <Col ><span id="www"><GiCash className="btn-serve" id={2} onClick={serviceRquest}/></span></Col>
-                    <Col onClick={() => setModalShow(true)}><FaUtensils className="btn-serv" /><div>Utensils</div></Col>
-                    <Col ><GiPapers className="btn-serv" id={4} onClick={serviceRquest}/><div>Napkins</div></Col>
-                </Row>
-                <Row className="mt-4 m-1 mb-2 ce">
-                    <Col><GiWoodenChair className="btn-serv" id={5} onClick={serviceRquest}/><div >Baby Chair</div></Col>
-                    <Col><GiSoap className="btn-serv" id={6} onClick={serviceRquest}/><div  >Clear Table</div></Col>
-                    <Col><GiBrandyBottle className="btn-serv" id={7} onClick={serviceRquest}/><div>Sauces</div></Col>
+                <Row className=" mt-4 mb-2 ">
+                    <Col ><span id="www"><GiCash className="btn-serve" onClick={serviceRquest}/></span></Col>
+                    <Col onClick={() => setModalShow(true)}><span id="www"><FaUtensils className="btn-serve" /></span></Col>
+                    <Col ><span id="www"><GiPapers className="btn-serve" id={4} onClick={serviceRquest}/></span></Col>
                 </Row>
                 <Row className="mt-4 mb-2">
-                    <Col><GiTakeMyMoney className="btn-serv" id={8} onClick={serviceRquest}/><div>Take Check</div></Col>
-                    <Col> <MdSyncProblem className="btn-serv" id={9} onClick={serviceRquest}/><div >Problem</div></Col>
-                    <Col><FaQuestion className="btn-serv" id={10} onClick={serviceRquest}/><div >Ask waiter</div></Col>
+                    <Col><span id="www1"><GiWoodenChair className="btn-serve" id={5} onClick={serviceRquest}/></span></Col>
+                    <Col><span id="www1"><GiSoap className="btn-serve" id={6} onClick={serviceRquest}/></span></Col>
+                    <Col><span id="www1"><GiBrandyBottle className="btn-serve" id={7} onClick={serviceRquest}/></span></Col>
+                </Row>
+                <Row className="mt-4 mb-2">
+                    <Col><span id="www2"><GiTakeMyMoney className="btn-serve" id={8} onClick={serviceRquest}/></span><span className="iconGroup3">Take Check</span></Col>
+                    <Col><span id="www2"> <MdSyncProblem className="btn-serve" id={9} onClick={serviceRquest}/></span></Col>
+                    <Col><span id="www2"><FaQuestion className="btn-serve" id={10} onClick={serviceRquest}/></span></Col>
                 </Row>
             </Container>
         </>
