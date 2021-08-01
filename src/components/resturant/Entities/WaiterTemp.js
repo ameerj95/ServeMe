@@ -22,6 +22,14 @@ function WaiterTemp(props) {
     ;
   }
 
+  const finshOrder = (event) =>{
+    console.log("in finshOrder")
+    console.log((event.target.id))
+    props.clientsocket.socket.emit('waiterServer', { id: parseInt(event.target.id), action_type: 2 });
+    ;
+  }
+  
+
   return (
     <div>
       <h1>Waiter</h1>
@@ -33,11 +41,12 @@ function WaiterTemp(props) {
               data[table].map(order => 
                 <li id={order.id}>
                   <div>{props.waiterorder.translator_values(order)}</div>
-                  <button id={order.id} onClick={takeTask}>take task</button>
+                  <button id={order.id}  onClick={takeTask}>take task</button>
                   <button id={order.id} onClick={finshTask}>finsh task</button>
                   </li>
               )
             }
+            <button id={table} onClick={finshOrder} >Order Finshed</button>
           </div>
         )
         }

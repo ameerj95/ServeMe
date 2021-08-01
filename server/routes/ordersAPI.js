@@ -9,7 +9,7 @@ const Waiter = require('../classes/Waiter')()
 
 router.get('/order/:tableNum', async function (req, res) {
     const status = await getOrderStatus(req.params.tableNum)
-    if(!status){await createNewOrder(req.params.tableNum) }
+    if(!status==1){await createNewOrder(req.params.tableNum) }
     const orderID = await getOrderId(req.params.tableNum)
     const order = await getTableOrder(orderID)
     res.send(order)
@@ -17,7 +17,7 @@ router.get('/order/:tableNum', async function (req, res) {
 
 const getOrderId = async (tableNum) =>{
     const status = await sequelize.query(`SELECT id from order_table 
-    where table_num=${tableNum}`)
+    where table_num=${tableNum} AND status=1`)
     return status[0][0].id
 }
 
@@ -26,7 +26,7 @@ const getTableOrder = async (order_id)=>{
     FROM order_item
     LEFT JOIN menu_items ON order_item.menu_item_id = menu_items.id
     LEFT JOIN order_table ON order_item.order_id = order_table.id
-    where order_id = ${order_id}`)
+    where order_id = ${order_id} AND order_table.status=1`)
     return table_order[0]
 }
 //===============================================================

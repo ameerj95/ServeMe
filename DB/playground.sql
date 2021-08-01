@@ -50,4 +50,7 @@
 --         SET status = 2
 --         WHERE id=55;
 
-select id,name from menu_items
+-- select id,name from menu_items
+
+SELECT * from order_waiter
+                 WHERE status=1 AND order_id=11
