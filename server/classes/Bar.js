@@ -53,7 +53,7 @@ const BarModule = function () {
     //===============================================================
     const getAllActiveOrders = async () => {
         const activeOrders = await sequelize.query(`SELECT * from order_table
-    WHERE status!=3`)
+    WHERE status=1`)
         //console.log(activeOrders)
         return activeOrders[0]
     }

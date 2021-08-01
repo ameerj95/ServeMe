@@ -16,16 +16,15 @@ function MenuItems(props) {
     const [modalShow, setModalShow] = useState(false);
     return (
         <>
+     
            <PopUpItems show={modalShow}
                 item={props.item}
                 onHide={() => setModalShow(false)}
             />
-
-
             <div className="container-fluid  mt-5 card-item" >
                     <img src={`${props.item.img}`} className="img-item"/>
-                    <h4>{props.item.name}</h4>
-                    <div>Price : {props.item.price} $</div>
+                    <h4 className='d-flex justify-content-center'>{props.item.name}</h4>
+                    <div>Price : {props.item.price} ₪</div>
                     <div onClick={() => setModalShow(true)}><BsInfoCircleFill className="icon-info"/></div>
                     <div className="in">
                     {(props.item.vegan) ? <Badge className=" pill bg-warning"> Vegan</Badge> : ""} {" "}

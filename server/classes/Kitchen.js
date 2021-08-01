@@ -8,15 +8,12 @@ const Manager = require('../classes/Manager.js')()
 const KitchenModule = function () {
     //===============================================================
     const pickUpOrderItem = async (item, io) => {
-        console.log(77777777777777777777777777777777777777777777777777777777777)
-        console.log('\x1b[36m%s\x1b[0m',item)
+        // console.log('\x1b[36m%s\x1b[0m',item)
         await sequelize.query(`UPDATE order_item
         SET status = 2
         WHERE id=${item.item_id};`)
 
         emitToKitchen(io)
-        console.log("creating for waiter")
-        console.log({...item,action_type:0})
         Waiter.createWaiterOrder({...item,action_type:0})
         Waiter.emitToWaiter(io)
         Manager.emitToManagerActiveFoodOrders(io)
@@ -33,7 +30,9 @@ const KitchenModule = function () {
     }
     //===============================================================
     const getAllActivePopulateFoodOrders = async () => {
+        console.log("in get all active orders")
         var result = await getAllActiveOrders()
+        console.log(result)
         const orders = await populateActiveOrders(result, 1)
         return orders
     }
@@ -42,6 +41,7 @@ const KitchenModule = function () {
         var result = await getAllActiveOrders()
         const orders = await populateActiveOrders(result, 1)
         console.log("in emit to kitchen")
+
         io.sockets.emit("kitchen", orders)
     }
 
@@ -68,7 +68,7 @@ const KitchenModule = function () {
     //===============================================================
     const getAllActiveOrders = async () => {
         const activeOrders = await sequelize.query(`SELECT * from order_table
-    WHERE status!=3`)
+    WHERE status=1`)
         //console.log(activeOrders)
         return activeOrders[0]
     }
@@ -76,13 +76,15 @@ const KitchenModule = function () {
 
     //===============================================================
     const getOrderItems = async (order_id, station) => {
+        console.log(order_id,station,"=========================")
         const orderItems = await sequelize.query(`SELECT name,order_item.order_id,order_item.id,order_item.status FROM order_item
     LEFT JOIN menu_items on menu_items.id = order_item.menu_item_id
     LEFT JOIN order_table on order_table.id = order_item.order_id
-    WHERE order_id = ${order_id} AND station =${station}`)
+    WHERE order_id = ${order_id} AND station =${station} AND order_table.status=1`)
         return orderItems[0]
     }
 
+    //================================================================ 
     return {
         emitToKitchen: emitToKitchen,
         pickUpOrderItem, pickUpOrderItem,

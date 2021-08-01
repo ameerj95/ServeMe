@@ -9,9 +9,18 @@ const SocketListeners = function () {
                 stores.table.updateCart(data.tableOrder)
             }
         });
+        stores.clientsocket.socket.on("cart", data => {
+            if (data.tableNum == stores.table.tableNum) {
+                console.log("IN CART UPDATED")
+            }
+        });
+        stores.clientsocket.socket.on("Cart", data => {
+            if (data.tableNum == stores.table.tableNum) {
+                console.log("IN CUSTOMER CART", data)
+            }
+        });
     }
     
-
     const createkitchenSocket = (stores) => {
         console.log("listening in kitchen")
         stores.clientsocket.socket.on("kitchen", data => {
@@ -19,13 +28,21 @@ const SocketListeners = function () {
             stores.foodorders.updateFoodOrders(data)
         }
         );
+        stores.clientsocket.socket.on("resturant", data => {
+            stores.foodorders.fetchAllOrders()
+        }
+        );
+
     }
 
     const createBarSocket = (stores) => {
         console.log("listening in bar")
         stores.clientsocket.socket.on("bar", data => {
-            console.log("in bar client ", data)
             stores.foodorders.updateFoodOrders(data)
+        }
+        );
+        stores.clientsocket.socket.on("resturant", data => {
+            stores.foodorders.fetchAllOrders()
         }
         );
     }

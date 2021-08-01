@@ -38,6 +38,7 @@ function Waiter(props) {
       />
       <div> Waiter</div>
       <div className="container">
+        <h2>Waiter hhh</h2>
         <table>
           <thead>
             <tr>
