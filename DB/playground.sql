@@ -50,4 +50,13 @@
 --         SET status = 2
 --         WHERE id=55;
 
-select id,name from menu_items
+-- select id,name from menu_items
+
+-- SELECT * from order_waiter
+--                  WHERE status=1 AND order_id=11
+
+SELECT * , order_item.id as id
+        FROM order_item
+        LEFT JOIN menu_items ON order_item.menu_item_id = menu_items.id
+        LEFT JOIN order_table ON order_item.order_id = order_table.id
+        where order_id = 23 AND order_table.status=1

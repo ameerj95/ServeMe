@@ -17,7 +17,7 @@ router.get('/test01', async function (req, res) {
 })
 const getTableOrder = async (order_id)=>{
     const table_order = await sequelize.query(`SELECT *
-    FROM order_item
+    FROM order_item , order_item.id as id
     LEFT JOIN menu_items ON order_item.menu_item_id = menu_items.id
     LEFT JOIN order_table ON order_item.order_id = order_table.id
     where order_id = ${order_id}`)

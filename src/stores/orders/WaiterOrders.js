@@ -66,9 +66,9 @@ export class WaiterOrders {
       case 0:
         return (<p style={{backgroundColor: this.statusColors[order.status]}}>Pick up a {this.menuObject[order.item_id]}</p>)
       case 1:
-        return (<p style={{backgroundColor: this.statusColors[order.status]}}>Pick up a ${this.menuObject[order.item_id]}</p>)
+        return (<p style={{backgroundColor: this.statusColors[order.status]}}>Pick up a {this.menuObject[order.item_id]}</p>)
       case 2:
-        return (<p style={{backgroundColor: this.statusColors[order.status]}}>Give the Bill status=${order.status}</p>)
+        return (<p style={{backgroundColor: this.statusColors[order.status]}}>Give the Bill status={order.status}</p>)
       case 3:
         return (<p style={{backgroundColor: this.statusColors[order.status]}}>Give Utensils : ${order.note}</p>)
       case 4:

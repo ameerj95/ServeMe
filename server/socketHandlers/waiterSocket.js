@@ -8,6 +8,7 @@ const Waiter = require('../classes/Waiter.js')()
 const action_map = {
     "0":Waiter.startWaiterOrder,
     "1":Waiter.completeWaiterOrder,
+    "2":Waiter.finshTableOrder,
 }
 //===============================================================
 //in this socket we want to recive the following
