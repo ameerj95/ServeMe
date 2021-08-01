@@ -105,7 +105,7 @@ function WaiterTemp(props) {
               </Row>
           )}
             <Row>
-            <Col className="aa" ><button id={table.id} type="button" className="btn btn-outline-primary btn-sm">Finsh Order</button></Col>
+            <Col className="aa" ><button id={table} onClick={finshOrder} type="button" className="btn btn-outline-primary btn-sm">Finsh Order</button></Col>
           </Row>
         </Accordion>
       )}

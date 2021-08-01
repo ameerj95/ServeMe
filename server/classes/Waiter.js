@@ -94,7 +94,7 @@ const WaiterModule = function () {
         return tables_total[0][0]['count(table_num)']
     }
     const finshTableOrder = async (order,io) =>{
-        console.log(order,io)
+        console.log(order)
         console.log("IN FINSH TABLE ORDER")
         await sequelize.query(`UPDATE order_table
             SET status = 2
