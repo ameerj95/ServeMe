@@ -1,127 +1,93 @@
 import React, { useState, useEffect } from "react";
 import { observer, inject } from "mobx-react";
-import { data } from "jquery";
+import Button from "@material-ui/core/Button";
+import "./Actions.css"
 const imgURL =
   "https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 
 function Add(props) {
-  const [newItem, setNewItem] = useState({});
-  useEffect(() => {
-    // setNewItem({
-    //   id: "1",
-    //   name: "Pizza",
-    //   img: imgURL,
-    //   price: 50,
-    //   description: "The best",
-    //   category: "food",
-    //   vegan: true,
-    //   gluten: true,
-    // });
-  }, []);
+  const [input, setInput] = useState({
+    id: "",
+    name: "",
+    img: "",
+    price: 0,
+    description: "",
+    category: "",
+    vegan: false,
+    gluten: false,
+  });
 
-  const handleChange = (e) => {
-    setNewItem({
-      ...newItem,
-      [e.target.id]: e.target.value,
-      [e.target.name]: e.target.value,
-      [e.target.img]: e.target.value,
-      [e.target.price]: e.target.value,
-      [e.target.description]: e.target.value,
-      [e.target.category]: e.target.value,
-      [e.target.vegan]: e.target.value,
-      [e.target.gluten]: e.target.value,
+  function handleChange(e) {
+    const value = e.target.value;
+    setInput({
+      ...input,
+      [e.target.id]: value,
+      [e.target.name]: value,
+      [e.target.img]: value,
+      [e.target.price]: value,
+      [e.target.description]: value,
+      [e.target.category]: value,
+      [e.target.vegan]: value,
+      [e.target.gluten]: value,
     });
-  };
-  const handleSubmit = () => {
-    // console.log(newItem);
-    // props.menu.AddNewItem(newItem);
-    props.menu.addMenuItem(newItem);
-    console.log(newItem);
-  };
+  }
 
+  const AddItem = () => {
+    props.menu.addItem(input);
+  };
   return (
     <div className="addSection">
-      <h3>Add Item</h3>
-      <span className="addInputTextField"> Name :</span> <br></br>
-      <input
-        name="Name"
-        placeholder="Item Name"
-        onChange={handleChange}
-      ></input>
+      <h1>Add Item</h1>
+
       <br></br>
-      <span className="addInputTextField">Id :</span>
+      <span>name</span>
       <br></br>
-      <input
-        type="number"
-        name="id"
-        placeholder="id"
-        onChange={handleChange}
-      ></input>
+      <input value={props.name} name="name" onChange={handleChange} />
+
       <br></br>
-      <span className="addInputTextField">Img :</span>
+      <span>id</span>
       <br></br>
-      <input
-        type="url"
-        name="img"
-        placeholder="img"
-        onChange={handleChange}
-      ></input>
+      <input value={props.id} name="id" onChange={handleChange} />
+
       <br></br>
-      <span className="addInputTextField"> Price :</span>
+      <span className="addInputTextField">img</span>
       <br></br>
-      <input name="price" placeholder="price" onChange={handleChange}></input>
+      <input value={props.img} name="img" onChange={handleChange} />
+
       <br></br>
-      <span className="addInputTextField"> Category :</span>
+      <span className="addInputTextField">price</span>
       <br></br>
-      <input
-        name="category"
-        placeholder="category"
-        onChange={handleChange}
-      ></input>
+      <input value={props.price} name="price" onChange={handleChange} />
+
       <br></br>
-      <span className="addInputTextField"> Vegan : </span>
+      <span className="addInputTextField">category</span>
       <br></br>
-      <input
-        name="vegan"
-        placeholder="vegan"
-        onChange={handleChange}
-        list="vegan"
-        autocomplete="off"
-      ></input>
-      <datalist id="vegan">
-        <option>False</option>
-        <option>True</option>
-      </datalist>
+      <input value={props.category} name="category" onChange={handleChange} />
+
       <br></br>
-      <span className="addInputTextField"> Gluten :</span>
+      <span className="addInputTextField">vegan</span>
       <br></br>
-      <input
-        type="text"
-        name="gluten"
-        placeholder="gluten"
-        onChange={handleChange}
-        list="gluten"
-        autocomplete="off"
-      />
-      <datalist id="gluten">
-        <option>False</option>
-        <option>True</option>
-      </datalist>
+      <input name="vegan" value={props.vegan} onChange={handleChange} />
+
+      <br></br>
+      <span className="addInputTextField">gluten : </span>
+      <br></br>
+      <input value={props.gluten} name="gluten" onChange={handleChange} />
+
       <br></br>
       <span className="addInputTextField"> Description : </span>
       <br></br>
       <textarea
         rows="4"
         cols="50"
+        value={props.description}
         name="description"
         form="usrform"
         placeholder="description"
         onChange={handleChange}
       ></textarea>
-      <br></br>
-      <button className onClick={handleSubmit}>
-        Add new Item
-      </button>
+        <br></br>
+      <Button onClick={AddItem}>Add New Item</Button>
     </div>
   );
 }

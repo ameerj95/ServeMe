@@ -6,9 +6,12 @@ import { observer, inject } from "mobx-react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import WaiterTemp from "./components/resturant/Entities/WaiterTemp";
 import CRUDMenu from "./components/resturant/Entities/Manager/DashBoard/CRUDMenu";
+import Add from "./components/resturant/Entities/Manager/DashBoard/Add";
+
 //=========================================================================
 function App(props) {
   const userType = props.clientsocket.usertype;
+ 
   return (
     <Router>
       {(() => {
@@ -22,10 +25,11 @@ function App(props) {
           case "waiter":
             return <WaiterTemp />;
           case "manager":
-            return (
-              //  <CRUDMenu/>
-              <Manager />
-            );
+            return <Manager />;
+          case "actions":
+            return <CRUDMenu />;
+          case "add":
+            return <Add />;
           default:
             return <div>Redirect to a proper page please.</div>;
         }

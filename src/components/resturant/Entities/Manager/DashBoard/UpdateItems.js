@@ -1,73 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../../../../styles/table.css";
 import { observer, inject } from "mobx-react";
 import { MDBDataTableV5, MDBDataTable } from "mdbreact";
 
 function UpdateItems(props) {
-  const data = props.menu.list;
-  const [img, setimg] = useState("");
-  const [name, setname] = useState("");
-  const [price, setprice] = useState(Number);
-  const [description, setdescription] = useState("");
-  const [id, setid] = useState(Number);
-  const [category, setcategory] = useState([""]);
-  const [vegan, setvegan] = useState(Boolean);
-  const [gluten, setgluten] = useState(Boolean);
-  const [inEditMode, setInEditMode] = useState({
-    status: false,
-    rowKey: null,
+  const [item, setItem] = useState({
+    id: "",
+    name: "",
+    img: "",
+    price: 0,
+    description: "",
+    category: "",
+    vegan: false,
+    gluten: false,
   });
-  console.log(data);
-  // const handleSubmit = () => {
-  //     console.log(formValues)
-  // }
-  const onEdit = ({
-    img,
-    name,
-    price,
-    description,
-    id,
-    category,
-    vegan,
-    gluten,
-  }) => {
-    setInEditMode({
-      status: true,
-      rowKey: id,
-    });
-    setimg(img);
-    setname(name);
-    setprice(price);
-    setdescription(description);
-    setid(id);
-    setcategory(category);
-    setvegan(vegan);
-    setgluten(gluten);
-  };
-  const handleInputName = (event) => {
-    setname({ name: event.target.value });
-  };
+  const data = props.menu.lis;
 
-  const handleInputimg = (event) => {
-    setimg({ img: event.target.value });
-  };
-  const handleInputid = (event) => {
-    setid({ id: event.target.value });
-  };
-  const handleInputprice = (event) => {
-    setprice({ price: event.target.value });
-  };
-  const handleInputdescription = (event) => {
-    setdescription({ description: event.target.value });
-  };
-  const handleInputcategory = (event) => {
-    setcategory({ category: event.target.value });
-  };
-  const handleInputvegan = (event) => {
-    setvegan({ vegan: event.target.value });
-  };
-  const handleInputgluten = (event) => {
-    setgluten({ gluten: event.target.value });
+  console.log(data);
+
+  const handleChange = (event) => {
+    const myArr = event.target.value.split(" ");
+    setItem({
+      ...item,
+      id: myArr[0],
+      name: myArr[1],
+      img: myArr[2],
+      price: myArr[3],
+      description: myArr[4],
+      category: myArr[5],
+      vegan: myArr[6],
+      gluten: myArr[7],
+    });
   };
 
   return (
@@ -95,7 +58,7 @@ function UpdateItems(props) {
                   <img
                     className="ItemImg"
                     src={`${item.img}`}
-                    onChange={handleInputimg}
+                    onChange={handleChange}
                   />
                 </div>
               </td>
@@ -103,7 +66,7 @@ function UpdateItems(props) {
                 <input
                   type="text"
                   value={item.id}
-                  onChange={handleInputid}
+                  onChange={handleChange}
                   className="ItemInput"
                 ></input>
               </td>
@@ -111,7 +74,7 @@ function UpdateItems(props) {
                 <input
                   type="text"
                   value={item.name}
-                  onChange={handleInputName}
+                  onChange={handleChange}
                   className="ItemInput"
                 ></input>
               </td>
@@ -119,7 +82,7 @@ function UpdateItems(props) {
                 <input
                   type="text"
                   value={item.price}
-                  onChange={handleInputprice}
+                  onChange={handleChange}
                   className="ItemInput"
                 ></input>
               </td>
@@ -127,7 +90,7 @@ function UpdateItems(props) {
                 <input
                   type="text"
                   value={item.description}
-                  onChange={handleInputdescription}
+                  onChange={handleChange}
                   className="ItemInput"
                 ></input>
               </td>
@@ -135,7 +98,7 @@ function UpdateItems(props) {
                 <input
                   type="text"
                   value={item.category}
-                  onChange={handleInputcategory}
+                  onChange={handleChange}
                   className="ItemInput"
                 ></input>
               </td>
@@ -144,7 +107,7 @@ function UpdateItems(props) {
                 <input
                   type="text"
                   value={item.vegan}
-                  onChange={handleInputvegan}
+                  onChange={handleChange}
                   className="ItemInput"
                 ></input>
               </td>
@@ -152,7 +115,7 @@ function UpdateItems(props) {
                 <input
                   type="text"
                   value={item.gluten}
-                  onChange={handleInputgluten}
+                  onChange={handleChange}
                   className="ItemInput"
                 ></input>
               </td>
