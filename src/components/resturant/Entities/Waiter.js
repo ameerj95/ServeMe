@@ -30,7 +30,7 @@ function Waiter(props) {
         onHide={() => setModalShow(false)}
       />
       <div className="container">
-        <h2>Waiter</h2>
+        <h2>Waiter hhh</h2>
         <table>
           <thead>
             <tr>

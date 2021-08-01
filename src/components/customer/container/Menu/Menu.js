@@ -4,35 +4,36 @@ import Appetizers from "./Appetizers/Appetizers";
 import Drinks from "./Drinks/Drinks";
 import Desserts from "./Desserts/Desserts";
 import Main from "./Main/Main";
+import './Menu.css'
 function Menu() {
   return (
     <Router>
-      <Container fluid>
-        <Row>
+      <Container fluid >
+        <Row className="mt-3">
           <Col className="menu-option">
             <Button variant="light">
-              <Link className="links-customer" to="/appetizers">
+              <Link className="links" to="/appetizers">
                 Appetizers
               </Link>
             </Button>
           </Col>
-          <Col className="menu-option">
+          <Col className="menu-option ml-1">
             <Button variant="light">
-              <Link className="links-customer" to="/main">
+              <Link className="links" to="/main">
                 Main
               </Link>
             </Button>
           </Col>
           <Col className="menu-option">
             <Button variant="light">
-              <Link className="links-customer" to="/drinks">
+              <Link className="links" to="/drinks">
                 Drinks
               </Link>
             </Button>
           </Col>
           <Col className="menu-option">
             <Button variant="light">
-              <Link className="links-customer" to="/desserts">
+              <Link className="links" to="/desserts">
                 Desserts
               </Link>
             </Button>
@@ -40,7 +41,7 @@ function Menu() {
         </Row>
         <hr></hr>
       </Container>
-      <hr></hr>
+      
       <Route exact path="/appetizers" render={() => <Appetizers />} />
       <Route exact path="/drinks" render={() => <Drinks />} />
       <Route path="/desserts" exact render={() => <Desserts />} />

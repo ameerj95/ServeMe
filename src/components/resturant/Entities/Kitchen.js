@@ -108,9 +108,6 @@ function Kitchen(props) {
               </Typography>
             </AccordionDetails>
           )}
-          <Row>
-            <Col className="aa" ><button id={item.id} type="button" className="btn btn-outline-primary btn-sm">Finsh Order</button></Col>
-          </Row>
         </Accordion>
       )}
     </div>

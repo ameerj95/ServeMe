@@ -9,20 +9,26 @@ import Menu from '../container/Menu/Menu'
 import Home from '../container/Home/Home'
 import Cart from '../container/Cart/Cart'
 import './Navbar.css'
+import { observer, inject } from "mobx-react";
 
-function NavBarLinks() {
+function NavBarLinks(props) {
+
+  let countCartItems = props.table.cart.length
+  
   return (
     <div>
-      <Container fluid>
+
+
+      <Container fluid className='pr-0 mt-2'>
         <Row>
           <Col><Link to="/"><ImHome className="links-customer" /></Link></Col>
           <Col><Link to="/menu"><BiFoodMenu className="links-customer" /></Link></Col>
-          <Col><Link to="/cart"><GiShoppingCart className="links-customer" /></Link></Col>
+          <Col><Link to="/cart"><GiShoppingCart className="links-customer" />
+          {countCartItems ? 
+          (<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-light">{countCartItems} </span>) : ("")}</Link></Col>
           <Col><Link to="/service"><GiHand className="links-customer" /></Link></Col>
         </Row>
-        <hr></hr>
       </Container>
-      <hr></hr>
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/menu" render={() => <Menu />} />
       <Route path="/service" exact render={() => <Service />} />
@@ -30,5 +36,4 @@ function NavBarLinks() {
     </div>
   )
 }
-
-export default NavBarLinks
+export default inject("table")(observer(NavBarLinks));
