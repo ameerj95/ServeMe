@@ -19,12 +19,14 @@ function Service(props) {
     
     return (
         <>
+            <h5 className='title d-flex justify-content-center mt-3 mb-3'>Fast Service</h5>
+
             <PopUpOption show={modalShow}
                 onHide={() => setModalShow(false)}
             />
-            <Container fluid>
-                <Row className="mt-4 m-1 mb-2">
-                    <Col ><GiCash className="btn-serv" id={2} onClick={serviceRquest}/><div  >Give Check</div></Col>
+            <Container fluid className="mm">
+                <Row className=" mt-4 m-1 mb-2">
+                    <Col ><span id="www"><GiCash className="btn-serve" id={2} onClick={serviceRquest}/></span></Col>
                     <Col onClick={() => setModalShow(true)}><FaUtensils className="btn-serv" /><div>Utensils</div></Col>
                     <Col ><GiPapers className="btn-serv" id={4} onClick={serviceRquest}/><div>Napkins</div></Col>
                 </Row>

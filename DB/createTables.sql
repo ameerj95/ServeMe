@@ -62,3 +62,5 @@ use servemedb;
 
 
 
+ALTER TABLE order_waiter
+add item_id int
