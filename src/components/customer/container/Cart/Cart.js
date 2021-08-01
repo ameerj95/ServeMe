@@ -11,8 +11,12 @@ function Cart(props) {
         props.clientsocket.socket.emit('resturant', { tableNum: extracted_tableNum ,action_type:0 });
     }
 
-    const deleteItem = () =>{
-        console.log("delete");
+    const deleteItem = (event) =>{
+        console.log(JSON.parse(JSON.stringify(props.table.cart)));
+        console.log(event.currentTarget.id)
+        const extracted_tableNum = props.table.tableNum
+        props.clientsocket.socket.emit('customerServer', { tableNum: extracted_tableNum,id:event.currentTarget.id ,action_type:1 });
+
     }
     return (
         <>
@@ -31,7 +35,7 @@ function Cart(props) {
                         <Col xs={1}> <h5>{index+1}</h5></Col>
                             <Col xs={5}> <h5>{item.name}</h5></Col>
                             <Col xs={3}><h5>{item.price}</h5></Col>
-                            <Col xs={3}><MdDelete className='delete-cart' onClick={deleteItem}/></Col>
+                            <Col xs={3}><MdDelete id={item.id} className='delete-cart' onClick={deleteItem}/></Col>
                         </Row>
                         <hr />
                     </Container>

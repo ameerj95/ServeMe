@@ -28,14 +28,15 @@ const CustomerModule = function () {
         //get the order ID
         const order_id = await getOrderId(data.tableNum)
         //remove the order from cart based on ID.
-        await removeFromCart(data.deletedItem_id)
+        console.log(data)
+        await removeFromCart(data.id)
         const tableOrder = await getTableOrder(order_id)
         //emit to all clients connected to this table new order
         io.sockets.emit('customer', { ...data, tableOrder })
     }
     //===============================================================
     const getTableOrder = async (order_id) => {
-        const table_order = await sequelize.query(`SELECT *
+        const table_order = await sequelize.query(`SELECT * , order_item.id as id
         FROM order_item
         LEFT JOIN menu_items ON order_item.menu_item_id = menu_items.id
         LEFT JOIN order_table ON order_item.order_id = order_table.id
@@ -78,8 +79,9 @@ const CustomerModule = function () {
 
     //===============================================================
     const removeFromCart = async (id) => {
+        console.log("requestService")
         await sequelize.query(`DELETE from order_item
-        WHERE id=${id})`)
+        WHERE id=${id}`)
     }
     //===============================================================
     const test = () =>{

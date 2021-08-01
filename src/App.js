@@ -7,6 +7,7 @@ import { observer, inject } from "mobx-react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import WaiterTemp from "./components/resturant/Entities/WaiterTemp";
 import CRUDMenu from './components/resturant/Entities/Manager/DashBoard/CRUDMenu';
+import QR from './components/resturant/QR/QR';
 //=========================================================================
 function App(props) {
 
@@ -34,7 +35,7 @@ function App(props) {
                   )
               case 'manager':
                   return (
-                   <CRUDMenu/>
+                   <QR/>
                   )
               default:
                   return (

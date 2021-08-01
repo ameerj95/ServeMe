@@ -22,8 +22,8 @@ const getOrderId = async (tableNum) =>{
 }
 
 const getTableOrder = async (order_id)=>{
-    const table_order = await sequelize.query(`SELECT *
-    FROM order_item
+    const table_order = await sequelize.query(`SELECT * , order_item.id as id
+    FROM order_item 
     LEFT JOIN menu_items ON order_item.menu_item_id = menu_items.id
     LEFT JOIN order_table ON order_item.order_id = order_table.id
     where order_id = ${order_id} AND order_table.status=1`)
