@@ -1,23 +1,121 @@
 
+#btn-home{
+    position: absolute;
+    top: 10px;
+    width: 50px;
+    height: 49px;
+    left: 15px;
+    border-radius: 50%;
+    font-size: 26px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+
+#btn-menuNav{
+    position: absolute;
+    top: 10px;
+    width: 50px;
+    height: 49px;
+    left: 18px;
+    border-radius: 50%;
+    font-size: 26px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+#btn-cart{
+    position: absolute;
+    top: 10px;
+    width: 50px;
+    height: 49px;
+    left: 15px;
+    border-radius: 50%;
+    font-size: 26px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+
+#btn-hand{
+    position: absolute;
+    top: 10px;
+    width: 50px;
+    height: 49px;
+    left: 10px;
+    border-radius: 50%;
+    font-size: 26px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.colorIcons{
+    color: #F490A3;
+}
+
+
+
 .links-customer{
+    position: relative;
     text-decoration :none;
+    font-weight: bold;
+    top: -12px;
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #F490A3;
+    margin-bottom: 10px;
+}
+
+
+
+
+.links-cart{
+    position: relative;
+    text-decoration: none;
     font-weight: bold;
     width: 30px;
     height: 30px;
-    border-bottom: 2px solid red;
-    
     margin-top: 10px;
-    text-decoration: none;
-    color: black;
+    color: #F490A3;
     margin-bottom: 10px;
-  
+    top: 18px;
+    left: 16px;
 }
 
-#logod{
-    width: 60px;
-    height: 40px;
+#circl{
+    position: absolute;
+    border: 4px groove white;
+    border-radius: 40px 40px 40px 40px;
+    bottom: -15px;
+    top: 17px;
+    padding: 6px;
+
+}
+
+.countCart{
+    left: 39px;
+    padding: 0px;
+}
+
+
+
+#circ{
+    position: absolute;
+    border: 4px groove white;
+    border-radius: 40px 40px 40px 40px;
+    bottom: -10px;
+    top: 17px;
+    padding: 21px;
+    left: 20px;
+}
+
+#hr{
+    padding-left: 0px;
+    background-color: white;
+    margin-left: 2px;
+    padding-top: 2px;
+    margin-top: 77px;
+    margin-right: 25px;
 }
 
 Link{
     text-decoration: none;
+    color: pink;
 }

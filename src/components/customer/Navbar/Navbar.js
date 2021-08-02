@@ -3,6 +3,7 @@ import { Button, Col, Row, Container } from 'react-bootstrap'
 import { GiShoppingCart, GiHand } from "react-icons/gi";
 import { BiFoodMenu } from "react-icons/bi";
 import { ImHome } from "react-icons/im";
+import { FaShoppingCart } from "react-icons/fa";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Service from '../container/Service/Service';
 import Menu from '../container/Menu/Menu'
@@ -14,21 +15,31 @@ import { observer, inject } from "mobx-react";
 function NavBarLinks(props) {
 
   let countCartItems = props.table.cart.length
-  
+
   return (
     <div>
 
 
-      <Container fluid className='pr-0 mt-2'>
+      <Container fluid className='pr-0 mt-2 text-info'>
         <Row>
-          <Col><Link to="/"><ImHome className="links-customer" /></Link></Col>
-          <Col><Link to="/menu"><BiFoodMenu className="links-customer" /></Link></Col>
-          <Col><Link to="/cart"><GiShoppingCart className="links-customer" />
-          {countCartItems ? 
-          (<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-light">{countCartItems} </span>) : ("")}</Link></Col>
-          <Col><Link to="/service"><GiHand className="links-customer" /></Link></Col>
+          <Col sx={3}><button id="btn-home" type="button" className="btn btn-outline-light"><Link to="/"><ImHome className="colorIcons" /></Link></button></Col>
+          <Col xs={3}><button id="btn-menuNav" type="button" className="btn btn-outline-light"> <Link to="/menu"><BiFoodMenu className="colorIcons" /></Link></button></Col>
+          <Col xs={3}><button id="btn-cart" type="button" className="btn btn-outline-light"> <Link to="/cart"><FaShoppingCart className="colorIcons"/>
+          {countCartItems ? (<span className="countCart position-absolute translate-middle badge rounded-pill bg-danger text-light">{countCartItems} </span>) : ("")}
+          </Link></button></Col>
+          <Col xs={3}><button id="btn-hand" type="button" className="btn btn-outline-light"> <Link to="/service"><GiHand  className="colorIcons" /></Link></button></Col>
         </Row>
+        <hr id="hr" />
+
+
       </Container>
+
+
+
+
+
+
+
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/menu" render={() => <Menu />} />
       <Route path="/service" exact render={() => <Service />} />

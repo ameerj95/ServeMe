@@ -90,8 +90,6 @@ import { Button, Col, Row, Container } from 'react-bootstrap'
 import {FaTwitterSquare, FaPhoneSquareAlt, FaFacebookSquare, FaInstagramSquare, FaSnapchatSquare, HiOutlineMail } from 'react-icons/fa';
 import { MdEmail, MdLocationOn } from 'react-icons/md';
 import { GiClockwork} from 'react-icons/gi';
-
-
 import "./Home.css";
 
 function Home(props) {
@@ -100,9 +98,9 @@ function Home(props) {
     <div className="home">
       <div className="bg-first">
         <div className="welcome">Welcome to {props.info.name} a digital restaurant</div>
-        <button id="btn-menu" className=' btn-lg'>Menu</button>
+        <button id="btn-menu" type="button" className="btn btn-outline-light">Menu</button>
       </div>
-      <img src={`${props.info.img}`} width='375px' height="200px" />
+      <img id="img-food" src={`${props.info.img}`} width='375px' height="200px" />
       <div className="tow">
         <div className="our">Our App</div>
         <p className="par-our">Enjoy the digital service
@@ -110,7 +108,7 @@ function Home(props) {
           , you can place the order through ServeMe</p>
       </div>
 
-      <div className="img-qr">
+      <div  className="img-qr">
         <div className="allLines" id="line1"></div>
         <div className="allLines" id="line2"></div>
         <div className="allLines" id="line3"></div>
@@ -129,13 +127,10 @@ function Home(props) {
           and enjoy millions of special offers and simple,
           secure payment.</div>
       </div>
+
+      {/* <div id="map"></div> */}
       <div className="footer">
         <Container fluid >
-          {/* <Row >
-        <Col className="icons"><FaFacebookSquare/></Col>
-        <Col className="icons"><FaInstagramSquare/></Col>
-        <Col className="icons"><FaTwitterSquare/></Col>
-        </Row> */}
           <Row >
             <Col xs={7} className="icons mt-2"><MdEmail />{' '}{props.info.email}</Col>
             <Col className="icons mt-2"><FaFacebookSquare/>{' '}Facebook</Col>

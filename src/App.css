@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+
+body{
+  font-family: 'Merienda', cursive;
+  background-color: #324760 ;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +41,4 @@
     transform: rotate(360deg);
   }
 } 
+

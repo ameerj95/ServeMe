@@ -38,9 +38,9 @@ const imgRestaurant =
   "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 let info = new Info(
   "1",
-  "Drby Bar",
+  "eLEVaTIon",
   imgRestaurant,
-  "koko koko koko",
+  "Asian Kitchen & Sushi Bar",
   "04-2223434",
   "11:00 - 23:00",
   "logo",

@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import PopUpItems from '../../../reusables/PopUpItems/PopUpItems';
-import { Card, Button ,Badge} from 'react-bootstrap'
+import {Badge} from 'react-bootstrap'
 import { BsInfoCircleFill } from "react-icons/bs";
 import { observer, inject } from 'mobx-react'
-
 import './MenuItems.css'
+
+
 function MenuItems(props) {
 
     function addToCart() {
@@ -21,7 +22,7 @@ function MenuItems(props) {
                 item={props.item}
                 onHide={() => setModalShow(false)}
             />
-            <div className="container-fluid  mt-5 card-item" >
+            <div className="container-fluid mb-5 mt-5 card-item" >
                     <img src={`${props.item.img}`} className="img-item"/>
                     <h4 className='d-flex justify-content-center'>{props.item.name}</h4>
                     <div>Price : {props.item.price} ₪</div>
@@ -30,7 +31,7 @@ function MenuItems(props) {
                     {(props.item.vegan) ? <Badge className=" pill bg-warning"> Vegan</Badge> : ""} {" "}
                     {(props.item.gluten) ? <Badge className=" pill bg-info" > gluten</Badge> : ""}
                     </div>
-                    <Button variant="warning" onClick={addToCart}>Order</Button>
+                    <button className="button-17" id="btnAddToCart" role="button" onClick={addToCart}>Add to cart</button>
             </div>
         </>
     )

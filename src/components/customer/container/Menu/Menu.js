@@ -8,40 +8,15 @@ import './Menu.css'
 function Menu() {
   return (
     <Router>
-      <Container fluid >
-        <Row className="mt-3">
-          <Col className="menu-option">
-            <Button variant="light">
-              <Link className="links" to="/appetizers">
-                Appetizers
-              </Link>
-            </Button>
-          </Col>
-          <Col className="menu-option ml-1">
-            <Button variant="light">
-              <Link className="links" to="/main">
-                Main
-              </Link>
-            </Button>
-          </Col>
-          <Col className="menu-option">
-            <Button variant="light">
-              <Link className="links" to="/drinks">
-                Drinks
-              </Link>
-            </Button>
-          </Col>
-          <Col className="menu-option">
-            <Button variant="light">
-              <Link className="links" to="/desserts">
-                Desserts
-              </Link>
-            </Button>
-          </Col>
+    
+       
+        <Row >
+          <Col xs={3}> <button id="btn-Appetizers" type="button" className="btn btn-outline-light"> <Link className="colorText" to="/appetizers"> Appetizers </Link></button></Col>
+          <Col xs={3}> <button id="btn-Main" type="button" className="btn btn-outline-light"> <Link className="colorText" to="/main"> Main </Link></button></Col>
+          <Col xs={3}> <button id="btn-Drinks" type="button" className="btn btn-outline-light"> <Link className="colorText" to="/drinks"> Drinks </Link></button></Col>
+          <Col xs={3}> <button id="btn-Desserts" type="button" className="btn btn-outline-light"> <Link className="colorText" to="/desserts"> Desserts </Link></button></Col>
         </Row>
-        <hr></hr>
-      </Container>
-      
+        <hr/>
       <Route exact path="/appetizers" render={() => <Appetizers />} />
       <Route exact path="/drinks" render={() => <Drinks />} />
       <Route path="/desserts" exact render={() => <Desserts />} />
