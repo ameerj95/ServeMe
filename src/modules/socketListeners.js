@@ -61,18 +61,9 @@ const SocketListeners = function () {
     const createkitchenSocket = (stores, toast) => {
         console.log("listening in kitchen")
         stores.clientsocket.socket.on("kitchen", data => {
-
             console.log("in kitchen client ", data)
             stores.foodorders.updateFoodOrders(data)
-            toast.info('🥡 A new Order has been made', {
-                position: "bottom-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            
         }
         );
         stores.clientsocket.socket.on("resturant", data => {
@@ -86,15 +77,6 @@ const SocketListeners = function () {
         console.log("listening in bar")
         stores.clientsocket.socket.on("bar", data => {
             stores.foodorders.updateFoodOrders(data)
-            toast.info('🥡 A new Order has been made', {
-                position: "bottom-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
         }
         );
         stores.clientsocket.socket.on("resturant", data => {

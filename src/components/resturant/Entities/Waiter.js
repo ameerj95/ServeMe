@@ -58,7 +58,7 @@ function Waiter(props) {
               <td>5</td>
               <td>READY</td>
               <td>
-                <button value="id" onClick={handlePopup}>
+                <button value="id" class="buttonOrders" onClick={handlePopup}>
                   Show
                 </button>
               </td>

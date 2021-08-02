@@ -39,7 +39,8 @@ export class FoodOrders {
     this.emptyTheList();
     res.data.forEach((item) => {
       runInAction(() => {
-        this.list.push(new Order(item.id, item.order_items, item.date, item.table_num, item.status));
+        if(item.status != 2){
+        this.list.push(new Order(item.id, item.order_items, item.date, item.table_num, item.status));}
       });
     });
   };

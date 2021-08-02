@@ -56,9 +56,9 @@ function WaiterTemp(props) {
 
   return (
     <div>
-      <h3 className="aa">Waiter</h3>
+      <h3 className="aa ">Waiter</h3>
       {Object.keys(data).map(table =>
-        <Accordion >
+        <Accordion className="shadowLines marginBox">
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -71,12 +71,16 @@ function WaiterTemp(props) {
                 </Row>
               </Container>
             </Typography>
-
           </AccordionSummary>
+          <hr></hr>
+          <Row className='marginBox' >
+            <Col className="order_text">{translater.translateTime(table.date)}</Col>
+          </Row>
+          <hr></hr>
           <Row >
             <Col className="item-table">Name main</Col>
             <Col className="item-table">Status</Col>
-            <Col className="date1 item-table">Completed</Col>
+            <Col className="date1 item-table"></Col>
           </Row>
           {data[table].map(order =>
               <Row id={order.id} >
