@@ -99,7 +99,6 @@ const WaiterModule = function () {
             SET status = 2
             WHERE table_num=${order.id}`)
         emitToWaiter(io)
-        e
     }
     //==============================================================================
     return {
