@@ -25,6 +25,7 @@ const WaiterModule = function () {
         SET status = 1
         WHERE id=${order.id};`);
     emitToWaiter(io);
+
     // Manager.emitToManagerActiveWaiterOrders()
   };
   //===============================================================
@@ -39,6 +40,7 @@ const WaiterModule = function () {
     console.log("in waiter SERVER");
     var ActiveOrders = await GroupedWaiterOrders();
     io.sockets.emit("waiter", { orders: ActiveOrders, type: 1 });
+
   };
   //==============================================================================
   const createWaiterOrder = async (order) => {
@@ -112,6 +114,8 @@ const WaiterModule = function () {
             SET status = 2
             WHERE table_num=${order.id}`);
     emitToWaiter(io);
+
+    
   };
   //==============================================================================
   return {

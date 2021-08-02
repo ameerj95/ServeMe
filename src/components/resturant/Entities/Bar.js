@@ -94,8 +94,8 @@ function Bar(props) {
                 <Row className='marginBox' >
                   <Col >{element.name}</Col>
                   <Col >{translater.statusTranslator(element.status)}</Col>
-                  <Col className="date1"> <button type="button" className="buttonOrders btn btn-success btn-sm" id={element.id} onClick={finshedMeal}>Completed</button></Col>
-                  <Col  ><button type="button" className="buttonOrders btn btn-warning btn-sm" id={element.id} onClick={beganPrep}>In Process</button></Col>
+                  <Col  ><button type="button" className="buttonOrders btn btn-warning btn-sm" id={element.id} onClick={beganPrep}>Begin Preparing</button></Col>
+                  <Col className="date1"> <button type="button" className="buttonOrders btn btn-success btn-sm" id={element.id} onClick={finshedMeal}>Complete Meal</button></Col>
                   </Row>
               </Typography>
             </AccordionDetails>
