@@ -112,7 +112,6 @@ const WaiterModule = function () {
             SET status = 2
             WHERE table_num=${order.id}`);
     emitToWaiter(io);
-    e;
   };
   //==============================================================================
   return {
@@ -120,8 +119,7 @@ const WaiterModule = function () {
     emitToWaiter: emitToWaiter,
     completeWaiterOrder: completeWaiterOrder,
     startWaiterOrder: startWaiterOrder,
-    getAllActiveWaiterOrders,
-    getAllActiveWaiterOrders,
+    getAllActiveWaiterOrders: getAllActiveWaiterOrders,
     GroupedWaiterOrders: GroupedWaiterOrders,
     createWaiterServOrder: createWaiterServOrder,
     finshTableOrder: finshTableOrder,
