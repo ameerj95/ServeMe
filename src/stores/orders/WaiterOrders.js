@@ -68,23 +68,23 @@ export class WaiterOrders {
       case 1:
         return (<p style={{color: this.statusColors[order.status]}}>Pick up a {this.menuObject[order.item_id]}</p>)
       case 2:
-        return (<p style={{color: this.statusColors[order.status]}}>Give the Bill status={order.status}</p>)
+        return (<p style={{color: this.statusColors[order.status]}}>Give the Bill </p>)
       case 3:
-        return (<p style={{color: this.statusColors[order.status]}}>Give Utensils : ${order.note}</p>)
+        return (<p style={{color: this.statusColors[order.status]}}>Give Utensils </p>)
       case 4:
-        return (<p style={{color: this.statusColors[order.status]}}>Give Napkins  status=${order.status}</p>)
+        return (<p style={{color: this.statusColors[order.status]}}>Give Napkins </p>)
       case 5:
-        return (<p style={{color: this.statusColors[order.status]}}>Give a Baby chair status=${order.status}</p>)
+        return (<p style={{color: this.statusColors[order.status]}}>Give a Baby chair</p>)
       case 6:
-        return (<p style={{color: this.statusColors[order.status]}}>Clear the table status=${order.status}</p>)
+        return (<p style={{color: this.statusColors[order.status]}}>Clear the table</p>)
       case 7:
-        return (<p style={{color: this.statusColors[order.status]}}>Give Sauces status=${order.status}</p>)
+        return (<p style={{color: this.statusColors[order.status]}}>Give Sauces</p>)
       case 8:
-        return (<p style={{color: this.statusColors[order.status]}}>Take payment status=${order.status}</p>)
+        return (<p style={{color: this.statusColors[order.status]}}>Take payment</p>)
       case 9:
-        return (<p style={{color: this.statusColors[order.status]}}>Table number ${order.table_num} are reporting a problem status=${order.status}</p>)
+        return (<p style={{color: this.statusColors[order.status]}}>Table number ${order.table_num} are reporting a problem </p>)
       default:
-        return (<p style={{color: this.statusColors[order.status]}}>Table number ${order.table_num} requested a waiter's assistance status=${order.status}</p>)
+        return (<p style={{color: this.statusColors[order.status]}}>Table number ${order.table_num} requested a waiter's assistance </p>)
     }
 
   }
