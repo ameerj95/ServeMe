@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/servemedb')
 const actions = require('../actionsConstants');
-const moment = require('moment')
+// const moment = require('moment')
+const moment = require("moment-timezone");
 const Bar = require('../classes/Bar.js')()
 
 //===============================================================

@@ -9,34 +9,34 @@ import { Button, Container, Row, Col } from 'react-bootstrap';
 import React, { useEffect, useState, useRef } from "react";
 import translator from '../../../modules/translator';
 import './Kitchen.css'
-
-
+ 
+ 
 const translater = translator()
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-  
-
-
+ 
+ 
+ 
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
 }));
-
+ 
 // console.log("=========================================")
 // console.log(JSON.parse(JSON.stringify(data)));
-
+ 
 function Kitchen(props) {
-
+ 
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [shownItem, setshownItem] = useState([]);
   let firstupdate = useRef(true);
   const data = props.foodorders.list;
-
+ 
   function beganPrep(event) {
     console.log("in began prep")
     console.log((event.target.id))
@@ -49,7 +49,7 @@ function Kitchen(props) {
     props.clientsocket.socket.emit('kitchen', { item_id: parseInt(event.target.id), action_type: 1  });
     ;
   };
-
+ 
   useEffect(() => {
     console.log(firstupdate);
     if (!firstupdate.current) {
@@ -57,11 +57,11 @@ function Kitchen(props) {
     }
     firstupdate.current = false;
   }, [shownItem]);
-
+ 
   const handlePopup = (e) => {
     // setshownItem(getItemById(e.target.value).order_items);
   };
-
+ 
   return (
     <div >
       <h3 className="aa">Kitchen</h3>
@@ -75,7 +75,7 @@ function Kitchen(props) {
             <Typography id="summary" >
                 <div>Table {item.table}</div>
             </Typography>
-
+ 
           </AccordionSummary >
           <hr></hr>
           <Row className='marginBox' >
@@ -106,4 +106,3 @@ function Kitchen(props) {
   );
 }
 export default inject("foodorders", "clientsocket")(observer(Kitchen));
-

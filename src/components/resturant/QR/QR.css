@@ -1,0 +1,42 @@
+
+body{
+    background-color: #6599d7;
+}
+.numTables{
+    padding: .5rem 1rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+}
+.button.btn btn-lg btn-outline-danger ml-4){
+    width: 200pc;
+}
+.TableQr{
+    padding: 8px;
+    border: 1px solid #324760;
+    border-radius: 20px;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 10px;
+    margin: 10px;
+}
+.imgqr{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+.qrsession{
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 10px;
+    margin: 100px;
+    background-color: #a5f99b;
+}
+.StaffQR{
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 10px;
+}

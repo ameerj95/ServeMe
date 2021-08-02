@@ -1,6 +1,6 @@
-import Navbar from './components/customer/Navbar/Navbar'
-import Kitchen from './components/resturant/Entities/Kitchen';
-import Bar from './components/resturant/Entities/Bar';
+import Navbar from "./components/customer/Navbar/Navbar";
+import Kitchen from "./components/resturant/Entities/Kitchen";
+import Bar from "./components/resturant/Entities/Bar";
 import Manager from "./components/resturant/Entities/Manager/Manager";
 import "./App.css";
 import { observer, inject } from "mobx-react";
@@ -41,7 +41,7 @@ function App(props) {
                   )
               case 'manager':
                   return (
-                   <QR/>
+                   <Manager/>
                   )
               default:
                   return (

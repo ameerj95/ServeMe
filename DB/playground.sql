@@ -37,14 +37,14 @@
 --     LEFT JOIN order_table on order_table.id = order_item.order_id
 --     WHERE order_item.id = 2 
 
--- ALTER TABLE order_waiter
--- ADD item_id int;
+ALTER TABLE order_waiter
+ADD item_id int;
 
 -- SELECT * from order_waiter
 --         WHERE status!=3 AND table_num=4
        
 
--- SELECT count(table_num) from qr_table
+-- -- SELECT count(table_num) from qr_table
 
 -- UPDATE order_item
 --         SET status = 2
@@ -55,8 +55,10 @@
 -- SELECT * from order_waiter
 --                  WHERE status=1 AND order_id=11
 
-SELECT * , order_item.id as id
-        FROM order_item
-        LEFT JOIN menu_items ON order_item.menu_item_id = menu_items.id
-        LEFT JOIN order_table ON order_item.order_id = order_table.id
-        where order_id = 23 AND order_table.status=1
+-- SELECT * , order_item.id as id
+--         FROM order_item
+--         LEFT JOIN menu_items ON order_item.menu_item_id = menu_items.id
+--         LEFT JOIN order_table ON order_item.order_id = order_table.id
+--         where order_id = 23 AND order_table.status=1
+
+TRUNCATE TABLE qr_table;

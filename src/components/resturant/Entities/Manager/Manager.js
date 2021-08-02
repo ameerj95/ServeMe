@@ -1,26 +1,23 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Orders from "../../Orders/Orders";
+// import Orders from "../../Orders/Orders";
 
 import Bar from "../Bar";
 import Kitchen from "../Kitchen";
 import Waiter from "../Waiter";
 import Add from "./DashBoard/Add";
 import CRUDMenu from "./DashBoard/CRUDMenu";
-import Navbar from "./Navbar";
+
+// import Items from "./DashBoard/Items";
+import NavbarManager from "./NavbarManager";
 
 function Manager() {
   return (
     <Router>
       <div>
-        <Navbar>
-          {" "}
-          <div> </div>
-        </Navbar>
-
-        <Route path="/" />
-        <Route path="/orders" exact render={() => <Orders />} />
+        <NavbarManager />
         <Route path="/actions" exact render={() => <CRUDMenu />} />
+
         <Route path="/waiter" exact render={() => <Waiter />} />
         <Route path="/kitchen" exact render={() => <Kitchen />} />
         <Route path="/bar" exact render={() => <Bar />} />

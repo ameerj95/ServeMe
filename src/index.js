@@ -17,6 +17,7 @@ const storeInitalizer = require("../src/modules/userStores")();
 const clientsocket = new ClientSocket(window.location.pathname.split("/")[1]);
 stores.clientsocket = clientsocket;
 
+stores = storeInitalizer.startStores(stores);
 
 stores = storeInitalizer.startStores(stores)
 
