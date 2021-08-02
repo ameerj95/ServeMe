@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { observer, inject } from "mobx-react";
 import Button from "@material-ui/core/Button";
 import "./Actions.css";
-const imgURL =
-  "https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
+import Select from "react-select";
 
 function Add(props) {
   const [input, setInput] = useState({
@@ -31,91 +30,97 @@ function Add(props) {
       [e.target.gluten]: value,
     });
   }
-
+  const options = [
+    { label: "Appietizers", value: "0" },
+    { label: "Main", value: "1" },
+    { label: "Drinks", value: "2 " },
+    { label: "Desert", value: "3 " },
+  ];
+  const option = [
+    { label: "false", value: "0" },
+    { label: "true", value: "1" },
+  ];
   const AddItem = () => {
-    props.menu.addItem(input);
+    props.menu.addMenuItem(input);
   };
   return (
     <div className="addSection">
       <h1>Add Item</h1>
-
       <br></br>
-      <h4>name</h4>
-      <br></br>
+      <h4>Name</h4>
       <input
         className="addInputTextField"
-        value={props.name}
+        value={input.name}
         name="name"
+        placeholder="Name"
         onChange={handleChange}
       />
-
       <br></br>
-      <h4>id</h4>
-      <br></br>
+      <h4>Id</h4>
       <input
         className="addInputTextField"
-        value={props.id}
+        value={input.id}
         name="id"
+        type="Number"
+        placeholder="Id"
         onChange={handleChange}
       />
-
       <br></br>
-      <h4 className="addInputTextField" className="addInputTextField">
-        img
-      </h4>
-      <br></br>
+      <h4>Image</h4>
       <input
         className="addInputTextField"
-        value={props.img}
+        value={input.img}
         name="img"
+        typr="Url"
+        placeholder="Image"
         onChange={handleChange}
       />
-
       <br></br>
-      <h4 className="addInputTextField">price</h4>
-      <br></br>
+      <h4>Price</h4>
       <input
         className="addInputTextField"
-        value={props.price}
+        value={input.price}
         name="price"
+        placeholder="Price"
         onChange={handleChange}
       />
-
-      <br></br>
-      <h4>category</h4>
-      <br></br>
-      <input
+      ₪<br></br>
+      <h4>Category</h4>
+      <select
         className="addInputTextField"
-        value={props.category}
-        name="category"
         onChange={handleChange}
-      />
-
+        Value={input.category}
+      >
+        {options.map((option) => (
+          <option value={option.value}>{option.label}</option>
+        ))}
+      </select>
       <br></br>
-      <h4>vegan</h4>
-      <br></br>
-      <input
-        className="addInputTextField"
+      <h4>Vegan</h4>
+      <select
         name="vegan"
-        value={props.vegan}
-        onChange={handleChange}
-      />
-
-      <br></br>
-      <h4>gluten : </h4>
-      <br></br>
-      <input
         className="addInputTextField"
-        value={props.gluten}
-        name="gluten"
         onChange={handleChange}
-      />
-
+        Value={input.Vegan}
+      >
+        {option.map((option) => (
+          <option value={option.value}>{option.label}</option>
+        ))}
+      </select>
       <br></br>
-      <h4 className="addInputTextField" className="addInputTextField">
-        {" "}
-        Description :{" "}
-      </h4>
+      <h4>Gluten : </h4>
+      <select
+        name="gluten"
+        className="addInputTextField"
+        onChange={handleChange}
+        Value={input.gluten}
+      >
+        {option.map((option) => (
+          <option value={option.value}>{option.label}</option>
+        ))}
+      </select>
+      <br></br>
+      <h4> Description : </h4>
       <br></br>
       <textarea
         rows="4"

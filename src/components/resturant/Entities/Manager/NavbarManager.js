@@ -27,6 +27,9 @@ export default function NavbarManager() {
       <Link to="/add" className="navBar-element">
         <span> Add </span>
       </Link>
+      <Link to="/qr" className="navBar-element">
+        <span> Generate QR's </span>
+      </Link>
     </div>
   );
 }

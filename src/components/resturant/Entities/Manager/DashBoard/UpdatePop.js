@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Popup from "reactjs-popup";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+
 import Modal from "react-bootstrap/Modal";
+import "./updatepop.css";
 
 import { observer, inject } from "mobx-react";
 
@@ -21,78 +19,50 @@ const UpdatePop = (props) => {
   const [category, setcategory] = useState("");
   const [vegan, setvegan] = useState("");
   const [gluten, setgluten] = useState("");
-
-
-
-  // const handleSubmit=()=>{
-    // this should call handle update in our store 
-
-    // console.log("-------after change=====",selectedCustomer)
-//     const customerToUpdate={ 
-//       name:setName.name
-//       id:setIdid.id
-//       img:setimg.img
-//       price:setprice.price
-//       description:setdescription.
-//       category:setcategory.category
-//       vegan:setvegan.vegan
-//       gluten:setgluten.gluten
-//     }
-//     props.CustomerStore.updateSelectedCustomer(customerToUpdate)
-
-// }
+  console.log(name);
+  console.log(id);
+  console.log(img);
+  console.log(price);
+  console.log(description);
+  console.log(category);
+  console.log(vegan);
+  console.log(gluten);
   const handleClickOpen = () => {
     setOpen(false);
   };
 
   const handleClose = () => {
-    setOpen(true);
+    setOpen(false);
   };
   const handleName = (e) => {
-    let t = e.target.value;
-    console.log(t);
     setName(e.target.value);
   };
   const handleid = (e) => {
-    let t = e.target.value;
-    console.log(t);
     setId(e.target.value);
   };
   const handleimg = (e) => {
-    let t = e.target.value;
-    console.log(t);
     setImg(e.target.value);
   };
   const handleprice = (e) => {
-    let t = e.target.value;
-    console.log(t);
     setprice(e.target.value);
   };
   const handledescription = (e) => {
-    let t = e.target.value;
-    console.log(t);
     setdescription(e.target.value);
   };
   const handlecategory = (e) => {
-    let t = e.target.value;
-    console.log(t);
     setcategory(e.target.value);
   };
   const handlevegan = (e) => {
-    let t = e.target.value;
-    console.log(t);
     setvegan(e.target.value);
   };
   const handlegluten = (e) => {
-    let t = e.target.value;
-    console.log(t);
     setgluten(e.target.value);
   };
 
   const update = () => {
-    props.list.updatePerson(
+    props.menu.updateItem(
+      props.item.id,
       name,
-      id,
       img,
       price,
       description,
@@ -105,8 +75,8 @@ const UpdatePop = (props) => {
 
   return (
     <div className="popupside">
-      <Popup
-      className="popupupdate"
+      <Dialog
+        className="popupupdate"
         open={open}
         onClose={handleClickOpen}
         aria-labelledby="form-dialog-title"
@@ -126,7 +96,7 @@ const UpdatePop = (props) => {
           margin="dense"
           id="id"
           label="id"
-          type="string"
+          type="Number"
           value={id}
           onChange={handleid}
         />
@@ -135,8 +105,8 @@ const UpdatePop = (props) => {
           margin="dense"
           id="img"
           label="img"
-          type="string"
-          value={id}
+          type="Url"
+          value={img}
           onChange={handleimg}
         />
         <TextField
@@ -157,15 +127,7 @@ const UpdatePop = (props) => {
           value={description}
           onChange={handledescription}
         />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="description"
-          label="description"
-          type="string"
-          value={description}
-          onChange={handledescription}
-        />
+
         <TextField
           autoFocus
           margin="dense"
@@ -194,16 +156,19 @@ const UpdatePop = (props) => {
           onChange={handlegluten}
         />
         <DialogActions>
-        <Modal.Footer>
-        <Button className="btnUpdateClose" variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button onClick={update}>Update</Button>
-        </Modal.Footer>
-        
+          <Modal.Footer>
+            <Button
+              className="btnUpdateClose"
+              variant="secondary"
+              onClick={handleClose}
+            >
+              Close
+            </Button>
+            <Button onClick={update}>Update</Button>
+          </Modal.Footer>
         </DialogActions>
-      </Popup>
+      </Dialog>
     </div>
   );
 };
-export default observer(UpdatePop);
+export default inject("menu")(observer(UpdatePop));

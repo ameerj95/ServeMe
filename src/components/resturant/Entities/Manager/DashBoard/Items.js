@@ -6,7 +6,7 @@ import {
   TableCell,
   TableContainer,
   Table,
-  TableBody,
+ 
 } from "@material-ui/core";
 import { observer, inject } from "mobx-react";
 
@@ -34,7 +34,7 @@ const Items = inject("menu")(
           </Table>
         </TableContainer>
         {props.menu.list.map((c) => (
-          <Item key={c._id} item={c} />
+          <Item key={c.id} item={c} />
         ))}
       </div>
     );
