@@ -8,12 +8,11 @@ const BarModule = function () {
     //===============================================================
     const pickUpOrderItem = async (order, io) => {
         await sequelize.query(`UPDATE order_item
-        SET status = 1
-        WHERE id=${order.id};`)
+        SET status = 2
+        WHERE id=${order.item_id};`)
         emitToBar(io)
         Waiter.createWaiterOrder(order)
         Waiter.emitToWaiter(io)
-
         emitToManager(result, io)
 
     }
@@ -21,7 +20,7 @@ const BarModule = function () {
     const beginOrderItem = async (order, io) => {
         await sequelize.query(`UPDATE order_item
     SET status = 1
-    WHERE id=${order.id};`)
+    WHERE id=${order.item_id};`)
         var result = await getAllActiveOrders()
         const orders = await populateActiveOrders(result, 2)
         io.sockets.emit("bar", orders)

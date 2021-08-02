@@ -1,4 +1,5 @@
-const CustomerModule = require('../classes/Customer.js')()
+const 
+CustomerModule = require('../classes/Customer.js')()
 //==================================================================================================
 const action_map = {
     "0":CustomerModule.addToCart,

@@ -6,6 +6,11 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "mobx-react";
 import { Info } from "./stores/info/Info";
 import { ClientSocket } from "./stores/clientSocket/ClientSocket";
+import { ToastContainer, toast } from 'react-toastify';
+import bellSound from './sounds/bell.mp3';
+
+
+
 const socketListeners = require("../src/modules/socketListeners")();
 let stores = {};
 const storeInitalizer = require("../src/modules/userStores")();
@@ -14,24 +19,8 @@ stores.clientsocket = clientsocket;
 
 stores = storeInitalizer.startStores(stores);
 
-stores.clientsocket.socket.emit("kitchenserver", "hi");
-//for customers create only these stores
-// if (clientsocket.usertype == "table") {
-//   let table = new Table(parseInt(window.location.pathname.split("/")[2]));
-//   console.log(table);
-//   table.fetchCart();
-//   let menu = new Menu();
-//   menu.getMenuItems();
-//   stores.table = table;
-//   stores.menu = menu;
-// }
-// //for resturant entity create these entities
-// else {
-//   let orders = new Orders();
-//   let foodOrders = new FoodOrders();
-//   stores.orders = orders;
-//   stores.foodorders = foodOrders;
-// }
+stores = storeInitalizer.startStores(stores)
+
 const imgRestaurant =
   "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 let info = new Info(
@@ -51,7 +40,7 @@ stores.info = info;
 window.history.pushState("", "", "/");
 
 //initate sockets per user type
-socketListeners.createSocket(stores);
+socketListeners.createSocket(stores,toast);
 
 ReactDOM.render(
   <Provider {...stores}>

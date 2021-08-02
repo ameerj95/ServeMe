@@ -75,6 +75,8 @@ const CustomerModule = function () {
     //===============================================================
     const requestService = async(order,io)=>{
         console.log("requestService")
+        console.log('222222222')
+        console.log(order)
         Waiter.createWaiterServOrder({...order})
         Waiter.emitToWaiter(io)
     }
