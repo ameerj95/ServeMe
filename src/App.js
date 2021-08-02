@@ -8,12 +8,18 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import WaiterTemp from "./components/resturant/Entities/WaiterTemp";
 import CRUDMenu from './components/resturant/Entities/Manager/DashBoard/CRUDMenu';
 import QR from './components/resturant/QR/QR';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import introSound from './sounds/intro.mp3'
+import useSound from 'use-sound';
 //=========================================================================
 function App(props) {
-
+  // const [playIntro] = useSound(introSound);
+  // playIntro()
   const userType = (props.clientsocket).usertype
   return (
     <Router> 
+        <ToastContainer />
         {(() => {
   
            switch (userType) {

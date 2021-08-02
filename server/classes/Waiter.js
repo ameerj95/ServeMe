@@ -40,6 +40,7 @@ const WaiterModule = function () {
     }
     //==============================================================================
     const createWaiterOrder = async (order) => {
+        console.log("111111",order)
         const waiterOrder = await getOrderDetails(order.item_id)
         await sequelize.query(`INSERT INTO order_waiter(table_num,order_id,order_type,date,status,item_id)
         VALUES (${waiterOrder.table_num},${waiterOrder.order_id},${order.action_type},'${moment().format()}',0,${waiterOrder.menu_item_id})`)
@@ -49,9 +50,7 @@ const WaiterModule = function () {
 
         const order_id = await getOrderId(order.tableNum)
         console.log('===================================================================')
-        console.log(order.order_type)
-        // console.log(`INSERT INTO order_waiter(table_num,order_id,order_type,date,status,item_id)
-        // //     VALUES (${order.tableNum},${order_id},${order.action_type},'${moment().format()}',0,${0})`)
+        console.log(order)
         await sequelize.query(`INSERT INTO order_waiter(table_num,order_id,order_type,date,status,item_id)
             VALUES (${order.tableNum},${order_id},${order.order_type},'${moment().format()}',0,0)`)
     }

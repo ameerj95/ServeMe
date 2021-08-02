@@ -7,10 +7,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { observer, inject } from "mobx-react";
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import React, { useEffect, useState, useRef } from "react";
+import translator from '../../../modules/translator';
 import './Kitchen.css'
 
 
-
+const translater = translator()
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -64,47 +65,38 @@ function Kitchen(props) {
   return (
     <div >
       <h3 className="aa">Kitchen</h3>
-      <Row>
-        <Col className="item-table"  >#</Col>
-        <Col className="item-table"  >Table</Col>
-        <Col className="item-table"  >Status</Col>
-        <Col className="item-table"  >Data</Col>
-      </Row>
       {data.map((item, index) =>
-        <Accordion >
-          <AccordionSummary
+        <Accordion  className='shadowLines marginBox' flush >
+          <AccordionSummary  
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography id="summary">
-              <Container >
-                <Row >
-                  <Col className="col-lg-2">{index + 1}</Col>
-                  <Col className="col-lg-2">{item.table}</Col>
-                  <Col className=" col-lg-3">{item.status}</Col>
-                  <Col className="date">{item.date}</Col>
-
-                </Row>
-              </Container>
+            <Typography id="summary" >
+                <div>Table {item.table}</div>
             </Typography>
 
-          </AccordionSummary>
-          <Row >
-            <Col className="item-table">Name main</Col>
-            <Col className="item-table"> Order status</Col>
-            <Col className="item-table"> In Process </Col>
-            <Col className="date1 item-table">Completed</Col>
+          </AccordionSummary >
+          <hr></hr>
+          <Row className='marginBox' >
+            <Col className="order_text">Order #{index + 1}, {translater.translateTime(item.date)}</Col>
+          </Row>
+          <hr></hr>
+          <Row className='marginBox'  >
+            <Col className="item-table">Dish</Col>
+            <Col className="item-table"> Status</Col>
+            <Col className="item-table"></Col>
+            <Col className="item-table"> </Col>
           </Row>
           {item.order_items.map(element =>
             <AccordionDetails >
               <Typography id="summary">
-                <Row>
+                <Row className='marginBox' >
                   <Col >{element.name}</Col>
-                  <Col >{element.status}</Col>
-                  <Col  ><button type="button" className="btn btn-outline-warning btn-sm" id={element.id} onClick={beganPrep}>In Process</button></Col>
-                  <Col className="date1"> <button type="button" className="btn btn-outline-success btn-sm" id={element.id} onClick={finshedMeal}>Completed</button></Col>
-                </Row>
+                  <Col >{translater.statusTranslator(element.status)}</Col>
+                  <Col  ><button type="button" className="buttonOrders btn btn-warning btn-sm" id={element.id} onClick={beganPrep}>In Process</button></Col>
+                  <Col className="date1"> <button type="button" className="buttonOrders btn btn-success btn-sm" id={element.id} onClick={finshedMeal}>Completed</button></Col>
+                  </Row>
               </Typography>
             </AccordionDetails>
           )}
