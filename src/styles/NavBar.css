@@ -1,6 +1,6 @@
 
 .NavBar {
-    background-color: rgb(32, 77, 95);
+    background-color: rgb(145, 120, 139);
     
   }
   a {
@@ -10,7 +10,7 @@
   
   .NavBar a {
     float: center;
-    color: #ff0000;
+    color: #f8f8f8;
     text-align: center;
     padding: 10px 16px;
     text-decoration: none;

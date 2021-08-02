@@ -60,7 +60,7 @@ const PopUpOrder = (props) => {
                   <h5>{ordered_item.name}</h5>
                 </Col>
                 <Col xs={4}>
-                  <h5>{status[ordered_item.status]}</h5>
+                  <h5>{ordered_item.status}</h5>
                 </Col>
                 <Col xs={1}>
                   <input

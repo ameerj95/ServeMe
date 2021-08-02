@@ -16,6 +16,7 @@
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",
     "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
     "mysql2": "^2.2.5",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
@@ -25,9 +26,12 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-table": "^7.7.0",
+    "reactjs-popup": "^2.0.5",
+    "react-toastify": "^7.0.4",
     "sequelize": "^6.6.5",
     "socket.io": "^4.1.3",
     "socket.io-client": "^4.1.3",
+    "use-sound": "^4.0.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

@@ -1,6 +1,5 @@
 
 import { observer, inject } from "mobx-react";
-import { translator } from '../../../modules/translator'
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -10,6 +9,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import React, { useEffect, useState, useRef } from "react";
 import './Kitchen.css'
+import translator from '../../../modules/translator';
+const translater = translator()
 
 
 
@@ -52,30 +53,10 @@ function WaiterTemp(props) {
     ;
   }
   
-  // <h1>Waiter</h1>
-  // <ul>
-  //   {Object.keys(data).map(table => 
-  //     <div>
-  //       <h1>Table {table}</h1>
-  //       {
-  //         data[table].map(order => 
-  //           <li id={order.id}>
-  //             <div>{props.waiterorder.translator_values(order)}</div>
-  //             <button id={order.id}  onClick={takeTask}>take task</button>
-  //             <button id={order.id} onClick={finshTask}>finsh task</button>
-  //             </li>
-  //         )
-  //       }
-  //       <button id={table} onClick={finshOrder} >Order Finshed</button>
-  //     </div>
-  //   )
-  //   }
-  // </ul>
 
   return (
     <div>
       <h3 className="aa">Waiter</h3>
-      <Col className="item-table mr-3">Table</Col>
       {Object.keys(data).map(table =>
         <Accordion >
           <AccordionSummary
@@ -86,7 +67,7 @@ function WaiterTemp(props) {
             <Typography id="summary">
               <Container >
                 <Row >
-                  <Col className="col-lg-2">{table}</Col>
+                  <Col >Table {table}</Col>
                 </Row>
               </Container>
             </Typography>
@@ -94,14 +75,15 @@ function WaiterTemp(props) {
           </AccordionSummary>
           <Row >
             <Col className="item-table">Name main</Col>
-            <Col className="item-table"> In Process </Col>
+            <Col className="item-table">Status</Col>
             <Col className="date1 item-table">Completed</Col>
           </Row>
           {data[table].map(order =>
               <Row id={order.id} >
                 <Col><div>{props.waiterorder.translator_values(order)}</div></Col>
-                <Col><button id={order.id} onClick={takeTask}>take task</button></Col>
-                <Col className="date"><button id={order.id} onClick={finshTask}>finsh task</button></Col>
+                <Col><div>{translater.statusTranslator(order.status)}</div></Col>
+                <Col  ><button type="button" className="buttonOrders btn btn-success btn-sm" id={order.id} onClick={finshTask}>Take Task</button></Col>
+                  
               </Row>
           )}
             <Row>

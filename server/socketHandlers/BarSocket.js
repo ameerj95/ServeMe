@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/servemedb')
 const actions = require('../actionsConstants');
-const moment = require('moment')
+// const moment = require('moment')
+const moment = require("moment-timezone");
 const Bar = require('../classes/Bar.js')()
 
 //===============================================================
@@ -13,9 +14,10 @@ const action_map = {
 //in this socket we want to recive the following
 //input -> action
 exports = module.exports = function(socket,io){
-    socket.on('barServer', data => {
+    socket.on('bar', data => {
         console.log("in barServer")
-        action_map[data.action](data,io)
+        console.log(data)
+        action_map[data.action_type](data,io)
     });
   } 
 

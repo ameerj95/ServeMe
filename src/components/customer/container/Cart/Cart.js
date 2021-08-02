@@ -3,17 +3,26 @@ import { observer, inject } from 'mobx-react'
 import './Cart.css'
 import { MdDelete } from 'react-icons/md';
 import { Button, Col, Row, Container } from 'react-bootstrap'
+import bellSound from '../../../../sounds/bell.mp3'
+import deleteSound from '../../../../sounds/remove.mp3'
+import cashSound from '../../../../sounds/payment.mp3'
+import useSound from 'use-sound';
 
 function Cart(props) {
+    const [playBell] = useSound(bellSound);
+    const [playDelete] = useSound(deleteSound);
+
 
     const fireOrder = () => {
         const extracted_tableNum = props.table.tableNum
+        playBell()
         props.clientsocket.socket.emit('resturant', { tableNum: extracted_tableNum, action_type: 0 });
     }
 
     const deleteItem = (event) =>{
         console.log(JSON.parse(JSON.stringify(props.table.cart)));
         console.log(event.currentTarget.id)
+        playDelete()
         const extracted_tableNum = props.table.tableNum
         props.clientsocket.socket.emit('customerServer', { tableNum: extracted_tableNum,id:event.currentTarget.id ,action_type:1 });
 

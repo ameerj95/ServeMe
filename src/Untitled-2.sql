@@ -1,0 +1,1 @@
+SELECT * FROM `servemedb`.`qr_table` LIMIT 1000;
