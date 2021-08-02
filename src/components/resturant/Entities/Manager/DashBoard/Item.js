@@ -3,60 +3,72 @@ import React, { useState } from "react";
 import { observer, inject } from "mobx-react";
 import {
   TableRow,
-  TableHead,
   TableBody,
   TableCell,
   Table,
   TableContainer,
 } from "@material-ui/core";
 import UpdatePop from "./UpdatePop";
+import "../../../../../styles/table.css";
 
 import Button from "@material-ui/core/Button";
 const Item = (props) => {
-   const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   // const [modalShow, setModalShow] = useState(false);
-
-
-
-  const updateItem = () => {
-
+  console.log(props);
+  let data = props.menu.list;
+  const updateItem = (data) => {
     setOpen(true);
+  };
+  const deleteItem = (event) => {
+    // console.log(JSON.parse(JSON.stringify(props.table.cart)));
+    // console.log(event.currentTarget.id)
+    const extracted_tableNum = props.menu.props.clientsocket.socket.emit(
+      "customerServer",
+      {
+        tableNum: extracted_tableNum,
+        id: event.currentTarget.id,
+        action_type: 1,
+      }
+    );
   };
 
   return (
     <div>
       <TableContainer>
-        <Table>
-          
-          <TableBody>
-            {props.menu.list.map((item) => (
-              <TableRow
-                key={item.name}
-                onClick={() => setOpen(true)}
-              >
-           
-
-                <TableCell align="right">{item.name}</TableCell>
-                <TableCell align="right">{item.id}</TableCell>
-                <TableCell align="right">{item.img}</TableCell>
-                <TableCell align="right">{item.price}</TableCell>
-                <TableCell align="right">{item.description}</TableCell>
-                <TableCell align="right">{item.category}</TableCell>
-                <TableCell align="right">{item.vegan}</TableCell>
-                <TableCell align="right">{item.gluten}</TableCell>
-                <TableCell align="right">
-                  <Button>Delete</Button>
-                  {/* <button className="btn btn-lg btn-outline-danger ml-4">
-                      Delete
-                    </button> */}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+        <Table classname=" tableitems">
+          {data.map((item) => (
+            <TableRow
+              key={item.name}
+              onClick={() => updateItem()}
+              item={props.list}
+            >
+              <TableCell style={{ width: 240 }}>{item.name}</TableCell>
+              <TableCell style={{ width: 161 }}>{item.id}</TableCell>
+              <TableCell style={{ width: 161 }}>
+                <div>
+                  <img className="ItemImg" src={`${item.img}`} />
+                </div>
+              </TableCell>
+              <TableCell style={{ width: 161 }}>{item.price}</TableCell>
+              <TableCell style={{ width: 161 }}>{item.description}</TableCell>
+              <TableCell style={{ width: 161 }}>{item.category}</TableCell>
+              <TableCell style={{ width: 161 }}>{item.vegan}</TableCell>
+              <TableCell style={{ width: 180 }}>{item.gluten}</TableCell>
+              <TableCell>
+                <a
+                  className="svg-inline--fa.fa-play.fa-w-14 "
+                  onClick={deleteItem}
+                >
+                  Delete
+                </a>
+              </TableCell>
+            </TableRow>
+          ))}
         </Table>
       </TableContainer>
 
-      {open && <UpdatePop item={props.menu.list} />}
+      {open && <UpdatePop item={props.item} />}
     </div>
   );
 };

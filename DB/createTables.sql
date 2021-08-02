@@ -60,7 +60,10 @@ use servemedb;
 --     FOREIGN KEY(order_id) REFERENCES order_table(id)
 -- );
 
+-- DROP TABLE qr_code;
 
-
-ALTER TABLE order_waiter
-add item_id int
+-- -- CREATE TABLE qr_table(
+-- --     table_num int PRIMARY KEY,
+-- --     qr_code VARCHAR(120)
+    
+-- -- );

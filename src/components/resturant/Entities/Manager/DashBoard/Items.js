@@ -12,45 +12,33 @@ import { observer, inject } from "mobx-react";
 
 const Items = inject("menu")(
   observer((props) => {
-    let data = props.menu.list;
-    const addMenuItem = function (data) {
-      props.menu.addMenuItem(data);
-    };
-    addMenuItem(data);
+    console.log(props.menu);
 
     return (
       <div>
-           <TableContainer   >
-      <Table stickyHeader>
-      <TableHead>
-            <TableRow>
-              <TableCell align="right">Name</TableCell>
-              <TableCell align="right">Id</TableCell>
-              <TableCell align="right">Image</TableCell>
-              <TableCell align="right">Price</TableCell>
-              <TableCell align="right">Description</TableCell>
-              <TableCell align="right">Category</TableCell>
-              <TableCell align="right">Vegan</TableCell>
-              <TableCell align="right">Gluten</TableCell>
-              <TableCell align="right">Actions</TableCell>
-            </TableRow>
-          </TableHead>
-        <TableBody>
-           <TableRow>
-            <TableCell>...</TableCell>
-        </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
-        {props.menu.item.map((c) => (
-          
-          <Item key={c._id} item={props.menu.list} />
+        <TableContainer>
+          <Table stickyHeader>
+            <TableHead>
+              <TableRow>
+                <TableCell align="left">Name</TableCell>
+                <TableCell style={{ width: 161 }}>Id</TableCell>
+                <TableCell style={{ width: 161 }}>Image</TableCell>
+                <TableCell style={{ width: 161 }}>Price</TableCell>
+                <TableCell style={{ width: 161 }}>Description</TableCell>
+                <TableCell style={{ width: 161 }}>Category</TableCell>
+                <TableCell style={{ width: 161 }}>Vegan</TableCell>
+                <TableCell style={{ width: 161 }}>Gluten</TableCell>
+                <TableCell style={{ width: 161 }}>Actions</TableCell>
+              </TableRow>
+            </TableHead>
+          </Table>
+        </TableContainer>
+        {props.menu.list.map((c) => (
+          <Item key={c._id} item={c} />
         ))}
       </div>
     );
   })
 );
-
-
 
 export default Items;

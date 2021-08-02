@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { observer, inject } from "mobx-react";
 import Button from "@material-ui/core/Button";
-import "./Actions.css"
+import "./Actions.css";
 const imgURL =
   "https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 
@@ -40,54 +40,97 @@ function Add(props) {
       <h1>Add Item</h1>
 
       <br></br>
-      <span>name</span>
+      <h4>name</h4>
       <br></br>
-      <input value={props.name} name="name" onChange={handleChange} />
+      <input
+        className="addInputTextField"
+        value={props.name}
+        name="name"
+        onChange={handleChange}
+      />
 
       <br></br>
-      <span>id</span>
+      <h4>id</h4>
       <br></br>
-      <input value={props.id} name="id" onChange={handleChange} />
+      <input
+        className="addInputTextField"
+        value={props.id}
+        name="id"
+        onChange={handleChange}
+      />
 
       <br></br>
-      <span className="addInputTextField">img</span>
+      <h4 className="addInputTextField" className="addInputTextField">
+        img
+      </h4>
       <br></br>
-      <input value={props.img} name="img" onChange={handleChange} />
+      <input
+        className="addInputTextField"
+        value={props.img}
+        name="img"
+        onChange={handleChange}
+      />
 
       <br></br>
-      <span className="addInputTextField">price</span>
+      <h4 className="addInputTextField">price</h4>
       <br></br>
-      <input value={props.price} name="price" onChange={handleChange} />
+      <input
+        className="addInputTextField"
+        value={props.price}
+        name="price"
+        onChange={handleChange}
+      />
 
       <br></br>
-      <span className="addInputTextField">category</span>
+      <h4>category</h4>
       <br></br>
-      <input value={props.category} name="category" onChange={handleChange} />
+      <input
+        className="addInputTextField"
+        value={props.category}
+        name="category"
+        onChange={handleChange}
+      />
 
       <br></br>
-      <span className="addInputTextField">vegan</span>
+      <h4>vegan</h4>
       <br></br>
-      <input name="vegan" value={props.vegan} onChange={handleChange} />
+      <input
+        className="addInputTextField"
+        name="vegan"
+        value={props.vegan}
+        onChange={handleChange}
+      />
 
       <br></br>
-      <span className="addInputTextField">gluten : </span>
+      <h4>gluten : </h4>
       <br></br>
-      <input value={props.gluten} name="gluten" onChange={handleChange} />
+      <input
+        className="addInputTextField"
+        value={props.gluten}
+        name="gluten"
+        onChange={handleChange}
+      />
 
       <br></br>
-      <span className="addInputTextField"> Description : </span>
+      <h4 className="addInputTextField" className="addInputTextField">
+        {" "}
+        Description :{" "}
+      </h4>
       <br></br>
       <textarea
         rows="4"
         cols="50"
+        className="addInputTextField"
         value={props.description}
         name="description"
         form="usrform"
         placeholder="description"
         onChange={handleChange}
       ></textarea>
-        <br></br>
-      <Button onClick={AddItem}>Add New Item</Button>
+      <br></br>
+      <button className="btn btn-lg btn-outline-danger ml-4" onClick={AddItem}>
+        Add New Item
+      </button>
     </div>
   );
 }

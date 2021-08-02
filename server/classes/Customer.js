@@ -1,8 +1,10 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/servemedb')
 const actions = require('../actionsConstants');
-const moment = require('moment')
+// const moment = require('moment')
+const moment = require("moment-timezone");
 const Waiter = require('../classes/Waiter.js')()
+
 
 const CustomerModule = function () {
     //===============================================================
@@ -59,7 +61,7 @@ const CustomerModule = function () {
     //===============================================================
     const createNewOrder = async (tableNum) => {
         await sequelize.query(`INSERT INTO order_table(date,table_num,status)
-        VALUES ('${moment().format()}','${tableNum}',${true})`).then(function ([result]) {
+        VALUES ('${moment().tz('Asia/Jerusalem').format()}','${tableNum}',${true})`).then(function ([result]) {
             console.log("done")
         })
     }

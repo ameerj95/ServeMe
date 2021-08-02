@@ -7,17 +7,17 @@ import Kitchen from "../Kitchen";
 import Waiter from "../Waiter";
 import Add from "./DashBoard/Add";
 import CRUDMenu from "./DashBoard/CRUDMenu";
-import UpdatePop from "./DashBoard/UpdatePop";
+
 // import Items from "./DashBoard/Items";
-import Navbar from "./Navbar";
+import NavbarManager from "./NavbarManager";
 
 function Manager() {
   return (
     <Router>
       <div>
-        <Navbar />
+        <NavbarManager />
         <Route path="/actions" exact render={() => <CRUDMenu />} />
- 
+
         <Route path="/waiter" exact render={() => <Waiter />} />
         <Route path="/kitchen" exact render={() => <Kitchen />} />
         <Route path="/bar" exact render={() => <Bar />} />
